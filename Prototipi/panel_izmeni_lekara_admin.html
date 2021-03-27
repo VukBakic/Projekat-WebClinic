@@ -1,0 +1,182 @@
+<!--  
+Author:
+Vuk Bakic 0606/2017
+-->
+<!DOCTYPE hyml>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/bootstrap-icons.css" rel="stylesheet" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <title>WebClinic</title>
+  </head>
+  <body>
+    <header id="header" class="fixed-top">
+      <div class="container d-flex align-items-center">
+        <h1 class="logo me-auto"><a href="index.html">WebClinic</a></h1>
+
+        <nav id="navbar" class="navbar">
+          <ul>
+            <li>
+              <a class="nav-link active" href="index_admin.html">Početna</a>
+            </li>
+            <li>
+              <a class="nav-link" href="zakazi_pregled.html"
+                >Zakažite pregled</a
+              >
+            </li>
+
+            <li>
+              <a class="nav-link scrollto" href="pitanja.html">Pitajte nas</a>
+            </li>
+            <li>
+              <a class="getstarted scrollto" href="panel_admin.html"
+                >Kontrolni Panel</a
+              >
+            </li>
+            <li>
+              <a class="getstarted ms-3" href="profil_klijent.html"
+                >Moj Profil</a
+              >
+            </li>
+          </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+      </div>
+    </header>
+
+    <section id="controlpanel" class="controlpanel kontrola-forme section-bg">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Izmena profilnih informacija</h2>
+        </div>
+
+        <div class="row">
+          <div class="col-12 mt-5 mt-lg-0 d-flex align-items-stretch">
+            <form
+              action="forms/contact.php"
+              method="post"
+              role="form"
+              class="php-email-form w-100"
+            >
+              <div class="row w-50 mx-auto">
+                <div class="form-group col-12">
+                  <label for="name">Ime</label>
+                  <input
+                    type="text"
+                    name="name"
+                    class="form-control"
+                    id="name"
+                    required
+                    placeholder="Aleksa"
+                  />
+                </div>
+                <div class="form-group col-12">
+                  <label for="name">Prezime</label>
+                  <input
+                    type="text"
+                    name="name"
+                    class="form-control"
+                    id="name"
+                    required
+                    placeholder="Aleksić"
+                  />
+                </div>
+                <div class="form-group col-12">
+                  <label for="name">JMBG</label>
+                  <input
+                    type="text"
+                    name="name"
+                    class="form-control"
+                    id="name"
+                    required
+                    placeholder="1234567891012"
+                  />
+                </div>
+                <div class="form-group col-12">
+                  <label for="name">Broj lične karte</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    name="email"
+                    id="email"
+                    required
+                    placeholder="1234567891012"
+                  />
+                </div>
+                <div class="form-group col-12">
+                  <label for="pol">Pol</label>
+                  <select class="form-select" name="pol" id="pol">
+                    <option selected value="1">Muški</option>
+                  </select>
+                </div>
+                <div class="form-group col-12">
+                  <label for="struke">Odaberite struke lekara</label>
+                  <select
+                    class="form-select"
+                    multiple
+                    aria-label="multiple select example"
+                    id="struke"
+                  >
+                    <option selected value="1">Lekar opste prakse</option>
+                    <option value="2">Kardiolog</option>
+                    <option value="3">Endokrinolog</option>
+                    <option value="4">Hirurg</option>
+                    <option value="5">Psihijatar</option>
+                    <option value="6">Dermatolog</option>
+                  </select>
+                </div>
+                <div class="form-group col-12">
+                  <label for="name">Kontakt telefon</label>
+                  <input
+                    type="tel"
+                    class="form-control"
+                    name="email"
+                    id="email"
+                    required
+                    placeholder="+381612345678"
+                  />
+                </div>
+                <div class="form-group col-12">
+                  <label for="name">Email adresa</label>
+                  <input
+                    type="tel"
+                    class="form-control"
+                    name="email"
+                    id="email"
+                    required
+                    placeholder="aleksa.aleksic@gmail.com"
+                  />
+                </div>
+              </div>
+
+              <div class="text-center">
+                <button type="submit">Sačuvaj izmene</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer id="footer">
+      <div class="container footer-bottom text-center">
+        <div class="copyright">
+          &copy; Copyright <strong><span>WebChronicles</span></strong
+          >.
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

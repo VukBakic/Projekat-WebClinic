@@ -1,0 +1,259 @@
+<!--  
+Author:
+Vuk Bakic 0606/2017
+-->
+<!DOCTYPE hyml>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/bootstrap-icons.css" rel="stylesheet" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <title>WebClinic</title>
+  </head>
+  <body>
+    <header id="header" class="fixed-top">
+      <div class="container d-flex align-items-center">
+        <h1 class="logo me-auto"><a href="index.html">WebClinic</a></h1>
+
+        <nav id="navbar" class="navbar">
+          <ul>
+            <li><a class="nav-link active" href="#hero">Početna</a></li>
+            <li><a class="nav-link" href="#services">Zakažite pregled</a></li>
+
+            <li>
+              <a class="nav-link scrollto" href="#contact">Pitajte nas</a>
+            </li>
+            <li>
+              <a class="getstarted scrollto" href="panel_sluzbenik.html"
+                >Kontrolni Panel</a
+              >
+            </li>
+          </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+      </div>
+    </header>
+
+    <section id="controlpanel" class="controlpanel kontrola-forme section-bg">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Korisnici</h2>
+          <p>Izmena podataka i brisanje korisnika</p>
+        </div>
+
+        <div class="row styledlist">
+          <div class="col-12 my-5 mt-lg-0 d-flex align-items-stretch">
+            <form
+              action="forms/contact.php"
+              method="post"
+              role="form"
+              class="php-email-form w-100"
+            >
+              <div class="row w-50 mx-auto">
+                <div class="form-group col-12">
+                  <label for="vrsta">Vrsta korisnika</label>
+                  <select class="form-select" name="vrsta" id="vrsta">
+                    <option selected value="1">Klijent</option>
+                    <option value="2">Sluzbenik</option>
+                    <option value="3">Lekar</option>
+                  </select>
+                </div>
+                <div class="form-group col-12">
+                  <label for="name">Ime</label>
+                  <input
+                    type="text"
+                    name="name"
+                    class="form-control"
+                    id="name"
+                    required
+                  />
+                </div>
+                <div class="form-group col-12">
+                  <label for="name">Prezime</label>
+                  <input
+                    type="text"
+                    name="name"
+                    class="form-control"
+                    id="name"
+                    required
+                  />
+                </div>
+                <div class="form-group col-12">
+                  <label for="name">JMBG</label>
+                  <input
+                    type="text"
+                    name="name"
+                    class="form-control"
+                    id="name"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="text-center">
+                <a class="cstm-form-btn" href="zakazi_pregled_lekar_2.html"
+                  >Filtriraj</a
+                >
+              </div>
+            </form>
+          </div>
+          <div class="col-12 mb-3">
+            <div
+              class="member d-flex align-items-start"
+              data-aos="zoom-in"
+              data-aos-delay="100"
+            >
+              <div class="member-info">
+                <h4>Aleksa Aleksić</h4>
+                <span>JMBG: 1234567891012</span>
+                <p>Korisnik: Klijent</p>
+              </div>
+              <div class="d-flex justify-content-end">
+                <a
+                  class="cstm-form-btn ms-1"
+                  href="panel_izmeni_klijenta_admin.html"
+                  >Izmeni</a
+                >
+                <a class="cstm-form-btn ms-1" href="#">Obrisi</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 mb-3">
+            <div
+              class="member d-flex align-items-start"
+              data-aos="zoom-in"
+              data-aos-delay="100"
+            >
+              <div class="member-info">
+                <h4>Marko Markovic</h4>
+                <span>JMBG: 1234567891013</span>
+                <p>Korisnik: Klijent</p>
+              </div>
+              <div class="d-flex justify-content-end">
+                <a
+                  class="cstm-form-btn ms-1"
+                  href="panel_izmeni_klijenta_admin.html"
+                  >Izmeni</a
+                >
+                <a class="cstm-form-btn ms-1" href="#">Obrisi</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 mb-3">
+            <div
+              class="member d-flex align-items-start"
+              data-aos="zoom-in"
+              data-aos-delay="100"
+            >
+              <div class="member-info">
+                <h4>Nikola Nikolic</h4>
+                <span>JMBG: 1234567891014</span>
+                <p>Korisnik: Klijent</p>
+              </div>
+              <div class="d-flex justify-content-end">
+                <a
+                  class="cstm-form-btn ms-1"
+                  href="panel_izmeni_klijenta_admin.html"
+                  >Izmeni</a
+                >
+                <a class="cstm-form-btn ms-1" href="#">Obrisi</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 mb-3">
+            <div
+              class="member d-flex align-items-start"
+              data-aos="zoom-in"
+              data-aos-delay="100"
+            >
+              <div class="member-info">
+                <h4>Aleksa Aleksić</h4>
+                <span>JMBG: 1234567891012</span>
+                <p>Korisnik: Sluzbenik</p>
+              </div>
+              <div class="d-flex justify-content-end">
+                <a
+                  class="cstm-form-btn ms-1"
+                  href="panel_izmeni_klijenta_admin.html"
+                  >Izmeni</a
+                >
+                <a class="cstm-form-btn ms-1" href="#">Obrisi</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 mb-3">
+            <div
+              class="member d-flex align-items-start"
+              data-aos="zoom-in"
+              data-aos-delay="100"
+            >
+              <div class="member-info">
+                <h4>Marko Markovic</h4>
+                <span>JMBG: 1234567891013</span>
+                <p>Korisnik: Lekar</p>
+              </div>
+              <div class="d-flex justify-content-end">
+                <a
+                  class="cstm-form-btn ms-1"
+                  href="panel_izmeni_lekara_admin.html"
+                  >Izmeni</a
+                >
+                <a
+                  class="cstm-form-btn ms-1"
+                  href="panel_izmeni_lekara_admin.html"
+                  >Obrisi</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-12 mb-3">
+            <div
+              class="member d-flex align-items-start"
+              data-aos="zoom-in"
+              data-aos-delay="100"
+            >
+              <div class="member-info">
+                <h4>Nikola Nikolic</h4>
+                <span>JMBG: 1234567891014</span>
+                <p>Korisnik: Lekar</p>
+              </div>
+              <div class="d-flex justify-content-end">
+                <a
+                  class="cstm-form-btn ms-1"
+                  href="panel_izmeni_lekara_admin.html"
+                  >Izmeni</a
+                >
+                <a class="cstm-form-btn ms-1" href="#">Obrisi</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-end">
+          <a class="cstm-form-btn ms-1" href="#">1</a>
+          <a class="cstm-form-btn ms-1" href="#">2</a>
+          <a class="cstm-form-btn ms-1" href="#">3</a>
+        </div>
+      </div>
+    </section>
+    <footer id="footer">
+      <div class="container footer-bottom text-center">
+        <div class="copyright">
+          &copy; Copyright <strong><span>WebChronicles</span></strong
+          >.
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

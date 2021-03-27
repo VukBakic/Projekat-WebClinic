@@ -1,0 +1,145 @@
+<!--  
+Author:
+Vuk Bakic 0606/2017
+-->
+<!DOCTYPE hyml>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/bootstrap-icons.css" rel="stylesheet" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <title>WebClinic</title>
+  </head>
+  <body>
+    <header id="header" class="fixed-top">
+      <div class="container d-flex align-items-center">
+        <h1 class="logo me-auto"><a href="index.html">WebClinic</a></h1>
+
+        <nav id="navbar" class="navbar">
+          <ul>
+            <li><a class="nav-link active" href="index.html">Početna</a></li>
+            <li>
+              <a class="nav-link" href="zakazi_pregled.html"
+                >Zakažite pregled</a
+              >
+            </li>
+
+            <li>
+              <a class="nav-link scrollto" href="pitanja.html">Pitajte nas</a>
+            </li>
+            <li>
+              <a class="getstarted scrollto" href="login.html">Ulogujte se</a>
+            </li>
+          </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+      </div>
+    </header>
+
+    <section id="pitanja" class="pitanja kontrola-forme section-bg">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Postavite nam pitanje</h2>
+          <p>
+            Postavite pitanje nekom od naših lekara specijalista. Na Vaša
+            pitanja se trudimo da odgovorimo u najkraćem roku. Takodje pitanja
+            drugih korsinika kao i odgovore naših lekara možete pogledati ispod.
+          </p>
+          <a href="postavi_pitanje.html" class="btn-cstm">Postavite pitanje</a>
+        </div>
+
+        <div class="row lista styledlist">
+          <div class="container" data-aos="fade-up">
+            <div class="row">
+              <div class="col-12">
+                <div
+                  class="member d-flex align-items-start"
+                  data-aos="zoom-in"
+                  data-aos-delay="100"
+                >
+                  <div class="member-info">
+                    <h4>Aleksa Aleksić</h4>
+                    <span
+                      >Poštovani, koja je cena odredjene hirurške
+                      intervencije?</span
+                    >
+
+                    <div class="d-flex mt-3">
+                      <div class="emloyee-avatar">
+                        <img
+                          src="img/team/team-1.jpg"
+                          class="img-fluid"
+                          alt=""
+                        />
+                      </div>
+                      <div class="ms-3">
+                        <h4>Dr. Petar Petrović</h4>
+                        <p>
+                          Poštovani Aleksa, najbolje bi bilo da nazovete kliniku
+                          direktno kako bi saznali cenu.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 mt-3">
+                <div
+                  class="member d-flex align-items-start"
+                  data-aos="zoom-in"
+                  data-aos-delay="100"
+                >
+                  <div class="member-info">
+                    <h4>Mihajlo Mihajlović</h4>
+                    <span
+                      >Pozdrav, imam čudne promene na koži da li bi neko od
+                      dermatologa mogao da mi kaže šta je u pitanju?</span
+                    >
+
+                    <div class="d-flex mt-3">
+                      <div class="emloyee-avatar">
+                        <img
+                          src="img/team/team-2.jpg"
+                          class="img-fluid"
+                          alt=""
+                        />
+                      </div>
+                      <div class="ms-3">
+                        <h4>Dr. Marija Marić</h4>
+                        <p>
+                          Poštovani, bez detaljnijeg pregleda ne mogu da Vam dam
+                          dijagnozu. Najbolje bi bilo da zakažete pregled u
+                          našoj klinici.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer id="footer">
+      <div class="container footer-bottom text-center">
+        <div class="copyright">
+          &copy; Copyright <strong><span>WebChronicles</span></strong
+          >.
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
