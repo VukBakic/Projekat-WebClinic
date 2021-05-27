@@ -19,7 +19,7 @@ class Pitanjeklijent
      * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\OneToOne(targetEntity="App\Models\Entities\Pitanje")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idPitanje", referencedColumnName="idPitanje")
+     *   @ORM\JoinColumn(name="idPitanje", referencedColumnName="idPitanje", nullable=true)
      * })
      */
     private $idpitanje;
@@ -29,11 +29,10 @@ class Pitanjeklijent
      *
      * @ORM\ManyToOne(targetEntity="App\Models\Entities\Klijent")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idKlijent", referencedColumnName="idKlijent")
+     *   @ORM\JoinColumn(name="idKlijent", referencedColumnName="idKlijent", nullable=true)
      * })
      */
     private $idklijent;
-
 
 
     /**

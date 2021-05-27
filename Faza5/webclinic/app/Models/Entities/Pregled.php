@@ -15,7 +15,7 @@ class Pregled
     /**
      * @var int
      *
-     * @ORM\Column(name="idPregled", type="integer", nullable=false)
+     * @ORM\Column(name="idPregled", type="integer", nullable=false, unique=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
@@ -24,7 +24,7 @@ class Pregled
     /**
      * @var bool
      *
-     * @ORM\Column(name="jeOnline", type="boolean", nullable=false)
+     * @ORM\Column(name="jeOnline", type="boolean", nullable=false, unique=false)
      */
     private $jeonline;
 
@@ -35,7 +35,7 @@ class Pregled
      * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\OneToOne(targetEntity="App\Models\Entities\Lekar")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idLekar", referencedColumnName="idLekar")
+     *   @ORM\JoinColumn(name="idLekar", referencedColumnName="idLekar", nullable=true)
      * })
      */
     private $idlekar;
@@ -47,7 +47,7 @@ class Pregled
      * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\OneToOne(targetEntity="App\Models\Entities\Klijent")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idKlijent", referencedColumnName="idKlijent")
+     *   @ORM\JoinColumn(name="idKlijent", referencedColumnName="idKlijent", nullable=true)
      * })
      */
     private $idklijent;
@@ -57,12 +57,11 @@ class Pregled
      *
      * @ORM\ManyToOne(targetEntity="App\Models\Entities\Termin")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idTermin", referencedColumnName="idTermin"),
-     *   @ORM\JoinColumn(name="idLekar", referencedColumnName="idLekar")
+     *   @ORM\JoinColumn(name="idTermin", referencedColumnName="idTermin", nullable=true),
+     *   @ORM\JoinColumn(name="idLekar", referencedColumnName="idLekar", nullable=true)
      * })
      */
     private $idtermin;
-
 
 
     /**

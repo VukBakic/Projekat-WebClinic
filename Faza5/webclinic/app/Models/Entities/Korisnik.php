@@ -15,7 +15,7 @@ class Korisnik
     /**
      * @var int
      *
-     * @ORM\Column(name="idK", type="integer", nullable=false)
+     * @ORM\Column(name="idK", type="integer", nullable=false, unique=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
@@ -24,66 +24,65 @@ class Korisnik
     /**
      * @var string
      *
-     * @ORM\Column(name="korisnickoIme", type="string", length=20, nullable=false)
+     * @ORM\Column(name="korisnickoIme", type="string", length=20, nullable=false, unique=false)
      */
     private $korisnickoime;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="sifra", type="string", length=200, nullable=false)
+     * @ORM\Column(name="sifra", type="string", length=200, nullable=false, unique=false)
      */
     private $sifra;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="ime", type="string", length=20, nullable=false)
+     * @ORM\Column(name="ime", type="string", length=20, nullable=false, unique=false)
      */
     private $ime;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="prezime", type="string", length=20, nullable=false)
+     * @ORM\Column(name="prezime", type="string", length=20, nullable=false, unique=false)
      */
     private $prezime;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=20, nullable=false)
+     * @ORM\Column(name="email", type="string", length=20, nullable=false, unique=false)
      */
     private $email;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="jmbg", type="string", length=13, nullable=false)
+     * @ORM\Column(name="jmbg", type="string", length=13, nullable=false, unique=false)
      */
     private $jmbg;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="brLk", type="string", length=12, nullable=false)
+     * @ORM\Column(name="brLk", type="string", length=12, nullable=false, unique=false)
      */
     private $brlk;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="pol", type="string", length=1, nullable=false, options={"fixed"=true})
+     * @ORM\Column(name="pol", type="string", length=1, nullable=false, options={"fixed"=true}, unique=false)
      */
     private $pol;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="brTel", type="string", length=20, nullable=false)
+     * @ORM\Column(name="brTel", type="string", length=20, nullable=false, unique=false)
      */
     private $brtel;
-
 
 
     /**

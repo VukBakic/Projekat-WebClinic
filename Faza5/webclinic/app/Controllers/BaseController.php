@@ -55,5 +55,6 @@ class BaseController extends Controller
 		//--------------------------------------------------------------------
 		// E.g.: $this->session = \Config\Services::session();
 		$this->doctrine = \Config\Services::doctrine();
+		helper('url');
 	}
 }

@@ -5,9 +5,20 @@
 <?= $this->section('content') ?>
 <section id="hero" class="kontrola-forme">
       <div class="container" data-aos="fade-up">
+      
+      <?php
+          if(session()->has("msg")){
+           
+            echo view('layouts/partials/flash_msg',Array(
+              'text' => session("msg")
+            ));
+          }
+      ?>
+      
         <div class="row">
           <div class="col-12 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="forms/login.php" method="post" role="form" class="php-email-form">
+          <?= form_open('login',['class' => 'php-email-form'])?>
+            
               <div class="mx-auto w-40">
                 <div class="form-group">
                   <label for="name">Email</label>

@@ -19,7 +19,7 @@ class Klijent
      * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\OneToOne(targetEntity="App\Models\Entities\Korisnik")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idKlijent", referencedColumnName="idK")
+     *   @ORM\JoinColumn(name="idKlijent", referencedColumnName="idK", nullable=true)
      * })
      */
     private $idklijent;
@@ -29,11 +29,10 @@ class Klijent
      *
      * @ORM\ManyToOne(targetEntity="App\Models\Entities\Lekar")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="izabraniLekar", referencedColumnName="idLekar")
+     *   @ORM\JoinColumn(name="izabraniLekar", referencedColumnName="idLekar", nullable=true)
      * })
      */
     private $izabranilekar;
-
 
 
     /**

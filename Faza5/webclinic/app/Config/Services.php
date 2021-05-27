@@ -28,4 +28,13 @@ class Services extends BaseService
 	
 	    return new \App\Libraries\Doctrine();
 	}
+	public static function authentication($getShared = true)
+	{
+	    if ($getShared)
+	    {
+	        return static::getSharedInstance('authentication');
+	    }
+	
+	    return new \App\Libraries\Authentication();
+	}
 }

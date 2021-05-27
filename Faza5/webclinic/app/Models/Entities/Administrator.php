@@ -19,7 +19,7 @@ class Administrator
      * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\OneToOne(targetEntity="App\Models\Entities\Korisnik")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idAdmin", referencedColumnName="idK")
+     *   @ORM\JoinColumn(name="idAdmin", referencedColumnName="idK", nullable=true)
      * })
      */
     private $idadmin;

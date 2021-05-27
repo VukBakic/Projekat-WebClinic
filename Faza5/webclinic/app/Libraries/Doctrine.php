@@ -1,4 +1,6 @@
-<?php namespace App\Libraries;
+<?php 
+
+namespace App\Libraries;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Setup;

@@ -15,7 +15,7 @@ class Pitanje
     /**
      * @var int
      *
-     * @ORM\Column(name="idPitanje", type="integer", nullable=false)
+     * @ORM\Column(name="idPitanje", type="integer", nullable=false, unique=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
@@ -24,21 +24,21 @@ class Pitanje
     /**
      * @var string|null
      *
-     * @ORM\Column(name="odgovor", type="text", length=16777215, nullable=true)
+     * @ORM\Column(name="odgovor", type="text", length=16777215, nullable=true, unique=false)
      */
     private $odgovor;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="naslov", type="string", length=20, nullable=false)
+     * @ORM\Column(name="naslov", type="string", length=20, nullable=false, unique=false)
      */
     private $naslov;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="tekstPitanja", type="text", length=16777215, nullable=false)
+     * @ORM\Column(name="tekstPitanja", type="text", length=16777215, nullable=false, unique=false)
      */
     private $tekstpitanja;
 
@@ -47,7 +47,7 @@ class Pitanje
      *
      * @ORM\ManyToOne(targetEntity="App\Models\Entities\Struka")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="nazivStruke", referencedColumnName="nazivStruke")
+     *   @ORM\JoinColumn(name="nazivStruke", referencedColumnName="nazivStruke", nullable=true)
      * })
      */
     private $nazivstruke;
@@ -57,11 +57,10 @@ class Pitanje
      *
      * @ORM\ManyToOne(targetEntity="App\Models\Entities\Lekar")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idLekar", referencedColumnName="idLekar")
+     *   @ORM\JoinColumn(name="idLekar", referencedColumnName="idLekar", nullable=true)
      * })
      */
     private $idlekar;
-
 
 
     /**

@@ -15,7 +15,7 @@ class Racun
     /**
      * @var bool
      *
-     * @ORM\Column(name="placeno", type="boolean", nullable=false)
+     * @ORM\Column(name="placeno", type="boolean", nullable=false, unique=false)
      */
     private $placeno;
 
@@ -26,11 +26,10 @@ class Racun
      * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\OneToOne(targetEntity="App\Models\Entities\Stavkakartona")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idStavka", referencedColumnName="idStavka")
+     *   @ORM\JoinColumn(name="idStavka", referencedColumnName="idStavka", nullable=true)
      * })
      */
     private $idstavka;
-
 
 
     /**

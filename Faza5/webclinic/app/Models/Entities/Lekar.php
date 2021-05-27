@@ -8,9 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
  * Lekar
  *
  * @ORM\Table(name="lekar", indexes={@ORM\Index(name="R_19", columns={"nazivStruke"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\LekarRepository")
  */
-
 class Lekar
 {
     /**
@@ -18,7 +17,7 @@ class Lekar
      *
      * @ORM\ManyToOne(targetEntity="App\Models\Entities\Struka")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="nazivStruke", referencedColumnName="nazivStruke")
+     *   @ORM\JoinColumn(name="nazivStruke", referencedColumnName="nazivStruke", nullable=true)
      * })
      */
     private $nazivstruke;
@@ -30,11 +29,10 @@ class Lekar
      * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\OneToOne(targetEntity="App\Models\Entities\Korisnik")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idLekar", referencedColumnName="idK")
+     *   @ORM\JoinColumn(name="idLekar", referencedColumnName="idK", nullable=true)
      * })
      */
     private $idlekar;
-
 
 
     /**

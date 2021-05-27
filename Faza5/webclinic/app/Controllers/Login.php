@@ -2,52 +2,52 @@
 
 namespace App\Controllers;
 
-use App\Models\Entities;
+
 
 
 class Login extends BaseController
 {
-	public function loginPage2()
+    public function __construct()
 	{
+		
+		$this->session = service('session');
+		$this->auth = service('authentication');
+	}
+
+	public function loginPage()
+	{
+        helper('form');
 		return view('login_page');
 	}
-	public function loginPage(){
+	public function loginUser(){
 		$session = session();
-        $model = new Entities\Korisnik;
+       
 
-        $email = $this->request->getVar('email');
-        $password = $this->request->getVar('password');
+        $email = $this->request->getPost('email');
+        $password = $this->request->getPost('password');
 		
-		$repo =$this->doctrine->em->getRepository(Entities\Korisnik::class);
+		
 	
-	
+     
+    
+        $authenticate = $this->auth->authenticate(array('email' => $email, 'password'=> $password));
 		
 		
 		
-		
-        $data = $repo->findOneBy(array('email' => $email));
+     
 		
 
-        if($data){
-            $pass = $data->getSifra();
-            $verify_pass = password_verify($password, $pass);
-            if($verify_pass){
-                $ses_data = [
-                    'user_id'       => $data->getIdk,
-                    'user_name'     => $data->getIme,
-                    'user_email'    => $data['user_email'],
-                    'logged_in'     => TRUE
-                ];
-                $session->set($ses_data);
-                return redirect()->to('/dashboard');
-            }else{
-                $session->setFlashdata('msg', 'Wrong Password');
-                return redirect()->to('/login');
-            }
+        if($authenticate){
+            $session->setFlashdata('msg', 'Uspesno ste se ulogovali.');
+            return redirect()->to('/dashboard');
         }else{
-            $session->setFlashdata('msg', 'Email not Found');
+            $session->setFlashdata('msg', 'Pogresan email ili lozinka.');
             return redirect()->to('/login');
         }
+       
 		
 	}
+    public function test(){
+        
+    }
 }

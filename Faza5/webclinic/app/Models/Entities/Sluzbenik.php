@@ -19,11 +19,10 @@ class Sluzbenik
      * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\OneToOne(targetEntity="App\Models\Entities\Korisnik")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idSluzb", referencedColumnName="idK")
+     *   @ORM\JoinColumn(name="idSluzb", referencedColumnName="idK", nullable=true)
      * })
      */
     private $idsluzb;
-
 
 
     /**

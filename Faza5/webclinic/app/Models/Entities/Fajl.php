@@ -15,14 +15,14 @@ class Fajl
     /**
      * @var string|null
      *
-     * @ORM\Column(name="putanja", type="string", length=256, nullable=true)
+     * @ORM\Column(name="putanja", type="string", length=256, nullable=true, unique=false)
      */
     private $putanja;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="idFajl", type="integer", nullable=false)
+     * @ORM\Column(name="idFajl", type="integer", nullable=false, unique=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
@@ -31,7 +31,7 @@ class Fajl
     /**
      * @var string|null
      *
-     * @ORM\Column(name="ekstenzija", type="string", length=5, nullable=true, options={"fixed"=true})
+     * @ORM\Column(name="ekstenzija", type="string", length=5, nullable=true, options={"fixed"=true}, unique=false)
      */
     private $ekstenzija;
 
@@ -49,7 +49,6 @@ class Fajl
     {
         $this->idstavka = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
 
     /**
      * Set putanja.
