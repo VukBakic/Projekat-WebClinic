@@ -25,7 +25,6 @@ class Administrator
     private $idadmin;
 
 
-
     /**
      * Set idadmin.
      *
