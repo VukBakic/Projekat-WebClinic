@@ -13,15 +13,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Pitanjegost
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="idPitanje", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idpitanje;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="ime", type="string", length=20, nullable=false)
@@ -42,17 +33,19 @@ class Pitanjegost
      */
     private $email;
 
-
-
     /**
-     * Get idpitanje.
+     * @var \App\Models\Entities\Pitanje
      *
-     * @return int
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="App\Models\Entities\Pitanje")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idPitanje", referencedColumnName="idPitanje")
+     * })
      */
-    public function getIdpitanje()
-    {
-        return $this->idpitanje;
-    }
+    private $idpitanje;
+
+
 
     /**
      * Set ime.
@@ -124,5 +117,29 @@ class Pitanjegost
     public function getEmail()
     {
         return $this->email;
+    }
+
+    /**
+     * Set idpitanje.
+     *
+     * @param \App\Models\Entities\Pitanje $idpitanje
+     *
+     * @return Pitanjegost
+     */
+    public function setIdpitanje(\App\Models\Entities\Pitanje $idpitanje)
+    {
+        $this->idpitanje = $idpitanje;
+
+        return $this;
+    }
+
+    /**
+     * Get idpitanje.
+     *
+     * @return \App\Models\Entities\Pitanje
+     */
+    public function getIdpitanje()
+    {
+        return $this->idpitanje;
     }
 }

@@ -13,27 +13,47 @@ use Doctrine\ORM\Mapping as ORM;
 class Klijent
 {
     /**
-     * @var int
+     * @var \App\Models\Entities\Korisnik
      *
-     * @ORM\Column(name="idKlijent", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="App\Models\Entities\Korisnik")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idKlijent", referencedColumnName="idK")
+     * })
      */
     private $idklijent;
 
     /**
-     * @var int
+     * @var \App\Models\Entities\Lekar
      *
-     * @ORM\Column(name="izabraniLekar", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="App\Models\Entities\Lekar")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="izabraniLekar", referencedColumnName="idLekar")
+     * })
      */
     private $izabranilekar;
 
 
 
     /**
+     * Set idklijent.
+     *
+     * @param \App\Models\Entities\Korisnik $idklijent
+     *
+     * @return Klijent
+     */
+    public function setIdklijent(\App\Models\Entities\Korisnik $idklijent)
+    {
+        $this->idklijent = $idklijent;
+
+        return $this;
+    }
+
+    /**
      * Get idklijent.
      *
-     * @return int
+     * @return \App\Models\Entities\Korisnik
      */
     public function getIdklijent()
     {
@@ -43,11 +63,11 @@ class Klijent
     /**
      * Set izabranilekar.
      *
-     * @param int $izabranilekar
+     * @param \App\Models\Entities\Lekar|null $izabranilekar
      *
      * @return Klijent
      */
-    public function setIzabranilekar($izabranilekar)
+    public function setIzabranilekar(\App\Models\Entities\Lekar $izabranilekar = null)
     {
         $this->izabranilekar = $izabranilekar;
 
@@ -57,7 +77,7 @@ class Klijent
     /**
      * Get izabranilekar.
      *
-     * @return int
+     * @return \App\Models\Entities\Lekar|null
      */
     public function getIzabranilekar()
     {

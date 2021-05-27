@@ -13,41 +13,37 @@ use Doctrine\ORM\Mapping as ORM;
 class Lekar
 {
     /**
-     * @var int
+     * @var \App\Models\Entities\Struka
      *
-     * @ORM\Column(name="idLekar", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idlekar;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="nazivStruke", type="string", length=20, nullable=false)
+     * @ORM\ManyToOne(targetEntity="App\Models\Entities\Struka")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="nazivStruke", referencedColumnName="nazivStruke")
+     * })
      */
     private $nazivstruke;
 
-
-
     /**
-     * Get idlekar.
+     * @var \App\Models\Entities\Korisnik
      *
-     * @return int
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="App\Models\Entities\Korisnik")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idLekar", referencedColumnName="idK")
+     * })
      */
-    public function getIdlekar()
-    {
-        return $this->idlekar;
-    }
+    private $idlekar;
+
+
 
     /**
      * Set nazivstruke.
      *
-     * @param string $nazivstruke
+     * @param \App\Models\Entities\Struka|null $nazivstruke
      *
      * @return Lekar
      */
-    public function setNazivstruke($nazivstruke)
+    public function setNazivstruke(\App\Models\Entities\Struka $nazivstruke = null)
     {
         $this->nazivstruke = $nazivstruke;
 
@@ -57,10 +53,34 @@ class Lekar
     /**
      * Get nazivstruke.
      *
-     * @return string
+     * @return \App\Models\Entities\Struka|null
      */
     public function getNazivstruke()
     {
         return $this->nazivstruke;
+    }
+
+    /**
+     * Set idlekar.
+     *
+     * @param \App\Models\Entities\Korisnik $idlekar
+     *
+     * @return Lekar
+     */
+    public function setIdlekar(\App\Models\Entities\Korisnik $idlekar)
+    {
+        $this->idlekar = $idlekar;
+
+        return $this;
+    }
+
+    /**
+     * Get idlekar.
+     *
+     * @return \App\Models\Entities\Korisnik
+     */
+    public function getIdlekar()
+    {
+        return $this->idlekar;
     }
 }

@@ -29,11 +29,14 @@ class Usluga
     private $cena;
 
     /**
-     * @var string
+     * @var \App\Models\Entities\Struka
      *
-     * @ORM\Column(name="nazivStruke", type="string", length=20, nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="App\Models\Entities\Struka")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="nazivStruke", referencedColumnName="nazivStruke")
+     * })
      */
     private $nazivstruke;
 
@@ -90,11 +93,11 @@ class Usluga
     /**
      * Set nazivstruke.
      *
-     * @param string $nazivstruke
+     * @param \App\Models\Entities\Struka $nazivstruke
      *
      * @return Usluga
      */
-    public function setNazivstruke($nazivstruke)
+    public function setNazivstruke(\App\Models\Entities\Struka $nazivstruke)
     {
         $this->nazivstruke = $nazivstruke;
 
@@ -104,7 +107,7 @@ class Usluga
     /**
      * Get nazivstruke.
      *
-     * @return string
+     * @return \App\Models\Entities\Struka
      */
     public function getNazivstruke()
     {

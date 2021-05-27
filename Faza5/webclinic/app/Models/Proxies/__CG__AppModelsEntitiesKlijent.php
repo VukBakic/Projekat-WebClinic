@@ -179,12 +179,19 @@ class Klijent extends \App\Models\Entities\Klijent implements \Doctrine\ORM\Prox
     /**
      * {@inheritDoc}
      */
+    public function setIdklijent(\App\Models\Entities\Korisnik $idklijent)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdklijent', [$idklijent]);
+
+        return parent::setIdklijent($idklijent);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function getIdklijent()
     {
-        if ($this->__isInitialized__ === false) {
-            return (int)  parent::getIdklijent();
-        }
-
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdklijent', []);
 
@@ -194,7 +201,7 @@ class Klijent extends \App\Models\Entities\Klijent implements \Doctrine\ORM\Prox
     /**
      * {@inheritDoc}
      */
-    public function setIzabranilekar($izabranilekar)
+    public function setIzabranilekar(\App\Models\Entities\Lekar $izabranilekar = NULL)
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIzabranilekar', [$izabranilekar]);

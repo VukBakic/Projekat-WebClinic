@@ -15,9 +15,9 @@ class Termin
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="datum", type="datetime", nullable=false, options={"default"="CURRENT_TIMESTAMP"})
+     * @ORM\Column(name="datum", type="datetime", nullable=false)
      */
-    private $datum = 'CURRENT_TIMESTAMP';
+    private $datum;
 
     /**
      * @var \DateTime
@@ -36,11 +36,14 @@ class Termin
     private $idtermin;
 
     /**
-     * @var int
+     * @var \App\Models\Entities\Lekar
      *
-     * @ORM\Column(name="idLekar", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="App\Models\Entities\Lekar")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idLekar", referencedColumnName="idLekar")
+     * })
      */
     private $idlekar;
 
@@ -121,11 +124,11 @@ class Termin
     /**
      * Set idlekar.
      *
-     * @param int $idlekar
+     * @param \App\Models\Entities\Lekar $idlekar
      *
      * @return Termin
      */
-    public function setIdlekar($idlekar)
+    public function setIdlekar(\App\Models\Entities\Lekar $idlekar)
     {
         $this->idlekar = $idlekar;
 
@@ -135,7 +138,7 @@ class Termin
     /**
      * Get idlekar.
      *
-     * @return int
+     * @return \App\Models\Entities\Lekar
      */
     public function getIdlekar()
     {

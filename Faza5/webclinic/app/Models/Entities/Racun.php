@@ -13,32 +13,25 @@ use Doctrine\ORM\Mapping as ORM;
 class Racun
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="idStavka", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idstavka;
-
-    /**
      * @var bool
      *
      * @ORM\Column(name="placeno", type="boolean", nullable=false)
      */
     private $placeno;
 
-
-
     /**
-     * Get idstavka.
+     * @var \App\Models\Entities\Stavkakartona
      *
-     * @return int
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="App\Models\Entities\Stavkakartona")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idStavka", referencedColumnName="idStavka")
+     * })
      */
-    public function getIdstavka()
-    {
-        return $this->idstavka;
-    }
+    private $idstavka;
+
+
 
     /**
      * Set placeno.
@@ -62,5 +55,29 @@ class Racun
     public function getPlaceno()
     {
         return $this->placeno;
+    }
+
+    /**
+     * Set idstavka.
+     *
+     * @param \App\Models\Entities\Stavkakartona $idstavka
+     *
+     * @return Racun
+     */
+    public function setIdstavka(\App\Models\Entities\Stavkakartona $idstavka)
+    {
+        $this->idstavka = $idstavka;
+
+        return $this;
+    }
+
+    /**
+     * Get idstavka.
+     *
+     * @return \App\Models\Entities\Stavkakartona
+     */
+    public function getIdstavka()
+    {
+        return $this->idstavka;
     }
 }

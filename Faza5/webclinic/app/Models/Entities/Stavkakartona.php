@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Stavkakartona
  *
- * @ORM\Table(name="stavkakartona", indexes={@ORM\Index(name="R_41", columns={"imeUsluge", "nazivStruke"}), @ORM\Index(name="R_16", columns={"idKlijent"}), @ORM\Index(name="R_17", columns={"pregledObavio"})})
+ * @ORM\Table(name="stavkakartona", indexes={@ORM\Index(name="R_17", columns={"pregledObavio"}), @ORM\Index(name="R_16", columns={"idKlijent"}), @ORM\Index(name="R_41", columns={"imeUsluge", "nazivStruke"})})
  * @ORM\Entity
  */
 class Stavkakartona
@@ -22,54 +22,79 @@ class Stavkakartona
     private $idstavka;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="idKlijent", type="integer", nullable=false)
-     */
-    private $idklijent;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="pregledObavio", type="integer", nullable=false)
-     */
-    private $pregledobavio;
-
-    /**
      * @var string
      *
-     * @ORM\Column(name="dijagnostika", type="text", length=65535, nullable=false)
+     * @ORM\Column(name="dijagnostika", type="text", length=16777215, nullable=false)
      */
     private $dijagnostika;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="preporucenaTerapija", type="text", length=65535, nullable=false)
+     * @ORM\Column(name="preporucenaTerapija", type="text", length=16777215, nullable=false)
      */
     private $preporucenaterapija;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="internaNapomena", type="text", length=65535, nullable=true)
+     * @ORM\Column(name="internaNapomena", type="text", length=16777215, nullable=true)
      */
     private $internanapomena;
 
     /**
-     * @var string
+     * @var \App\Models\Entities\Klijent
      *
-     * @ORM\Column(name="imeUsluge", type="string", length=20, nullable=false)
+     * @ORM\ManyToOne(targetEntity="App\Models\Entities\Klijent")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idKlijent", referencedColumnName="idKlijent")
+     * })
+     */
+    private $idklijent;
+
+    /**
+     * @var \App\Models\Entities\Lekar
+     *
+     * @ORM\ManyToOne(targetEntity="App\Models\Entities\Lekar")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="pregledObavio", referencedColumnName="idLekar")
+     * })
+     */
+    private $pregledobavio;
+
+    /**
+     * @var \App\Models\Entities\Usluga
+     *
+     * @ORM\ManyToOne(targetEntity="App\Models\Entities\Usluga")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="imeUsluge", referencedColumnName="imeUsluge"),
+     *   @ORM\JoinColumn(name="nazivStruke", referencedColumnName="nazivStruke")
+     * })
      */
     private $imeusluge;
 
     /**
-     * @var string
+     * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\Column(name="nazivStruke", type="string", length=20, nullable=false)
+     * @ORM\ManyToMany(targetEntity="App\Models\Entities\Fajl", inversedBy="idstavka")
+     * @ORM\JoinTable(name="sadrzi",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="idStavka", referencedColumnName="idStavka")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="idFajl", referencedColumnName="idFajl")
+     *   }
+     * )
      */
-    private $nazivstruke;
+    private $idfajl;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idfajl = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 
     /**
@@ -80,54 +105,6 @@ class Stavkakartona
     public function getIdstavka()
     {
         return $this->idstavka;
-    }
-
-    /**
-     * Set idklijent.
-     *
-     * @param int $idklijent
-     *
-     * @return Stavkakartona
-     */
-    public function setIdklijent($idklijent)
-    {
-        $this->idklijent = $idklijent;
-
-        return $this;
-    }
-
-    /**
-     * Get idklijent.
-     *
-     * @return int
-     */
-    public function getIdklijent()
-    {
-        return $this->idklijent;
-    }
-
-    /**
-     * Set pregledobavio.
-     *
-     * @param int $pregledobavio
-     *
-     * @return Stavkakartona
-     */
-    public function setPregledobavio($pregledobavio)
-    {
-        $this->pregledobavio = $pregledobavio;
-
-        return $this;
-    }
-
-    /**
-     * Get pregledobavio.
-     *
-     * @return int
-     */
-    public function getPregledobavio()
-    {
-        return $this->pregledobavio;
     }
 
     /**
@@ -203,13 +180,61 @@ class Stavkakartona
     }
 
     /**
-     * Set imeusluge.
+     * Set idklijent.
      *
-     * @param string $imeusluge
+     * @param \App\Models\Entities\Klijent|null $idklijent
      *
      * @return Stavkakartona
      */
-    public function setImeusluge($imeusluge)
+    public function setIdklijent(\App\Models\Entities\Klijent $idklijent = null)
+    {
+        $this->idklijent = $idklijent;
+
+        return $this;
+    }
+
+    /**
+     * Get idklijent.
+     *
+     * @return \App\Models\Entities\Klijent|null
+     */
+    public function getIdklijent()
+    {
+        return $this->idklijent;
+    }
+
+    /**
+     * Set pregledobavio.
+     *
+     * @param \App\Models\Entities\Lekar|null $pregledobavio
+     *
+     * @return Stavkakartona
+     */
+    public function setPregledobavio(\App\Models\Entities\Lekar $pregledobavio = null)
+    {
+        $this->pregledobavio = $pregledobavio;
+
+        return $this;
+    }
+
+    /**
+     * Get pregledobavio.
+     *
+     * @return \App\Models\Entities\Lekar|null
+     */
+    public function getPregledobavio()
+    {
+        return $this->pregledobavio;
+    }
+
+    /**
+     * Set imeusluge.
+     *
+     * @param \App\Models\Entities\Usluga|null $imeusluge
+     *
+     * @return Stavkakartona
+     */
+    public function setImeusluge(\App\Models\Entities\Usluga $imeusluge = null)
     {
         $this->imeusluge = $imeusluge;
 
@@ -219,7 +244,7 @@ class Stavkakartona
     /**
      * Get imeusluge.
      *
-     * @return string
+     * @return \App\Models\Entities\Usluga|null
      */
     public function getImeusluge()
     {
@@ -227,26 +252,38 @@ class Stavkakartona
     }
 
     /**
-     * Set nazivstruke.
+     * Add idfajl.
      *
-     * @param string $nazivstruke
+     * @param \App\Models\Entities\Fajl $idfajl
      *
      * @return Stavkakartona
      */
-    public function setNazivstruke($nazivstruke)
+    public function addIdfajl(\App\Models\Entities\Fajl $idfajl)
     {
-        $this->nazivstruke = $nazivstruke;
+        $this->idfajl[] = $idfajl;
 
         return $this;
     }
 
     /**
-     * Get nazivstruke.
+     * Remove idfajl.
      *
-     * @return string
+     * @param \App\Models\Entities\Fajl $idfajl
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
-    public function getNazivstruke()
+    public function removeIdfajl(\App\Models\Entities\Fajl $idfajl)
     {
-        return $this->nazivstruke;
+        return $this->idfajl->removeElement($idfajl);
+    }
+
+    /**
+     * Get idfajl.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getIdfajl()
+    {
+        return $this->idfajl;
     }
 }

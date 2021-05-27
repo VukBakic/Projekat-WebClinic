@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Pregled
  *
- * @ORM\Table(name="pregled", indexes={@ORM\Index(name="R_21", columns={"idLekar"}), @ORM\Index(name="R_23", columns={"idKlijent"}), @ORM\Index(name="R_24", columns={"idTermin", "idLekar"})})
+ * @ORM\Table(name="pregled", indexes={@ORM\Index(name="R_23", columns={"idKlijent"}), @ORM\Index(name="R_21", columns={"idLekar"}), @ORM\Index(name="R_24", columns={"idTermin", "idLekar"})})
  * @ORM\Entity
  */
 class Pregled
@@ -22,15 +22,6 @@ class Pregled
     private $idpregled;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="idLekar", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     */
-    private $idlekar;
-
-    /**
      * @var bool
      *
      * @ORM\Column(name="jeOnline", type="boolean", nullable=false)
@@ -38,18 +29,37 @@ class Pregled
     private $jeonline;
 
     /**
-     * @var int
+     * @var \App\Models\Entities\Lekar
      *
-     * @ORM\Column(name="idKlijent", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="App\Models\Entities\Lekar")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idLekar", referencedColumnName="idLekar")
+     * })
+     */
+    private $idlekar;
+
+    /**
+     * @var \App\Models\Entities\Klijent
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="App\Models\Entities\Klijent")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idKlijent", referencedColumnName="idKlijent")
+     * })
      */
     private $idklijent;
 
     /**
-     * @var int
+     * @var \App\Models\Entities\Termin
      *
-     * @ORM\Column(name="idTermin", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="App\Models\Entities\Termin")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idTermin", referencedColumnName="idTermin"),
+     *   @ORM\JoinColumn(name="idLekar", referencedColumnName="idLekar")
+     * })
      */
     private $idtermin;
 
@@ -80,30 +90,6 @@ class Pregled
     }
 
     /**
-     * Set idlekar.
-     *
-     * @param int $idlekar
-     *
-     * @return Pregled
-     */
-    public function setIdlekar($idlekar)
-    {
-        $this->idlekar = $idlekar;
-
-        return $this;
-    }
-
-    /**
-     * Get idlekar.
-     *
-     * @return int
-     */
-    public function getIdlekar()
-    {
-        return $this->idlekar;
-    }
-
-    /**
      * Set jeonline.
      *
      * @param bool $jeonline
@@ -128,13 +114,37 @@ class Pregled
     }
 
     /**
-     * Set idklijent.
+     * Set idlekar.
      *
-     * @param int $idklijent
+     * @param \App\Models\Entities\Lekar $idlekar
      *
      * @return Pregled
      */
-    public function setIdklijent($idklijent)
+    public function setIdlekar(\App\Models\Entities\Lekar $idlekar)
+    {
+        $this->idlekar = $idlekar;
+
+        return $this;
+    }
+
+    /**
+     * Get idlekar.
+     *
+     * @return \App\Models\Entities\Lekar
+     */
+    public function getIdlekar()
+    {
+        return $this->idlekar;
+    }
+
+    /**
+     * Set idklijent.
+     *
+     * @param \App\Models\Entities\Klijent $idklijent
+     *
+     * @return Pregled
+     */
+    public function setIdklijent(\App\Models\Entities\Klijent $idklijent)
     {
         $this->idklijent = $idklijent;
 
@@ -144,7 +154,7 @@ class Pregled
     /**
      * Get idklijent.
      *
-     * @return int
+     * @return \App\Models\Entities\Klijent
      */
     public function getIdklijent()
     {
@@ -154,11 +164,11 @@ class Pregled
     /**
      * Set idtermin.
      *
-     * @param int $idtermin
+     * @param \App\Models\Entities\Termin|null $idtermin
      *
      * @return Pregled
      */
-    public function setIdtermin($idtermin)
+    public function setIdtermin(\App\Models\Entities\Termin $idtermin = null)
     {
         $this->idtermin = $idtermin;
 
@@ -168,7 +178,7 @@ class Pregled
     /**
      * Get idtermin.
      *
-     * @return int
+     * @return \App\Models\Entities\Termin|null
      */
     public function getIdtermin()
     {

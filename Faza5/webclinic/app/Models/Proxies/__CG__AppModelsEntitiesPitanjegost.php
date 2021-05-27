@@ -66,10 +66,10 @@ class Pitanjegost extends \App\Models\Entities\Pitanjegost implements \Doctrine\
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Pitanjegost' . "\0" . 'idpitanje', '' . "\0" . 'App\\Models\\Entities\\Pitanjegost' . "\0" . 'ime', '' . "\0" . 'App\\Models\\Entities\\Pitanjegost' . "\0" . 'prezime', '' . "\0" . 'App\\Models\\Entities\\Pitanjegost' . "\0" . 'email'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Pitanjegost' . "\0" . 'ime', '' . "\0" . 'App\\Models\\Entities\\Pitanjegost' . "\0" . 'prezime', '' . "\0" . 'App\\Models\\Entities\\Pitanjegost' . "\0" . 'email', '' . "\0" . 'App\\Models\\Entities\\Pitanjegost' . "\0" . 'idpitanje'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Pitanjegost' . "\0" . 'idpitanje', '' . "\0" . 'App\\Models\\Entities\\Pitanjegost' . "\0" . 'ime', '' . "\0" . 'App\\Models\\Entities\\Pitanjegost' . "\0" . 'prezime', '' . "\0" . 'App\\Models\\Entities\\Pitanjegost' . "\0" . 'email'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Pitanjegost' . "\0" . 'ime', '' . "\0" . 'App\\Models\\Entities\\Pitanjegost' . "\0" . 'prezime', '' . "\0" . 'App\\Models\\Entities\\Pitanjegost' . "\0" . 'email', '' . "\0" . 'App\\Models\\Entities\\Pitanjegost' . "\0" . 'idpitanje'];
     }
 
     /**
@@ -179,21 +179,6 @@ class Pitanjegost extends \App\Models\Entities\Pitanjegost implements \Doctrine\
     /**
      * {@inheritDoc}
      */
-    public function getIdpitanje()
-    {
-        if ($this->__isInitialized__ === false) {
-            return (int)  parent::getIdpitanje();
-        }
-
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdpitanje', []);
-
-        return parent::getIdpitanje();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function setIme($ime)
     {
 
@@ -255,6 +240,28 @@ class Pitanjegost extends \App\Models\Entities\Pitanjegost implements \Doctrine\
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmail', []);
 
         return parent::getEmail();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setIdpitanje(\App\Models\Entities\Pitanje $idpitanje)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdpitanje', [$idpitanje]);
+
+        return parent::setIdpitanje($idpitanje);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getIdpitanje()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdpitanje', []);
+
+        return parent::getIdpitanje();
     }
 
 }

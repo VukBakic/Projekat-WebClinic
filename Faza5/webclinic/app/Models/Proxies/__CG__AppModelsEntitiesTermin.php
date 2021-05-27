@@ -249,7 +249,7 @@ class Termin extends \App\Models\Entities\Termin implements \Doctrine\ORM\Proxy\
     /**
      * {@inheritDoc}
      */
-    public function setIdlekar($idlekar)
+    public function setIdlekar(\App\Models\Entities\Lekar $idlekar)
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdlekar', [$idlekar]);
@@ -262,10 +262,6 @@ class Termin extends \App\Models\Entities\Termin implements \Doctrine\ORM\Proxy\
      */
     public function getIdlekar()
     {
-        if ($this->__isInitialized__ === false) {
-            return (int)  parent::getIdlekar();
-        }
-
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdlekar', []);
 

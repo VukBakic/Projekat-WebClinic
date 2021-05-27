@@ -13,20 +13,37 @@ use Doctrine\ORM\Mapping as ORM;
 class Sluzbenik
 {
     /**
-     * @var int
+     * @var \App\Models\Entities\Korisnik
      *
-     * @ORM\Column(name="idSluzb", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="App\Models\Entities\Korisnik")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idSluzb", referencedColumnName="idK")
+     * })
      */
     private $idsluzb;
 
 
 
     /**
+     * Set idsluzb.
+     *
+     * @param \App\Models\Entities\Korisnik $idsluzb
+     *
+     * @return Sluzbenik
+     */
+    public function setIdsluzb(\App\Models\Entities\Korisnik $idsluzb)
+    {
+        $this->idsluzb = $idsluzb;
+
+        return $this;
+    }
+
+    /**
      * Get idsluzb.
      *
-     * @return int
+     * @return \App\Models\Entities\Korisnik
      */
     public function getIdsluzb()
     {

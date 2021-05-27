@@ -66,10 +66,10 @@ class Fajl extends \App\Models\Entities\Fajl implements \Doctrine\ORM\Proxy\Prox
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Fajl' . "\0" . 'putanja', '' . "\0" . 'App\\Models\\Entities\\Fajl' . "\0" . 'idfajl', '' . "\0" . 'App\\Models\\Entities\\Fajl' . "\0" . 'ekstenzija'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Fajl' . "\0" . 'putanja', '' . "\0" . 'App\\Models\\Entities\\Fajl' . "\0" . 'idfajl', '' . "\0" . 'App\\Models\\Entities\\Fajl' . "\0" . 'ekstenzija', '' . "\0" . 'App\\Models\\Entities\\Fajl' . "\0" . 'idstavka'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Fajl' . "\0" . 'putanja', '' . "\0" . 'App\\Models\\Entities\\Fajl' . "\0" . 'idfajl', '' . "\0" . 'App\\Models\\Entities\\Fajl' . "\0" . 'ekstenzija'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Fajl' . "\0" . 'putanja', '' . "\0" . 'App\\Models\\Entities\\Fajl' . "\0" . 'idfajl', '' . "\0" . 'App\\Models\\Entities\\Fajl' . "\0" . 'ekstenzija', '' . "\0" . 'App\\Models\\Entities\\Fajl' . "\0" . 'idstavka'];
     }
 
     /**
@@ -233,6 +233,39 @@ class Fajl extends \App\Models\Entities\Fajl implements \Doctrine\ORM\Proxy\Prox
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEkstenzija', []);
 
         return parent::getEkstenzija();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addIdstavka(\App\Models\Entities\Stavkakartona $idstavka)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addIdstavka', [$idstavka]);
+
+        return parent::addIdstavka($idstavka);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeIdstavka(\App\Models\Entities\Stavkakartona $idstavka)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeIdstavka', [$idstavka]);
+
+        return parent::removeIdstavka($idstavka);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getIdstavka()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdstavka', []);
+
+        return parent::getIdstavka();
     }
 
 }

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Pitanje
  *
- * @ORM\Table(name="pitanje", indexes={@ORM\Index(name="R_33", columns={"nazivStruke"}), @ORM\Index(name="R_40", columns={"idLekar"})})
+ * @ORM\Table(name="pitanje", indexes={@ORM\Index(name="R_40", columns={"idLekar"}), @ORM\Index(name="R_33", columns={"nazivStruke"})})
  * @ORM\Entity
  */
 class Pitanje
@@ -24,16 +24,9 @@ class Pitanje
     /**
      * @var string|null
      *
-     * @ORM\Column(name="odgovor", type="text", length=65535, nullable=true)
+     * @ORM\Column(name="odgovor", type="text", length=16777215, nullable=true)
      */
     private $odgovor;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="nazivStruke", type="string", length=20, nullable=false)
-     */
-    private $nazivstruke;
 
     /**
      * @var string
@@ -45,14 +38,27 @@ class Pitanje
     /**
      * @var string
      *
-     * @ORM\Column(name="tekstPitanja", type="text", length=65535, nullable=false)
+     * @ORM\Column(name="tekstPitanja", type="text", length=16777215, nullable=false)
      */
     private $tekstpitanja;
 
     /**
-     * @var int|null
+     * @var \App\Models\Entities\Struka
      *
-     * @ORM\Column(name="idLekar", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="App\Models\Entities\Struka")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="nazivStruke", referencedColumnName="nazivStruke")
+     * })
+     */
+    private $nazivstruke;
+
+    /**
+     * @var \App\Models\Entities\Lekar
+     *
+     * @ORM\ManyToOne(targetEntity="App\Models\Entities\Lekar")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idLekar", referencedColumnName="idLekar")
+     * })
      */
     private $idlekar;
 
@@ -90,30 +96,6 @@ class Pitanje
     public function getOdgovor()
     {
         return $this->odgovor;
-    }
-
-    /**
-     * Set nazivstruke.
-     *
-     * @param string $nazivstruke
-     *
-     * @return Pitanje
-     */
-    public function setNazivstruke($nazivstruke)
-    {
-        $this->nazivstruke = $nazivstruke;
-
-        return $this;
-    }
-
-    /**
-     * Get nazivstruke.
-     *
-     * @return string
-     */
-    public function getNazivstruke()
-    {
-        return $this->nazivstruke;
     }
 
     /**
@@ -165,13 +147,37 @@ class Pitanje
     }
 
     /**
-     * Set idlekar.
+     * Set nazivstruke.
      *
-     * @param int|null $idlekar
+     * @param \App\Models\Entities\Struka|null $nazivstruke
      *
      * @return Pitanje
      */
-    public function setIdlekar($idlekar = null)
+    public function setNazivstruke(\App\Models\Entities\Struka $nazivstruke = null)
+    {
+        $this->nazivstruke = $nazivstruke;
+
+        return $this;
+    }
+
+    /**
+     * Get nazivstruke.
+     *
+     * @return \App\Models\Entities\Struka|null
+     */
+    public function getNazivstruke()
+    {
+        return $this->nazivstruke;
+    }
+
+    /**
+     * Set idlekar.
+     *
+     * @param \App\Models\Entities\Lekar|null $idlekar
+     *
+     * @return Pitanje
+     */
+    public function setIdlekar(\App\Models\Entities\Lekar $idlekar = null)
     {
         $this->idlekar = $idlekar;
 
@@ -181,7 +187,7 @@ class Pitanje
     /**
      * Get idlekar.
      *
-     * @return int|null
+     * @return \App\Models\Entities\Lekar|null
      */
     public function getIdlekar()
     {

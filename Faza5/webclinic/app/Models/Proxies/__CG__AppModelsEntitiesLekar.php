@@ -66,10 +66,10 @@ class Lekar extends \App\Models\Entities\Lekar implements \Doctrine\ORM\Proxy\Pr
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Lekar' . "\0" . 'idlekar', '' . "\0" . 'App\\Models\\Entities\\Lekar' . "\0" . 'nazivstruke'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Lekar' . "\0" . 'nazivstruke', '' . "\0" . 'App\\Models\\Entities\\Lekar' . "\0" . 'idlekar'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Lekar' . "\0" . 'idlekar', '' . "\0" . 'App\\Models\\Entities\\Lekar' . "\0" . 'nazivstruke'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Lekar' . "\0" . 'nazivstruke', '' . "\0" . 'App\\Models\\Entities\\Lekar' . "\0" . 'idlekar'];
     }
 
     /**
@@ -179,22 +179,7 @@ class Lekar extends \App\Models\Entities\Lekar implements \Doctrine\ORM\Proxy\Pr
     /**
      * {@inheritDoc}
      */
-    public function getIdlekar()
-    {
-        if ($this->__isInitialized__ === false) {
-            return (int)  parent::getIdlekar();
-        }
-
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdlekar', []);
-
-        return parent::getIdlekar();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setNazivstruke($nazivstruke)
+    public function setNazivstruke(\App\Models\Entities\Struka $nazivstruke = NULL)
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNazivstruke', [$nazivstruke]);
@@ -211,6 +196,28 @@ class Lekar extends \App\Models\Entities\Lekar implements \Doctrine\ORM\Proxy\Pr
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNazivstruke', []);
 
         return parent::getNazivstruke();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setIdlekar(\App\Models\Entities\Korisnik $idlekar)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdlekar', [$idlekar]);
+
+        return parent::setIdlekar($idlekar);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getIdlekar()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdlekar', []);
+
+        return parent::getIdlekar();
     }
 
 }

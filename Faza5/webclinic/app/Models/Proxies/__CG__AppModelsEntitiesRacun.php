@@ -66,10 +66,10 @@ class Racun extends \App\Models\Entities\Racun implements \Doctrine\ORM\Proxy\Pr
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Racun' . "\0" . 'idstavka', '' . "\0" . 'App\\Models\\Entities\\Racun' . "\0" . 'placeno'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Racun' . "\0" . 'placeno', '' . "\0" . 'App\\Models\\Entities\\Racun' . "\0" . 'idstavka'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Racun' . "\0" . 'idstavka', '' . "\0" . 'App\\Models\\Entities\\Racun' . "\0" . 'placeno'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Racun' . "\0" . 'placeno', '' . "\0" . 'App\\Models\\Entities\\Racun' . "\0" . 'idstavka'];
     }
 
     /**
@@ -179,21 +179,6 @@ class Racun extends \App\Models\Entities\Racun implements \Doctrine\ORM\Proxy\Pr
     /**
      * {@inheritDoc}
      */
-    public function getIdstavka()
-    {
-        if ($this->__isInitialized__ === false) {
-            return (int)  parent::getIdstavka();
-        }
-
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdstavka', []);
-
-        return parent::getIdstavka();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function setPlaceno($placeno)
     {
 
@@ -211,6 +196,28 @@ class Racun extends \App\Models\Entities\Racun implements \Doctrine\ORM\Proxy\Pr
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPlaceno', []);
 
         return parent::getPlaceno();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setIdstavka(\App\Models\Entities\Stavkakartona $idstavka)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdstavka', [$idstavka]);
+
+        return parent::setIdstavka($idstavka);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getIdstavka()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdstavka', []);
+
+        return parent::getIdstavka();
     }
 
 }

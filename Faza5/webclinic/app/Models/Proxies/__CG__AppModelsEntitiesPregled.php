@@ -66,10 +66,10 @@ class Pregled extends \App\Models\Entities\Pregled implements \Doctrine\ORM\Prox
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Pregled' . "\0" . 'idpregled', '' . "\0" . 'App\\Models\\Entities\\Pregled' . "\0" . 'idlekar', '' . "\0" . 'App\\Models\\Entities\\Pregled' . "\0" . 'jeonline', '' . "\0" . 'App\\Models\\Entities\\Pregled' . "\0" . 'idklijent', '' . "\0" . 'App\\Models\\Entities\\Pregled' . "\0" . 'idtermin'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Pregled' . "\0" . 'idpregled', '' . "\0" . 'App\\Models\\Entities\\Pregled' . "\0" . 'jeonline', '' . "\0" . 'App\\Models\\Entities\\Pregled' . "\0" . 'idlekar', '' . "\0" . 'App\\Models\\Entities\\Pregled' . "\0" . 'idklijent', '' . "\0" . 'App\\Models\\Entities\\Pregled' . "\0" . 'idtermin'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Pregled' . "\0" . 'idpregled', '' . "\0" . 'App\\Models\\Entities\\Pregled' . "\0" . 'idlekar', '' . "\0" . 'App\\Models\\Entities\\Pregled' . "\0" . 'jeonline', '' . "\0" . 'App\\Models\\Entities\\Pregled' . "\0" . 'idklijent', '' . "\0" . 'App\\Models\\Entities\\Pregled' . "\0" . 'idtermin'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Pregled' . "\0" . 'idpregled', '' . "\0" . 'App\\Models\\Entities\\Pregled' . "\0" . 'jeonline', '' . "\0" . 'App\\Models\\Entities\\Pregled' . "\0" . 'idlekar', '' . "\0" . 'App\\Models\\Entities\\Pregled' . "\0" . 'idklijent', '' . "\0" . 'App\\Models\\Entities\\Pregled' . "\0" . 'idtermin'];
     }
 
     /**
@@ -205,32 +205,6 @@ class Pregled extends \App\Models\Entities\Pregled implements \Doctrine\ORM\Prox
     /**
      * {@inheritDoc}
      */
-    public function setIdlekar($idlekar)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdlekar', [$idlekar]);
-
-        return parent::setIdlekar($idlekar);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getIdlekar()
-    {
-        if ($this->__isInitialized__ === false) {
-            return (int)  parent::getIdlekar();
-        }
-
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdlekar', []);
-
-        return parent::getIdlekar();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function setJeonline($jeonline)
     {
 
@@ -253,7 +227,29 @@ class Pregled extends \App\Models\Entities\Pregled implements \Doctrine\ORM\Prox
     /**
      * {@inheritDoc}
      */
-    public function setIdklijent($idklijent)
+    public function setIdlekar(\App\Models\Entities\Lekar $idlekar)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdlekar', [$idlekar]);
+
+        return parent::setIdlekar($idlekar);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getIdlekar()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdlekar', []);
+
+        return parent::getIdlekar();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setIdklijent(\App\Models\Entities\Klijent $idklijent)
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdklijent', [$idklijent]);
@@ -266,10 +262,6 @@ class Pregled extends \App\Models\Entities\Pregled implements \Doctrine\ORM\Prox
      */
     public function getIdklijent()
     {
-        if ($this->__isInitialized__ === false) {
-            return (int)  parent::getIdklijent();
-        }
-
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdklijent', []);
 
@@ -279,7 +271,7 @@ class Pregled extends \App\Models\Entities\Pregled implements \Doctrine\ORM\Prox
     /**
      * {@inheritDoc}
      */
-    public function setIdtermin($idtermin)
+    public function setIdtermin(\App\Models\Entities\Termin $idtermin = NULL)
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdtermin', [$idtermin]);

@@ -179,12 +179,19 @@ class Administrator extends \App\Models\Entities\Administrator implements \Doctr
     /**
      * {@inheritDoc}
      */
+    public function setIdadmin(\App\Models\Entities\Korisnik $idadmin)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdadmin', [$idadmin]);
+
+        return parent::setIdadmin($idadmin);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function getIdadmin()
     {
-        if ($this->__isInitialized__ === false) {
-            return (int)  parent::getIdadmin();
-        }
-
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdadmin', []);
 

@@ -179,12 +179,19 @@ class Pitanjeklijent extends \App\Models\Entities\Pitanjeklijent implements \Doc
     /**
      * {@inheritDoc}
      */
+    public function setIdpitanje(\App\Models\Entities\Pitanje $idpitanje)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdpitanje', [$idpitanje]);
+
+        return parent::setIdpitanje($idpitanje);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function getIdpitanje()
     {
-        if ($this->__isInitialized__ === false) {
-            return (int)  parent::getIdpitanje();
-        }
-
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdpitanje', []);
 
@@ -194,7 +201,7 @@ class Pitanjeklijent extends \App\Models\Entities\Pitanjeklijent implements \Doc
     /**
      * {@inheritDoc}
      */
-    public function setIdklijent($idklijent = NULL)
+    public function setIdklijent(\App\Models\Entities\Klijent $idklijent = NULL)
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdklijent', [$idklijent]);

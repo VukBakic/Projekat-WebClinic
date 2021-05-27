@@ -227,7 +227,7 @@ class Usluga extends \App\Models\Entities\Usluga implements \Doctrine\ORM\Proxy\
     /**
      * {@inheritDoc}
      */
-    public function setNazivstruke($nazivstruke)
+    public function setNazivstruke(\App\Models\Entities\Struka $nazivstruke)
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNazivstruke', [$nazivstruke]);
@@ -240,10 +240,6 @@ class Usluga extends \App\Models\Entities\Usluga implements \Doctrine\ORM\Proxy\
      */
     public function getNazivstruke()
     {
-        if ($this->__isInitialized__ === false) {
-            return  parent::getNazivstruke();
-        }
-
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNazivstruke', []);
 

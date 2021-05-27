@@ -66,10 +66,10 @@ class Stavkakartona extends \App\Models\Entities\Stavkakartona implements \Doctr
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Stavkakartona' . "\0" . 'idstavka', '' . "\0" . 'App\\Models\\Entities\\Stavkakartona' . "\0" . 'idklijent', '' . "\0" . 'App\\Models\\Entities\\Stavkakartona' . "\0" . 'pregledobavio', '' . "\0" . 'App\\Models\\Entities\\Stavkakartona' . "\0" . 'dijagnostika', '' . "\0" . 'App\\Models\\Entities\\Stavkakartona' . "\0" . 'preporucenaterapija', '' . "\0" . 'App\\Models\\Entities\\Stavkakartona' . "\0" . 'internanapomena', '' . "\0" . 'App\\Models\\Entities\\Stavkakartona' . "\0" . 'imeusluge', '' . "\0" . 'App\\Models\\Entities\\Stavkakartona' . "\0" . 'nazivstruke'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Stavkakartona' . "\0" . 'idstavka', '' . "\0" . 'App\\Models\\Entities\\Stavkakartona' . "\0" . 'dijagnostika', '' . "\0" . 'App\\Models\\Entities\\Stavkakartona' . "\0" . 'preporucenaterapija', '' . "\0" . 'App\\Models\\Entities\\Stavkakartona' . "\0" . 'internanapomena', '' . "\0" . 'App\\Models\\Entities\\Stavkakartona' . "\0" . 'idklijent', '' . "\0" . 'App\\Models\\Entities\\Stavkakartona' . "\0" . 'pregledobavio', '' . "\0" . 'App\\Models\\Entities\\Stavkakartona' . "\0" . 'imeusluge', '' . "\0" . 'App\\Models\\Entities\\Stavkakartona' . "\0" . 'idfajl'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Stavkakartona' . "\0" . 'idstavka', '' . "\0" . 'App\\Models\\Entities\\Stavkakartona' . "\0" . 'idklijent', '' . "\0" . 'App\\Models\\Entities\\Stavkakartona' . "\0" . 'pregledobavio', '' . "\0" . 'App\\Models\\Entities\\Stavkakartona' . "\0" . 'dijagnostika', '' . "\0" . 'App\\Models\\Entities\\Stavkakartona' . "\0" . 'preporucenaterapija', '' . "\0" . 'App\\Models\\Entities\\Stavkakartona' . "\0" . 'internanapomena', '' . "\0" . 'App\\Models\\Entities\\Stavkakartona' . "\0" . 'imeusluge', '' . "\0" . 'App\\Models\\Entities\\Stavkakartona' . "\0" . 'nazivstruke'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Stavkakartona' . "\0" . 'idstavka', '' . "\0" . 'App\\Models\\Entities\\Stavkakartona' . "\0" . 'dijagnostika', '' . "\0" . 'App\\Models\\Entities\\Stavkakartona' . "\0" . 'preporucenaterapija', '' . "\0" . 'App\\Models\\Entities\\Stavkakartona' . "\0" . 'internanapomena', '' . "\0" . 'App\\Models\\Entities\\Stavkakartona' . "\0" . 'idklijent', '' . "\0" . 'App\\Models\\Entities\\Stavkakartona' . "\0" . 'pregledobavio', '' . "\0" . 'App\\Models\\Entities\\Stavkakartona' . "\0" . 'imeusluge', '' . "\0" . 'App\\Models\\Entities\\Stavkakartona' . "\0" . 'idfajl'];
     }
 
     /**
@@ -194,50 +194,6 @@ class Stavkakartona extends \App\Models\Entities\Stavkakartona implements \Doctr
     /**
      * {@inheritDoc}
      */
-    public function setIdklijent($idklijent)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdklijent', [$idklijent]);
-
-        return parent::setIdklijent($idklijent);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getIdklijent()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdklijent', []);
-
-        return parent::getIdklijent();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setPregledobavio($pregledobavio)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPregledobavio', [$pregledobavio]);
-
-        return parent::setPregledobavio($pregledobavio);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getPregledobavio()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPregledobavio', []);
-
-        return parent::getPregledobavio();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function setDijagnostika($dijagnostika)
     {
 
@@ -304,7 +260,51 @@ class Stavkakartona extends \App\Models\Entities\Stavkakartona implements \Doctr
     /**
      * {@inheritDoc}
      */
-    public function setImeusluge($imeusluge)
+    public function setIdklijent(\App\Models\Entities\Klijent $idklijent = NULL)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdklijent', [$idklijent]);
+
+        return parent::setIdklijent($idklijent);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getIdklijent()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdklijent', []);
+
+        return parent::getIdklijent();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setPregledobavio(\App\Models\Entities\Lekar $pregledobavio = NULL)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPregledobavio', [$pregledobavio]);
+
+        return parent::setPregledobavio($pregledobavio);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getPregledobavio()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPregledobavio', []);
+
+        return parent::getPregledobavio();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setImeusluge(\App\Models\Entities\Usluga $imeusluge = NULL)
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setImeusluge', [$imeusluge]);
@@ -326,23 +326,34 @@ class Stavkakartona extends \App\Models\Entities\Stavkakartona implements \Doctr
     /**
      * {@inheritDoc}
      */
-    public function setNazivstruke($nazivstruke)
+    public function addIdfajl(\App\Models\Entities\Fajl $idfajl)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNazivstruke', [$nazivstruke]);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addIdfajl', [$idfajl]);
 
-        return parent::setNazivstruke($nazivstruke);
+        return parent::addIdfajl($idfajl);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function getNazivstruke()
+    public function removeIdfajl(\App\Models\Entities\Fajl $idfajl)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNazivstruke', []);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeIdfajl', [$idfajl]);
 
-        return parent::getNazivstruke();
+        return parent::removeIdfajl($idfajl);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getIdfajl()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdfajl', []);
+
+        return parent::getIdfajl();
     }
 
 }

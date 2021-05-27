@@ -179,12 +179,19 @@ class Sluzbenik extends \App\Models\Entities\Sluzbenik implements \Doctrine\ORM\
     /**
      * {@inheritDoc}
      */
+    public function setIdsluzb(\App\Models\Entities\Korisnik $idsluzb)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdsluzb', [$idsluzb]);
+
+        return parent::setIdsluzb($idsluzb);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function getIdsluzb()
     {
-        if ($this->__isInitialized__ === false) {
-            return (int)  parent::getIdsluzb();
-        }
-
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdsluzb', []);
 

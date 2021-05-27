@@ -66,10 +66,10 @@ class Pitanje extends \App\Models\Entities\Pitanje implements \Doctrine\ORM\Prox
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Pitanje' . "\0" . 'idpitanje', '' . "\0" . 'App\\Models\\Entities\\Pitanje' . "\0" . 'odgovor', '' . "\0" . 'App\\Models\\Entities\\Pitanje' . "\0" . 'nazivstruke', '' . "\0" . 'App\\Models\\Entities\\Pitanje' . "\0" . 'naslov', '' . "\0" . 'App\\Models\\Entities\\Pitanje' . "\0" . 'tekstpitanja', '' . "\0" . 'App\\Models\\Entities\\Pitanje' . "\0" . 'idlekar'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Pitanje' . "\0" . 'idpitanje', '' . "\0" . 'App\\Models\\Entities\\Pitanje' . "\0" . 'odgovor', '' . "\0" . 'App\\Models\\Entities\\Pitanje' . "\0" . 'naslov', '' . "\0" . 'App\\Models\\Entities\\Pitanje' . "\0" . 'tekstpitanja', '' . "\0" . 'App\\Models\\Entities\\Pitanje' . "\0" . 'nazivstruke', '' . "\0" . 'App\\Models\\Entities\\Pitanje' . "\0" . 'idlekar'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Pitanje' . "\0" . 'idpitanje', '' . "\0" . 'App\\Models\\Entities\\Pitanje' . "\0" . 'odgovor', '' . "\0" . 'App\\Models\\Entities\\Pitanje' . "\0" . 'nazivstruke', '' . "\0" . 'App\\Models\\Entities\\Pitanje' . "\0" . 'naslov', '' . "\0" . 'App\\Models\\Entities\\Pitanje' . "\0" . 'tekstpitanja', '' . "\0" . 'App\\Models\\Entities\\Pitanje' . "\0" . 'idlekar'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Pitanje' . "\0" . 'idpitanje', '' . "\0" . 'App\\Models\\Entities\\Pitanje' . "\0" . 'odgovor', '' . "\0" . 'App\\Models\\Entities\\Pitanje' . "\0" . 'naslov', '' . "\0" . 'App\\Models\\Entities\\Pitanje' . "\0" . 'tekstpitanja', '' . "\0" . 'App\\Models\\Entities\\Pitanje' . "\0" . 'nazivstruke', '' . "\0" . 'App\\Models\\Entities\\Pitanje' . "\0" . 'idlekar'];
     }
 
     /**
@@ -216,28 +216,6 @@ class Pitanje extends \App\Models\Entities\Pitanje implements \Doctrine\ORM\Prox
     /**
      * {@inheritDoc}
      */
-    public function setNazivstruke($nazivstruke)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNazivstruke', [$nazivstruke]);
-
-        return parent::setNazivstruke($nazivstruke);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getNazivstruke()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNazivstruke', []);
-
-        return parent::getNazivstruke();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function setNaslov($naslov)
     {
 
@@ -282,7 +260,29 @@ class Pitanje extends \App\Models\Entities\Pitanje implements \Doctrine\ORM\Prox
     /**
      * {@inheritDoc}
      */
-    public function setIdlekar($idlekar = NULL)
+    public function setNazivstruke(\App\Models\Entities\Struka $nazivstruke = NULL)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNazivstruke', [$nazivstruke]);
+
+        return parent::setNazivstruke($nazivstruke);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getNazivstruke()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNazivstruke', []);
+
+        return parent::getNazivstruke();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setIdlekar(\App\Models\Entities\Lekar $idlekar = NULL)
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdlekar', [$idlekar]);
