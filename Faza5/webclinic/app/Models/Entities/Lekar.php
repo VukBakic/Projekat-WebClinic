@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="lekar", indexes={@ORM\Index(name="R_19", columns={"nazivStruke"})})
  * @ORM\Entity
  */
+
 class Lekar
 {
     /**
