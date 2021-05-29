@@ -16,6 +16,7 @@ class Login extends BaseController
 
 	public function loginPage()
 	{
+       
         helper('form');
 		return view('login_page');
 	}

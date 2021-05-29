@@ -15,21 +15,21 @@ class Pitanjegost
     /**
      * @var string
      *
-     * @ORM\Column(name="ime", type="string", length=20, nullable=false, unique=false)
+     * @ORM\Column(name="ime", type="string", length=20, nullable=false)
      */
     private $ime;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="prezime", type="string", length=20, nullable=false, unique=false)
+     * @ORM\Column(name="prezime", type="string", length=20, nullable=false)
      */
     private $prezime;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=20, nullable=false, unique=false)
+     * @ORM\Column(name="email", type="string", length=20, nullable=false)
      */
     private $email;
 
@@ -40,10 +40,11 @@ class Pitanjegost
      * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\OneToOne(targetEntity="App\Models\Entities\Pitanje")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idPitanje", referencedColumnName="idPitanje", nullable=true)
+     *   @ORM\JoinColumn(name="idPitanje", referencedColumnName="idPitanje")
      * })
      */
     private $idpitanje;
+
 
 
     /**

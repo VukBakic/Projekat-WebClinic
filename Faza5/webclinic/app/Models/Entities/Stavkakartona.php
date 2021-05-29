@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Stavkakartona
  *
- * @ORM\Table(name="stavkakartona", indexes={@ORM\Index(name="R_17", columns={"pregledObavio"}), @ORM\Index(name="R_16", columns={"idKlijent"}), @ORM\Index(name="R_41", columns={"imeUsluge", "nazivStruke"})})
+ * @ORM\Table(name="stavkakartona", indexes={@ORM\Index(name="R_41", columns={"imeUsluge", "nazivStruke"}), @ORM\Index(name="R_16", columns={"idKlijent"}), @ORM\Index(name="R_17", columns={"pregledObavio"})})
  * @ORM\Entity
  */
 class Stavkakartona
@@ -15,7 +15,7 @@ class Stavkakartona
     /**
      * @var int
      *
-     * @ORM\Column(name="idStavka", type="integer", nullable=false, unique=false)
+     * @ORM\Column(name="idStavka", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
@@ -24,21 +24,21 @@ class Stavkakartona
     /**
      * @var string
      *
-     * @ORM\Column(name="dijagnostika", type="text", length=16777215, nullable=false, unique=false)
+     * @ORM\Column(name="dijagnostika", type="text", length=16777215, nullable=false)
      */
     private $dijagnostika;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="preporucenaTerapija", type="text", length=16777215, nullable=false, unique=false)
+     * @ORM\Column(name="preporucenaTerapija", type="text", length=16777215, nullable=false)
      */
     private $preporucenaterapija;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="internaNapomena", type="text", length=16777215, nullable=true, unique=false)
+     * @ORM\Column(name="internaNapomena", type="text", length=16777215, nullable=true)
      */
     private $internanapomena;
 
@@ -47,7 +47,7 @@ class Stavkakartona
      *
      * @ORM\ManyToOne(targetEntity="App\Models\Entities\Klijent")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idKlijent", referencedColumnName="idKlijent", nullable=true)
+     *   @ORM\JoinColumn(name="idKlijent", referencedColumnName="idKlijent")
      * })
      */
     private $idklijent;
@@ -57,7 +57,7 @@ class Stavkakartona
      *
      * @ORM\ManyToOne(targetEntity="App\Models\Entities\Lekar")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="pregledObavio", referencedColumnName="idLekar", nullable=true)
+     *   @ORM\JoinColumn(name="pregledObavio", referencedColumnName="idLekar")
      * })
      */
     private $pregledobavio;
@@ -67,8 +67,8 @@ class Stavkakartona
      *
      * @ORM\ManyToOne(targetEntity="App\Models\Entities\Usluga")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="imeUsluge", referencedColumnName="imeUsluge", nullable=true),
-     *   @ORM\JoinColumn(name="nazivStruke", referencedColumnName="nazivStruke", nullable=true)
+     *   @ORM\JoinColumn(name="imeUsluge", referencedColumnName="imeUsluge"),
+     *   @ORM\JoinColumn(name="nazivStruke", referencedColumnName="nazivStruke")
      * })
      */
     private $imeusluge;
@@ -79,10 +79,10 @@ class Stavkakartona
      * @ORM\ManyToMany(targetEntity="App\Models\Entities\Fajl", inversedBy="idstavka")
      * @ORM\JoinTable(name="sadrzi",
      *   joinColumns={
-     *     @ORM\JoinColumn(name="idStavka", referencedColumnName="idStavka", nullable=true)
+     *     @ORM\JoinColumn(name="idStavka", referencedColumnName="idStavka")
      *   },
      *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="idFajl", referencedColumnName="idFajl", nullable=true)
+     *     @ORM\JoinColumn(name="idFajl", referencedColumnName="idFajl")
      *   }
      * )
      */
@@ -95,6 +95,7 @@ class Stavkakartona
     {
         $this->idfajl = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
 
     /**
      * Get idstavka.

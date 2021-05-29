@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Klijent
  *
  * @ORM\Table(name="klijent", indexes={@ORM\Index(name="R_9", columns={"izabraniLekar"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\KlijentRepository")
  */
 class Klijent
 {
@@ -19,7 +19,7 @@ class Klijent
      * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\OneToOne(targetEntity="App\Models\Entities\Korisnik")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idKlijent", referencedColumnName="idK", nullable=true)
+     *   @ORM\JoinColumn(name="idKlijent", referencedColumnName="idK")
      * })
      */
     private $idklijent;
@@ -29,10 +29,11 @@ class Klijent
      *
      * @ORM\ManyToOne(targetEntity="App\Models\Entities\Lekar")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="izabraniLekar", referencedColumnName="idLekar", nullable=true)
+     *   @ORM\JoinColumn(name="izabraniLekar", referencedColumnName="idLekar")
      * })
      */
     private $izabranilekar;
+
 
 
     /**

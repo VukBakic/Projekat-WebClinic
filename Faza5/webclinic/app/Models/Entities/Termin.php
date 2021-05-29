@@ -15,21 +15,21 @@ class Termin
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="datum", type="datetime", nullable=false, unique=false)
+     * @ORM\Column(name="datum", type="datetime", nullable=false, options={"default"="CURRENT_TIMESTAMP"})
      */
-    private $datum;
+    private $datum = 'CURRENT_TIMESTAMP';
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="vreme", type="time", nullable=false, unique=false)
+     * @ORM\Column(name="vreme", type="time", nullable=false)
      */
     private $vreme;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="idTermin", type="integer", nullable=false, unique=false)
+     * @ORM\Column(name="idTermin", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
@@ -42,10 +42,11 @@ class Termin
      * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\OneToOne(targetEntity="App\Models\Entities\Lekar")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idLekar", referencedColumnName="idLekar", nullable=true)
+     *   @ORM\JoinColumn(name="idLekar", referencedColumnName="idLekar")
      * })
      */
     private $idlekar;
+
 
 
     /**

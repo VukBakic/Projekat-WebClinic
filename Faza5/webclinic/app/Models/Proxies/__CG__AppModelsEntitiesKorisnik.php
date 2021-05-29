@@ -66,10 +66,10 @@ class Korisnik extends \App\Models\Entities\Korisnik implements \Doctrine\ORM\Pr
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'idk', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'korisnickoime', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'sifra', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'ime', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'prezime', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'email', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'jmbg', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'brlk', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'pol', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'brtel'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'idk', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'sifra', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'ime', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'prezime', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'email', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'jmbg', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'brlk', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'pol', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'brtel', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'iduloge'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'idk', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'korisnickoime', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'sifra', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'ime', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'prezime', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'email', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'jmbg', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'brlk', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'pol', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'brtel'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'idk', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'sifra', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'ime', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'prezime', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'email', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'jmbg', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'brlk', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'pol', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'brtel', '' . "\0" . 'App\\Models\\Entities\\Korisnik' . "\0" . 'iduloge'];
     }
 
     /**
@@ -189,28 +189,6 @@ class Korisnik extends \App\Models\Entities\Korisnik implements \Doctrine\ORM\Pr
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdk', []);
 
         return parent::getIdk();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setKorisnickoime($korisnickoime)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setKorisnickoime', [$korisnickoime]);
-
-        return parent::setKorisnickoime($korisnickoime);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getKorisnickoime()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getKorisnickoime', []);
-
-        return parent::getKorisnickoime();
     }
 
     /**
@@ -387,6 +365,28 @@ class Korisnik extends \App\Models\Entities\Korisnik implements \Doctrine\ORM\Pr
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBrtel', []);
 
         return parent::getBrtel();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setIduloge(\App\Models\Entities\Uloge $iduloge = NULL)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIduloge', [$iduloge]);
+
+        return parent::setIduloge($iduloge);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getIduloge()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIduloge', []);
+
+        return parent::getIduloge();
     }
 
 }

@@ -32,7 +32,9 @@
       </div>
     </footer>
 
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="<?php echo site_url("js/bootstrap.bundle.min.js");?>"></script>
+    <script src="<?php echo site_url("js/main.js");?>"></script>
+    <script src="<?php echo site_url("js/axios.min.js");?>"></script>
+    <?= $this->renderSection('javascript') ?>
   </body>
 </html>

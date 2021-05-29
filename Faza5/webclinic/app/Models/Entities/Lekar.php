@@ -17,7 +17,7 @@ class Lekar
      *
      * @ORM\ManyToOne(targetEntity="App\Models\Entities\Struka")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="nazivStruke", referencedColumnName="nazivStruke", nullable=true)
+     *   @ORM\JoinColumn(name="nazivStruke", referencedColumnName="nazivStruke")
      * })
      */
     private $nazivstruke;
@@ -29,10 +29,11 @@ class Lekar
      * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\OneToOne(targetEntity="App\Models\Entities\Korisnik")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idLekar", referencedColumnName="idK", nullable=true)
+     *   @ORM\JoinColumn(name="idLekar", referencedColumnName="idK")
      * })
      */
     private $idlekar;
+
 
 
     /**

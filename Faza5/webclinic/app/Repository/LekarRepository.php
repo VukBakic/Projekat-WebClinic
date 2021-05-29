@@ -11,7 +11,20 @@ namespace App\Repository;
 class LekarRepository extends \Doctrine\ORM\EntityRepository
 {
     public function dohvatiLekareOpstePrakse(){
-        return $this->findAll();
+
+        $doctors =  $this->findBy(['nazivstruke'=> "Opsta medicina"]);
+        $array = array();
+        foreach ($doctors as $doctor) {
+            $temp = $doctor->getIdlekar();
+            $doctorObject = (object)[
+                "id" =>  $temp->getIdk(),
+                "ime" => $temp->getIme()." ".$temp->getPrezime()
+            ];
+            
+            $array[]=$doctorObject;      
+        }
+
+        return  $array;
     }
 
 }

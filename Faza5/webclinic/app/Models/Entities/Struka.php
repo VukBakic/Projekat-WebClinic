@@ -15,11 +15,12 @@ class Struka
     /**
      * @var string
      *
-     * @ORM\Column(name="nazivStruke", type="string", length=20, nullable=false, unique=false)
+     * @ORM\Column(name="nazivStruke", type="string", length=20, nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $nazivstruke;
+
 
 
     /**

@@ -35,9 +35,74 @@ class Validation
 	public $templates = [
 		'list'   => 'CodeIgniter\Validation\Views\list',
 		'single' => 'CodeIgniter\Validation\Views\single',
+		'custom_list' =>'layouts\partials\error_list'
 	];
 
 	//--------------------------------------------------------------------
 	// Rules
 	//--------------------------------------------------------------------
+	public $signup = [
+		'ime' => [
+            'rules'  => 'required|alpha_space',
+            'errors' => [
+                'required' => 'Morate uneti ime.',
+				'alpha_space' =>'Polje ime moze sadrzati samo slova i razmak'
+            ]
+        ],
+		'prezime' => [
+            'rules'  => 'required|alpha_space',
+            'errors' => [
+                'required' => 'Morate uneti prezime.',
+				'alpha_space' =>'Polje prezime moze sadrzati samo slova i razmak'
+            ]
+        ],
+        'jmbg' => [
+            'rules'  => 'required|numeric|exact_length[13]',
+            'errors' => [
+                'required' => 'Morate uneti JMBG.',
+				'numeric' => 'Uneti JMBG nije validan. JMBG sme sadrzati samo cifre.',
+				'exact_length'=>"Polje JMBG Mora sadrzati tacno 13 cifara."
+            ]
+        ],
+		'lk' => [
+            'rules'  => 'required|numeric|exact_length[8,9]',
+            'errors' => [
+                'required' => 'Morate uneti Broj licne karte.',
+				'numeric' => 'Uneti Broj licne karte nije validan. Broj licne karte sme sadrzati samo cifre.',
+				'exact_length'=>"Polje Broj licne karte Mora sadrzati tacno 8 ili 9 cifara."
+            ]
+        ],
+		'pol' => [
+            'rules'  => 'required|in_list[m,z]',
+            'errors' => [
+                'required' => 'Morate izabrati pol.',
+				'in_list'=>"Mozete izabrati samo zenski ili muski pol"
+				
+            ]
+        ],
+		'tel' => [
+            'rules'  => 'required|numeric',
+            'errors' => [
+                'required' => 'Morate uneti telefon.',
+				'numeric'=>"Polje telefon sme sadrzati samo cifre"
+				
+            ]
+        ],
+        'email'    => [
+            'rules'  => 'required|valid_email',
+            'errors' => [
+				'required' => 'Morate uneti email.',
+                'valid_email' => 'Uneti email nije validan.'
+            ]
+        ],
+		'sifra' => [
+            'rules'  => 'required|min_length[8]|regex_match[/(?=.*?[A-Z])(?=.*?[#?!@$%^&*-])/]',
+            'errors' => [
+                'required' => 'Morate uneti lozinku.',
+				'min_length'=>"Polje sifra mora sadrzati minimum 8 karaktera od cega minimum 1 karakter mora biti veliko slovo i mora sadrzati minimum jedan specijalan karakter.",
+				'regex_match'=>"Polje sifra mora sadrzati minimum 8 karaktera od cega minimum 1 karakter mora biti veliko slovo i mora sadrzati minimum jedan specijalan karakter."
+				
+            ]
+        ],
+    ];
 }

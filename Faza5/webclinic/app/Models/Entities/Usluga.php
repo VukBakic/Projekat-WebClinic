@@ -15,7 +15,7 @@ class Usluga
     /**
      * @var string
      *
-     * @ORM\Column(name="imeUsluge", type="string", length=20, nullable=false, unique=false)
+     * @ORM\Column(name="imeUsluge", type="string", length=20, nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
      */
@@ -24,7 +24,7 @@ class Usluga
     /**
      * @var string
      *
-     * @ORM\Column(name="cena", type="decimal", precision=10, scale=2, nullable=false, unique=false)
+     * @ORM\Column(name="cena", type="decimal", precision=10, scale=2, nullable=false)
      */
     private $cena;
 
@@ -35,10 +35,11 @@ class Usluga
      * @ORM\GeneratedValue(strategy="NONE")
      * @ORM\OneToOne(targetEntity="App\Models\Entities\Struka")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="nazivStruke", referencedColumnName="nazivStruke", nullable=true)
+     *   @ORM\JoinColumn(name="nazivStruke", referencedColumnName="nazivStruke")
      * })
      */
     private $nazivstruke;
+
 
 
     /**

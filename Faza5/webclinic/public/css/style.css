@@ -1793,3 +1793,10 @@ section {
   display: block;
   cursor: pointer;
 }
+
+.required {
+  border: 2px solid orange !important;
+}
+.invalid {
+  border: 2px solid red !important;
+}

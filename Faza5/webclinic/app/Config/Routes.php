@@ -41,7 +41,7 @@ $routes->post('/login', 'Login::loginUser' , ['filter' => 'alreadylogged']);
 
 
 $routes->get('/sluzbenik/register', 'Register::registerSluzbenikPage');
-
+$routes->post('/sluzbenik/register', 'Register::registerSluzbenik');
 
 $routes->get('/dashboard', 'Dashboard::index');
 

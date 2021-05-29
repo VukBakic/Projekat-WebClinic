@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Pitanje
  *
- * @ORM\Table(name="pitanje", indexes={@ORM\Index(name="R_40", columns={"idLekar"}), @ORM\Index(name="R_33", columns={"nazivStruke"})})
+ * @ORM\Table(name="pitanje", indexes={@ORM\Index(name="R_33", columns={"nazivStruke"}), @ORM\Index(name="R_40", columns={"idLekar"})})
  * @ORM\Entity
  */
 class Pitanje
@@ -15,7 +15,7 @@ class Pitanje
     /**
      * @var int
      *
-     * @ORM\Column(name="idPitanje", type="integer", nullable=false, unique=false)
+     * @ORM\Column(name="idPitanje", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
@@ -24,21 +24,21 @@ class Pitanje
     /**
      * @var string|null
      *
-     * @ORM\Column(name="odgovor", type="text", length=16777215, nullable=true, unique=false)
+     * @ORM\Column(name="odgovor", type="text", length=16777215, nullable=true)
      */
     private $odgovor;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="naslov", type="string", length=20, nullable=false, unique=false)
+     * @ORM\Column(name="naslov", type="string", length=20, nullable=false)
      */
     private $naslov;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="tekstPitanja", type="text", length=16777215, nullable=false, unique=false)
+     * @ORM\Column(name="tekstPitanja", type="text", length=16777215, nullable=false)
      */
     private $tekstpitanja;
 
@@ -47,7 +47,7 @@ class Pitanje
      *
      * @ORM\ManyToOne(targetEntity="App\Models\Entities\Struka")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="nazivStruke", referencedColumnName="nazivStruke", nullable=true)
+     *   @ORM\JoinColumn(name="nazivStruke", referencedColumnName="nazivStruke")
      * })
      */
     private $nazivstruke;
@@ -57,10 +57,11 @@ class Pitanje
      *
      * @ORM\ManyToOne(targetEntity="App\Models\Entities\Lekar")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idLekar", referencedColumnName="idLekar", nullable=true)
+     *   @ORM\JoinColumn(name="idLekar", referencedColumnName="idLekar")
      * })
      */
     private $idlekar;
+
 
 
     /**
