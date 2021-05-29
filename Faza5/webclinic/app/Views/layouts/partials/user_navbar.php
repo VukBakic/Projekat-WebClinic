@@ -8,14 +8,14 @@
               <?= anchor('', 'Početna',['class'=>'nav-link '.(url_is('')?'active':'')])?>
             </li>
             <li>
-              <?= anchor('/gost/pregled', 'Zakažite pregled',['class'=>'nav-link '.(url_is('gost/pregled*')?'active':'')])?>    
+              <?= anchor('/klijent/pregled', 'Zakažite pregled',['class'=>'nav-link '.(url_is('gost/pregled*')?'active':'')])?>    
             </li>
 
             <li>
-              <?= anchor('/gost/pitanja', 'Pitajte nas',['class'=>'nav-link '.(url_is('gost/pitanja*')?'active':'')])?>    
+              <?= anchor('/klijent/pitanja', 'Pitajte nas',['class'=>'nav-link '.(url_is('gost/pitanja*')?'active':'')])?>    
             </li>
             <li>
-              <?= anchor('/login', 'Ulogujte se',['class'=>'getstarted'])?>          
+              <?= anchor('/profile', 'Moj profil',['class'=>'getstarted'])?>          
             </li>
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>

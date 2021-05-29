@@ -4,6 +4,9 @@ namespace App\Repository;
 
 use App\Models\Entities\Korisnik;
 use App\Models\Entities\Uloge;
+use App\Models\Entities\Klijent;
+use App\Models\Entities\Lekar;
+
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 
 /**
@@ -16,7 +19,7 @@ class KlijentRepository extends \Doctrine\ORM\EntityRepository
 {
     public function kreirajKlijenta($postData){
         $korisnik = new Korisnik;
-        $korisnik->setSifra($postData["sifra"]);
+        $korisnik->setSifra(password_hash($postData["sifra"], PASSWORD_DEFAULT));
         $korisnik->setIme($postData["ime"]);
         $korisnik->setPrezime($postData["prezime"]);
         $korisnik->setJmbg($postData["jmbg"]);
@@ -28,15 +31,27 @@ class KlijentRepository extends \Doctrine\ORM\EntityRepository
         $uloga = $klijentRepo->findOneby(['nazivuloge'=>'Klijent']);
         $korisnik->setIduloge($uloga);
 
-        $this->_em->persist($korisnik);
+        $lekarRepo = service("doctrine")->em->getRepository(Lekar::class);
+        $izabraniLekar = $lekarRepo->findOneby(['idlekar'=> (int)$postData["lekar"]]);
+
+        if(!$izabraniLekar){
+          return ["success"=>false,"errors"=>['lekar'=>"Izabrani lekar ne postoji."]];
+        }
+
+        $klijent = new Klijent;
+        $klijent->setIdklijent($korisnik);
+        $klijent->setIzabraniLekar($izabraniLekar);
+
+
+        $this->_em->persist($klijent);
         try {
           $this->_em->flush();
         }
         catch (UniqueConstraintViolationException $e) {
-           return ["success"=>false,"errors"=>"Email je vec u upotrebi."];
+           return ["success"=>false,"errors"=>['email'=>"Email je vec u upotrebi."]];
         }
-        return ["success"=>true,"errors"=>[]];
-        var_dump($korisnik);
+        return ["success"=>true,"errors"=>[],'klijent'=>$klijent];
+        
    
      
         

@@ -30,6 +30,7 @@ class Authentication
             'user_id'       => $this->korisnik->getIdk(),
             'user_name'     => $this->korisnik->getIme(),
             'user_email'    => $this->korisnik->getEmail(),
+            'user_role'     => $this->korisnik->getIdUloge()->getNazivuloge(),
             'logged_in'     => TRUE
         ];
         session()->set($ses_data);
@@ -72,4 +73,6 @@ class Authentication
         }
 
     }
+
+    
 }

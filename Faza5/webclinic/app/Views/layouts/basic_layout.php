@@ -18,8 +18,18 @@
   </head>
   <body>
     
-    <?= $this->renderSection('navbar') ?>
-  
+   
+    <?php 
+    $authorization = service("authorization");
+    if( $authorization->isKorisnik())
+      echo view('layouts/partials/user_navbar'); 
+    else if(  $authorization->isSluzbenik())
+      echo view('layouts/partials/sluzbenik_navbar'); 
+    else
+      echo view('layouts/partials/guest_navbar'); 
+    ?>
+
+
     <?= $this->renderSection('content') ?>
      
     

@@ -43,6 +43,8 @@ $routes->post('/login', 'Login::loginUser' , ['filter' => 'alreadylogged']);
 $routes->get('/sluzbenik/register', 'Register::registerSluzbenikPage');
 $routes->post('/sluzbenik/register', 'Register::registerSluzbenik');
 
+$routes->get('/sluzbenik/control-panel', 'Controlpanel::panel_sluzbenik');
+
 $routes->get('/dashboard', 'Dashboard::index');
 
 

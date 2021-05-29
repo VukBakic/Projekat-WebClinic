@@ -17,7 +17,7 @@ class Klijent
      *
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="App\Models\Entities\Korisnik")
+     * @ORM\OneToOne(targetEntity="App\Models\Entities\Korisnik", cascade={"persist", "remove"}))
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="idKlijent", referencedColumnName="idK")
      * })

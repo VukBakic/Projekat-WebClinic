@@ -37,4 +37,13 @@ class Services extends BaseService
 	
 	    return new \App\Libraries\Authentication();
 	}
+	public static function authorization($getShared = true)
+	{
+	    if ($getShared)
+	    {
+	        return static::getSharedInstance('authorization');
+	    }
+	
+	    return new \App\Libraries\Authorization();
+	}
 }

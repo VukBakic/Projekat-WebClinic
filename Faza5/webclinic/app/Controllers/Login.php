@@ -27,15 +27,7 @@ class Login extends BaseController
         $email = $this->request->getPost('email');
         $password = $this->request->getPost('password');
 		
-		
-	
-     
-    
         $authenticate = $this->auth->authenticate(array('email' => $email, 'password'=> $password));
-		
-		
-		
-     
 		
 
         if($authenticate){
