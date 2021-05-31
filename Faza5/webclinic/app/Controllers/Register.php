@@ -40,8 +40,6 @@ class Register extends BaseController
 	public function registerSluzbenik()
 	{
 		
-		
-		helper('form');
 		$data = [
 			'success' => true,
 			'errors'=>NULL,

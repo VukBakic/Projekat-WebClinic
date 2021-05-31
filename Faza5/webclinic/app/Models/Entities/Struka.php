@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Struka
  *
  * @ORM\Table(name="struka")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\StrukaRepository")
  */
 class Struka
 {
