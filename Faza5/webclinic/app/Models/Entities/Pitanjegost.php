@@ -7,24 +7,29 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Pitanjegost
  *
- * @ORM\Table(name="pitanjegost")
- * @ORM\Entity
+ * @ORM\Table(name="pitanjegost") 
+ * @ORM\Entity(repositoryClass="App\Repository\PitanjegostRepository")
  */
-class Pitanjegost
+class Pitanjegost //ORM\Table(name="pitanjegost", indexes={ORM\Index(name="R_35", columns={"idPitanje"})})
 {
     /**
-     * @var string
+     * @var \App\Models\Entities\Pitanje
      *
-     * @ORM\Column(name="ime", type="string", length=20, nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="App\Models\Entities\Pitanje", cascade={"persist", "remove"})
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idPitanje", referencedColumnName="idPitanje")
+     * })
      */
-    private $ime;
-
+    private $idpitanje;
     /**
      * @var string
      *
-     * @ORM\Column(name="prezime", type="string", length=20, nullable=false)
+     * @ORM\Column(name="imeprezime", type="string", length=50, nullable=false)
      */
-    private $prezime;
+    private $imeprezime;
+
 
     /**
      * @var string
@@ -33,67 +38,35 @@ class Pitanjegost
      */
     private $email;
 
-    /**
-     * @var \App\Models\Entities\Pitanje
-     *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="App\Models\Entities\Pitanje")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idPitanje", referencedColumnName="idPitanje")
-     * })
-     */
-    private $idpitanje;
+    
 
 
 
     /**
-     * Set ime.
+     * Set imeprezime.
      *
-     * @param string $ime
+     * @param string $imeprezime
      *
      * @return Pitanjegost
      */
-    public function setIme($ime)
+    public function setImeprezime($imeprezime)
     {
-        $this->ime = $ime;
+        $this->imeprezime = $imeprezime;
 
         return $this;
     }
 
     /**
-     * Get ime.
+     * Get imeprezime.
      *
      * @return string
      */
-    public function getIme()
+    public function getImeprezime()
     {
-        return $this->ime;
+        return $this->imeprezime;
     }
 
-    /**
-     * Set prezime.
-     *
-     * @param string $prezime
-     *
-     * @return Pitanjegost
-     */
-    public function setPrezime($prezime)
-    {
-        $this->prezime = $prezime;
-
-        return $this;
-    }
-
-    /**
-     * Get prezime.
-     *
-     * @return string
-     */
-    public function getPrezime()
-    {
-        return $this->prezime;
-    }
+    
 
     /**
      * Set email.

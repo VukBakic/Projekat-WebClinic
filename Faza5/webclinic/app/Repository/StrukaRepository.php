@@ -12,13 +12,8 @@ class StrukaRepository extends \Doctrine\ORM\EntityRepository
 {
      public function dohvatiStruke(){
 
-        $arr = $this->findAll();
-        $arr1= array();
-        foreach ($arr as $a){
-            $arr1[]= $a->getNazivStruke();
-          
-        }
-        return $arr1;
+        return $this->findAll();
+        
     }
     
 }

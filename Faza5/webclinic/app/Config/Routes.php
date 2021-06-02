@@ -34,12 +34,9 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->post('/klijent/pitaj', 'Question::clientSubmitQuestion');
-
 
 $routes->get('/login', 'Login::loginPage', ['filter' => 'alreadylogged']);
 $routes->post('/login', 'Login::loginUser' , ['filter' => 'alreadylogged']);
-
 
 $routes->get('/sluzbenik/register', 'Register::registerSluzbenikPage');
 $routes->post('/sluzbenik/register', 'Register::registerSluzbenik');
@@ -47,6 +44,15 @@ $routes->post('/sluzbenik/register', 'Register::registerSluzbenik');
 $routes->get('/sluzbenik/control-panel', 'Controlpanel::panel_sluzbenik');
 
 $routes->get('/dashboard', 'Dashboard::index');
+
+$routes->get('/klijent/pitaj', 'Question::clientQuestionPage');
+$routes->post('/klijent/pitaj', 'Question::clientSubmitQuestion');
+
+$routes->get('/gost/pitaj', 'Question::guestQuestionPage');
+$routes->post('/gost/pitaj', 'Question::guestSubmitQuestion');
+
+
+
 
 
 
