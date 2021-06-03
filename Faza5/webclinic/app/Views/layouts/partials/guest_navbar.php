@@ -12,7 +12,7 @@
             </li>
 
             <li>
-              <?= anchor('/gost/pitanja', 'Pitajte nas',['class'=>'nav-link '.(url_is('gost/pitanja*')?'active':'')])?>    
+              <?= anchor('/pitanja', 'Pitajte nas',['class'=>'nav-link '.(url_is('pitanja*')?'active':'')])?>    
             </li>
             <li>
               <?= anchor('/login', 'Ulogujte se',['class'=>'getstarted'])?>          

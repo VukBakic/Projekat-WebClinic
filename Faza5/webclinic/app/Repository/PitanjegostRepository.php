@@ -34,7 +34,7 @@ class PitanjegostRepository extends \Doctrine\ORM\EntityRepository
         
 
         $this->_em->persist($pitanjeGost);
-       
+        
         
         try {
           $this->_em->flush();

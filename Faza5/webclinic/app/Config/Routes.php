@@ -45,11 +45,16 @@ $routes->get('/sluzbenik/control-panel', 'Controlpanel::panel_sluzbenik');
 
 $routes->get('/dashboard', 'Dashboard::index');
 
+$routes->get('/pitanja/(:num)', 'Question::questionPage/$1');
+
 $routes->get('/klijent/pitaj', 'Question::clientQuestionPage');
 $routes->post('/klijent/pitaj', 'Question::clientSubmitQuestion');
 
 $routes->get('/gost/pitaj', 'Question::guestQuestionPage');
 $routes->post('/gost/pitaj', 'Question::guestSubmitQuestion');
+
+
+
 
 
 

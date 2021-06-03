@@ -20,7 +20,7 @@ class Filters extends BaseConfig
 		'toolbar'  => DebugToolbar::class,
 		'honeypot' => Honeypot::class,
 		'authorization'     => \App\Filters\Authorization::class,
-		"alreadylogged" => \App\Filters\AlreadyLogged::class,
+		'alreadylogged' => \App\Filters\AlreadyLogged::class,
 	];
 
 	/**

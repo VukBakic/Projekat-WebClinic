@@ -34,7 +34,7 @@ class Pitanjegost //ORM\Table(name="pitanjegost", indexes={ORM\Index(name="R_35"
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=20, nullable=false)
+     * @ORM\Column(name="email", type="string", length=50, nullable=false)
      */
     private $email;
 

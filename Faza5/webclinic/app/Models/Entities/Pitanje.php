@@ -61,6 +61,12 @@ class Pitanje
      * })
      */
     private $idlekar;
+    
+    /**
+    * @ORM\Column(type="datetime", nullable=false)
+    * @ORM\Version
+     */
+     private $datumvreme;
 
 
 
@@ -193,4 +199,6 @@ class Pitanje
     {
         return $this->idlekar;
     }
+    
+    
 }
