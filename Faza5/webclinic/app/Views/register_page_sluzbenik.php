@@ -1,7 +1,5 @@
 <?= $this->extend('layouts/basic_layout') ?>
-<?= $this->section('navbar') ?>
-    <?= $this->include('layouts/partials/guest_navbar') ?>
-<?= $this->endSection() ?>
+
 <?= $this->section('content') ?>
 <section id="controlpanel" class="controlpanel kontrola-forme section-bg">
       <div class="container" data-aos="fade-up">

@@ -49,6 +49,12 @@ $routes->get('/sluzbenik/control-panel', 'Controlpanel::panel_sluzbenik');
 $routes->get('/dashboard', 'Dashboard::index');
 
 
+$routes->get('/profile', 'Profile::profile_page');
+$routes->get('/profile/change', 'Profile::profile_change_page');
+$routes->post('/profile/change', 'Profile::change_profile');
+
+$routes->get('/resetpassword', 'Resetpassword::resetPassPage');
+$routes->post('/resetpassword', 'Resetpassword::resetPassword');
 
 /*
  * --------------------------------------------------------------------

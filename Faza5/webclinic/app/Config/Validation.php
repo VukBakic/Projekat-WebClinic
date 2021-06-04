@@ -39,6 +39,22 @@ class Validation {
     //--------------------------------------------------------------------
     // Rules
     //--------------------------------------------------------------------
+
+    public $profile_change = [
+        'tel' => [
+            'rules' => 'numeric|permit_empty',
+            'errors' => [          
+                'numeric' => "Polje telefon sme sadrzati samo cifre"
+            ]
+        ],
+        'email' => [
+            'rules' => 'valid_email|permit_empty',
+            'errors' => [
+                'valid_email' => 'Uneti email nije validan.'
+            ]
+        ],
+    ];
+
     public $signup = [
         'ime' => [
             'rules' => 'required|alpha_space',
