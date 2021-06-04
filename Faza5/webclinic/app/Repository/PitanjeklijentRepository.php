@@ -23,6 +23,7 @@ class PitanjeklijentRepository extends \Doctrine\ORM\EntityRepository
         $strukarep = service('doctrine')->em->getRepository(Struka::class);
         $struka=$strukarep->findOneBy(['nazivstruke'=>$postData["struka"]]);
         $pitanje->setNazivstruke($struka);
+        $pitanje->setGostpitao(false);  
         
         $pitanjeKlijent= new Pitanjeklijent;
         $pitanjeKlijent->setIdpitanje($pitanje);

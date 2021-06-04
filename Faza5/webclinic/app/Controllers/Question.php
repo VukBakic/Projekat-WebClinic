@@ -25,16 +25,20 @@ class Question extends BaseController {
     
     public function questionPage($num) {
         $repo = $this->doctrine->em->getRepository(Pitanje::class);
+        $pitanja=$repo->getAllQuestions($num);
         
        
         
-        return view('question_list', ['pitanja'=>$repo->getAllQuestions($num)]);
+        return view('question_list', ['pitanja'=>$pitanja]);
         
     }
     
     
     
     public function guestQuestionPage() {
+       //   $pitanje = new Pitanje;
+       // dd($this->$pitanje->getImenaprezimena());
+        
         $repo = $this->doctrine->em->getRepository(Struka::class);
         $struka = $repo->dohvatiStruke();
 
@@ -79,7 +83,7 @@ class Question extends BaseController {
     }
 
     public function clientSubmitQuestion() {
-
+        $this->session = \Config\Services::session();
         $data = [
             'success' => true,
             'errors' => NULL,
@@ -92,16 +96,14 @@ class Question extends BaseController {
             return $this->response->setJSON($data);
         } else {
             
-            $repo = $this->doctrine->em->getRepository(Pitanje::class);
-            $created = $repo->kreirajPitanje($this->request->getPost(),$this->session->get('user_id'));
+            $repo = $this->doctrine->em->getRepository(Pitanjeklijent::class);
+            $created = $repo->kreirajPitanjeklijent($this->request->getPost(),$this->session->get('user_id'));
             
 
             return $this->response->setJSON($created);
         }
     }
     
-    public function guestSubmitQuestion() {
-
-    }
+   
 
 }

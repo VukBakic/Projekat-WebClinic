@@ -21,7 +21,7 @@ class PitanjegostRepository extends \Doctrine\ORM\EntityRepository
         $strukarep = service('doctrine')->em->getRepository(Struka::class);
         $struka=$strukarep->findOneBy(['nazivstruke'=>$postData["struka"]]);
         $pitanje->setNazivstruke($struka);
-        
+        $pitanje->setGostpitao(true);        
         $pitanjeGost= new Pitanjegost;
         $pitanjeGost->setIdpitanje($pitanje);
        
@@ -29,6 +29,7 @@ class PitanjegostRepository extends \Doctrine\ORM\EntityRepository
         
         $pitanjeGost->setImeprezime($postData["name"]);
         $pitanjeGost->setEmail($postData["email"]);
+        
         
          
         
