@@ -220,4 +220,15 @@ class Lekar extends \App\Models\Entities\Lekar implements \Doctrine\ORM\Proxy\Pr
         return parent::getIdlekar();
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function odgovoranZa($pitanje)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'odgovoranZa', [$pitanje]);
+
+        return parent::odgovoranZa($pitanje);
+    }
+
 }

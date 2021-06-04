@@ -83,4 +83,7 @@ class Lekar
     {
         return $this->idlekar;
     }
+    
+    public function odgovoranZa($pitanje){
+    return $pitanje->getNazivstruke()==$this->nazivstruke;    }
 }

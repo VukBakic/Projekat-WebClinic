@@ -25,5 +25,7 @@ class Authorization {
         return (!$this->isSluzbenik() && !$this->isLekar() &&
                 !$this->isAdmin() && !$this->isKlijent());
     }
+    
+    
 
 }

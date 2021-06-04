@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use Doctrine\ORM\Tools\Pagination\Paginator;
+
 
 /**
  * PitanjeRepository
@@ -11,6 +11,15 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
  * repository methods below.
  */
 class PitanjeRepository extends \Doctrine\ORM\EntityRepository {
+    
+    public function dohvBrPitanja(){
+        
+        $brPitanja = $this->createQueryBuilder('a')
+            ->select('count(a.idpitanje)')
+            ->getQuery()
+            ->getSingleScalarResult();
+        return $brPitanja;
+    }
 
     public function getAllQuestions($page) {
         if (!$page)

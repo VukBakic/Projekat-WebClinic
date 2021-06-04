@@ -13,6 +13,7 @@ use App\Models\Entities\Struka;
 use App\Models\Entities\Pitanjeklijent;
 use App\Models\Entities\Pitanjegost;
 use App\Models\Entities\Pitanje;
+use App\Models\Entities\Lekar;
 
 
 
@@ -25,11 +26,12 @@ class Question extends BaseController {
     
     public function questionPage($num) {
         $repo = $this->doctrine->em->getRepository(Pitanje::class);
+        $lekarrep = $this->doctrine->em->getRepository(Lekar::class);
         $pitanja=$repo->getAllQuestions($num);
-        
-       
-        
-        return view('question_list', ['pitanja'=>$pitanja]);
+        $pager = \Config\Services::pager();
+ 
+        return view('question_list', ['pitanja'=>$pitanja, 'pager'=>$pager,
+            'brpitanja'=>$repo->dohvBrPitanja(), 'num'=>$num, 'lekarrep'=>$lekarrep]); 
         
     }
     

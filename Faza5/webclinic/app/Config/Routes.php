@@ -47,11 +47,11 @@ $routes->get('/dashboard', 'Dashboard::index');
 
 $routes->get('/pitanja/(:num)', 'Question::questionPage/$1');
 
-$routes->get('/klijent/pitaj', 'Question::clientQuestionPage');
-$routes->post('/klijent/pitaj', 'Question::clientSubmitQuestion');
+$routes->get('/pitanja/klijent/pitaj', 'Question::clientQuestionPage');
+$routes->post('/pitanja/klijent/pitaj', 'Question::clientSubmitQuestion');
 
-$routes->get('/gost/pitaj', 'Question::guestQuestionPage');
-$routes->post('/gost/pitaj', 'Question::guestSubmitQuestion');
+$routes->get('/pitanja/gost/pitaj', 'Question::guestQuestionPage');
+$routes->post('/pitanja/gost/pitaj', 'Question::guestSubmitQuestion');
 
 
 

@@ -2,6 +2,7 @@
 
 <?= $this->section('content') ?>
 
+
 <section id="pitanja" class="pitanja kontrola-forme section-bg">
     <div class="container" data-aos="fade-up">
         <?php
@@ -14,20 +15,46 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="row">
-                    <?php foreach ($pitanja as $pitanje): ?>
+                    <?php foreach ($pitanja as $p): ?> 
 
-                        <div class="col-12">
+                        <div class="col-12 mt-3">
+
                             <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
                                 <div class="member-info">
-                                    <h4><?= $pitanje->getImeprezimep() ?></h4>
-                                    <span><?= $pitanje->getTekstpitanja() ?></span>
+                                    <div class="mb-4 d-flex justify-content-between">
+                                        <p>Pitanje iz oblasti: <?= $p->getNazivstruke()->getNazivstruke() ?></p>
+                                        <div class="text-center">
+
+
+                                            <?php
+                                            if (service("authorization")->isLekar()) {
+
+                                                if ($p->getIdlekar() != null)
+                                                    echo '<a disabled="" class="cstm-form-btn disabled" href="#">Odgovoreno</a>';
+                                                else {
+                                                    $lekarid = session()->get("user_id");
+                                                    $lekar = $lekarrep->find($lekarid);
+
+                                                    if (!$lekar->odgovoranZa($p))
+                                                        echo '<a disabled="" class="cstm-form-btn disabled" href="#">Odgovori</a>';
+                                                    else
+                                                        echo '<a class="cstm-form-btn" href="#">Odgovori</a>';
+                                                }
+                                            }
+                                            ?>
+
+
+                                        </div>
+                                    </div>
+                                    <h4><?= $p->getImeprezimep() . ($p->getGostpitao() ? '(Gost)' : '(Klijent)') ?></h4>
+                                    <span><?= $p->getTekstpitanja() ?></span>
 
                                     <div class="d-flex mt-3">
 
                                         <div class="ms-3">
-                                            <h4><?= $pitanje->getImeprezimelekara() ?></h4>
+                                            <h4><?= $p->getImeprezimelekara() ?></h4>
                                             <p>
-                                                <?= $pitanje->getOdgovor() ?>
+                                                <?= $p->getOdgovor() ?>
                                             </p>
                                         </div>
                                     </div>
@@ -38,8 +65,18 @@
                 </div>
             </div>
         </div>
+        <div class ="row">
+            <?= $pager->makeLinks($num, 2, $brpitanja, "pagination_link", 2) ?>
+        </div>
     </div>
+
+
 </section>
+
+
+
+
+
 
 <?= $this->endSection() ?>
 

@@ -9,6 +9,7 @@ use App\Models\Entities\Pitanjegost;
 use App\Models\Entities\Klijent;
 use App\Models\Entities\Korisnik;
 
+
 /**
  * Pitanje
  *
@@ -16,6 +17,8 @@ use App\Models\Entities\Korisnik;
  * @ORM\Entity(repositoryClass="App\Repository\PitanjeRepository")
  */
 class Pitanje {
+    
+    
 
     /**
      * @var int
@@ -82,16 +85,17 @@ class Pitanje {
 
     public function getImeprezimep() {
         $imeprezime = '';
-
+       
         if ($this->gostpitao) {
-            $rep = $this->doctrine->em->getRepository(Pitanjegost::class);
-            $pitanjegost = $rep->findOneBy(array('idpitanje' => $this->idpitanje));
+           
+            $rep = service('doctrine')->em->getRepository(Pitanjegost::class);
+            $pitanjegost = $rep->find($this->idpitanje); //findOneBy(array('idpitanje' => $this->idpitanje));
             $imeprezime = $pitanjegost->getImeprezime();
         } else {
-            $rep = $this->doctrine->em->getRepository(Pitanjeklijent::class);
-            $pitanjeklijent = $rep->findOneBy(array('idpitanje' => $this->idpitanje));
-            $korisnikrep = $this->doctrine->em->getRepository(Korisnik::class);
-            $korisnik = $korisnikrep->findOneBy(array('idk' => $pitanjeklijent->getIdklijent()));
+            $rep = service('doctrine')->em->getRepository(Pitanjeklijent::class);
+            $pitanjeklijent = $rep->find($this->idpitanje); //findOneBy(array('idpitanje' => $this->idpitanje));
+            $korisnikrep = service('doctrine')->em->getRepository(Korisnik::class);
+            $korisnik = $korisnikrep->find($pitanjeklijent->getIdklijent()); //findOneBy(array('idk' => $pitanjeklijent->getIdklijent()));
             $ime = $korisnik->getIme();
             $prezime = $korisnik->getPrezime();
             $imeprezime = $ime . ' ' . $prezime;
@@ -228,11 +232,15 @@ class Pitanje {
     }
 
     public function getImeprezimelekara() {
-        if (idlekar != null) {
-            $korisnik = $korisnikrep->findOneBy(array('idlekar' => $idlekar));
+        
+        if ($this->idlekar != null) {
+            
+            
+            $korisnikrep = service('doctrine')->em->getRepository(Korisnik::class);
+            $korisnik=$korisnikrep->find($this->idlekar);
             return 'Dr. ' . $korisnik->getIme() . ' ' . $korisnik->getPrezime();
         }
-        return 'Ceka se odgovor';
+        return '-Nije odgovoreno-';
     }
 
 }
