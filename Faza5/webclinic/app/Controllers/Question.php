@@ -132,6 +132,7 @@ class Question extends BaseController {
 
 
 
+            
 
             $lekarid = $this->session->get("user_id");
             $repolek = $this->doctrine->em->getRepository(Lekar::class);
