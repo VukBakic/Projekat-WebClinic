@@ -20,7 +20,7 @@ class Struka
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $nazivstruke;
-
+    
 
 
     /**
@@ -32,4 +32,6 @@ class Struka
     {
         return $this->nazivstruke;
     }
+    
+   
 }

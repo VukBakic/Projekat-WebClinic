@@ -3,6 +3,12 @@
 namespace App\Models\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Models\Entities\Pitanje;
+use App\Models\Entities\Pitanjeklijent;
+use App\Models\Entities\Pitanjegost;
+use App\Models\Entities\Klijent;
+use App\Models\Entities\Korisnik;
+
 
 /**
  * Pitanje
@@ -10,8 +16,10 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="pitanje", indexes={@ORM\Index(name="R_33", columns={"nazivStruke"}), @ORM\Index(name="R_40", columns={"idLekar"})})
  * @ORM\Entity(repositoryClass="App\Repository\PitanjeRepository")
  */
-class Pitanje
-{
+class Pitanje {
+    
+    
+
     /**
      * @var int
      *
@@ -62,15 +70,54 @@ class Pitanje
      */
     private $idlekar;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=false)
+     * @ORM\Version
+     */
+    private $datumvreme;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="gostpitao", type="boolean", nullable=false)
+     */
+    private $gostpitao;
+
+    public function getImeprezimep() {
+        $imeprezime = '';
+       
+        if ($this->gostpitao) {
+           
+            $rep = service('doctrine')->em->getRepository(Pitanjegost::class);
+            $pitanjegost = $rep->find($this->idpitanje); //findOneBy(array('idpitanje' => $this->idpitanje));
+            $imeprezime = $pitanjegost->getImeprezime();
+        } else {
+            $rep = service('doctrine')->em->getRepository(Pitanjeklijent::class);
+            $pitanjeklijent = $rep->find($this->idpitanje); //findOneBy(array('idpitanje' => $this->idpitanje));
+            $korisnikrep = service('doctrine')->em->getRepository(Korisnik::class);
+            $korisnik = $korisnikrep->find($pitanjeklijent->getIdklijent()); //findOneBy(array('idk' => $pitanjeklijent->getIdklijent()));
+            $ime = $korisnik->getIme();
+            $prezime = $korisnik->getPrezime();
+            $imeprezime = $ime . ' ' . $prezime;
+        }
+
+        return $imeprezime;
+    }
+
+    public function getGostpitao() {
+        return $this->gostpitao;
+    }
+
+    public function setGostpitao($gostpitao): void {
+        $this->gostpitao = $gostpitao;
+    }
 
     /**
      * Get idpitanje.
      *
      * @return int
      */
-    public function getIdpitanje()
-    {
+    public function getIdpitanje() {
         return $this->idpitanje;
     }
 
@@ -81,8 +128,7 @@ class Pitanje
      *
      * @return Pitanje
      */
-    public function setOdgovor($odgovor = null)
-    {
+    public function setOdgovor($odgovor = null) {
         $this->odgovor = $odgovor;
 
         return $this;
@@ -93,8 +139,7 @@ class Pitanje
      *
      * @return string|null
      */
-    public function getOdgovor()
-    {
+    public function getOdgovor() {
         return $this->odgovor;
     }
 
@@ -105,8 +150,7 @@ class Pitanje
      *
      * @return Pitanje
      */
-    public function setNaslov($naslov)
-    {
+    public function setNaslov($naslov) {
         $this->naslov = $naslov;
 
         return $this;
@@ -117,8 +161,7 @@ class Pitanje
      *
      * @return string
      */
-    public function getNaslov()
-    {
+    public function getNaslov() {
         return $this->naslov;
     }
 
@@ -129,8 +172,7 @@ class Pitanje
      *
      * @return Pitanje
      */
-    public function setTekstpitanja($tekstpitanja)
-    {
+    public function setTekstpitanja($tekstpitanja) {
         $this->tekstpitanja = $tekstpitanja;
 
         return $this;
@@ -141,8 +183,7 @@ class Pitanje
      *
      * @return string
      */
-    public function getTekstpitanja()
-    {
+    public function getTekstpitanja() {
         return $this->tekstpitanja;
     }
 
@@ -153,8 +194,7 @@ class Pitanje
      *
      * @return Pitanje
      */
-    public function setNazivstruke(\App\Models\Entities\Struka $nazivstruke = null)
-    {
+    public function setNazivstruke(\App\Models\Entities\Struka $nazivstruke = null) {
         $this->nazivstruke = $nazivstruke;
 
         return $this;
@@ -165,8 +205,7 @@ class Pitanje
      *
      * @return \App\Models\Entities\Struka|null
      */
-    public function getNazivstruke()
-    {
+    public function getNazivstruke() {
         return $this->nazivstruke;
     }
 
@@ -177,8 +216,7 @@ class Pitanje
      *
      * @return Pitanje
      */
-    public function setIdlekar(\App\Models\Entities\Lekar $idlekar = null)
-    {
+    public function setIdlekar(\App\Models\Entities\Lekar $idlekar = null) {
         $this->idlekar = $idlekar;
 
         return $this;
@@ -189,8 +227,20 @@ class Pitanje
      *
      * @return \App\Models\Entities\Lekar|null
      */
-    public function getIdlekar()
-    {
+    public function getIdlekar() {
         return $this->idlekar;
     }
+
+    public function getImeprezimelekara() {
+        
+        if ($this->idlekar != null) {
+            
+            
+            $korisnikrep = service('doctrine')->em->getRepository(Korisnik::class);
+            $korisnik=$korisnikrep->find($this->idlekar);
+            return 'Dr. ' . $korisnik->getIme() . ' ' . $korisnik->getPrezime();
+        }
+        return '-Nije odgovoreno-';
+    }
+
 }

@@ -21,7 +21,7 @@
    
     <?php 
     $authorization = service("authorization");
-    if( $authorization->isKorisnik())
+    if( $authorization->isKlijent())
       echo view('layouts/partials/user_navbar'); 
     else if(  $authorization->isSluzbenik())
       echo view('layouts/partials/sluzbenik_navbar'); 

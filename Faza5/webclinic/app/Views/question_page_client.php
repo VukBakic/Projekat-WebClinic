@@ -14,7 +14,7 @@
 
         <div class="row lista pitanja">
             <div class="col-12 mt-5 mt-lg-0 d-flex align-items-stretch">
-                <?= form_open('klijent/pitaj',['class' => 'php-email-form w-100'])?>
+                <?= form_open('pitanja/klijent/pitaj', ['class' => 'php-email-form w-100']) ?>
                
                     <div class="row">
                         <div class="form-group col-md-6">
@@ -24,10 +24,10 @@
                         <div class="form-group col-md-6">
                             <label for="struka">Oblast medicine</label>
                             <select class="form-select" name="struka" id="struka">
-                                <
+                                
                                 <?php foreach ($struka as $s): ?>
-
-                                    <option value="<?= $s ?>"><?= $s ?></option>
+                                
+                                   <option value="<?=$s->getNazivstruke()?>"><?= $s->getNazivstruke() ?></option>
 
                                 <?php endforeach; ?>
                             </select>

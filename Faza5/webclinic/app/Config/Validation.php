@@ -131,23 +131,75 @@ class Validation {
             'rules' => 'required|min_length[3]|max_length[30]',
             'errors' => [
                 'required' => 'Morate uneti naslov pitanja.',
-                'alpha_space' => 'Polje naslov moze sadrzati samo slova i razmak'
+                'min_length' => 'Tekst naslova mora sadrzati najmanje 3 karaktera.',
+                'max_length' => 'Tekst naslova moze sadrzati najvise 30 karaktera.'
             ]
         ],
         'message' => [
             'rules' => 'required|min_length[10]|max_length[200]',
             'errors' => [
                 'required' => 'Morate uneti tekst pitanja.',
-                'exact_length' => 'Tekst pitanja mora sadrzati izmedju 10 i 200 karaktera'
+                'min_length' => 'Tekst pitanja mora sadrzati najmanje 10 karaktera.',
+                'max_length' => 'Tekst pitanja moze sadrzati najvise 200 karaktera.'
             ]
         ],
         'struka' => [
             'rules' => 'required',
             'errors' => [
-                'required' => 'Morate izabrati struku.',
+                'required' => 'Morate izabrati struku.'
                 
             ]
         ]
     ];
+    
+    public $guestquestion = [
+        'subject' => [
+            'rules' => 'required|min_length[3]|max_length[30]',
+            'errors' => [
+                'required' => 'Morate uneti naslov pitanja.',
+                'min_length' => 'Tekst naslova mora sadrzati najmanje 3 karaktera.',
+                'max_length' => 'Tekst naslova moze sadrzati najvise 30 karaktera.'
+            ]
+        ],
+        'message' => [
+            'rules' => 'required|min_length[10]|max_length[200]',
+            'errors' => [
+                'required' => 'Morate uneti tekst pitanja.',
+                'min_length' => 'Tekst pitanja mora sadrzati najmanje 10 karaktera.',
+                'max_length' => 'Tekst pitanja moze sadrzati najvise 200 karaktera.'
+            ]
+        ],
+        'struka' => [
+            'rules' => 'required',
+            'errors' => [
+                'required' => 'Morate izabrati struku.'
+            ]
+        ],
+        'email' => [
+            'rules' => 'required|valid_email',
+            'errors' => [
+                'required' => 'Morate uneti email.',
+                'valid_email' => 'Uneti email nije validan.'
+            ]
+        ],
+        'name' => [
+            'rules' => 'required',
+            'errors' => [
+                'required' => 'Morate uneti ime i prezime ili makar jedno od ta dva.'
+            ]
+        ]
+    ];
 
+    
+    public $answer = [
+        
+        'message' => [
+            'rules' => 'required|max_length[200]',
+            'errors' => [
+                'required' => 'Morate uneti tekst odgovora.',
+                
+                'max_length' => 'Tekst odgovora moze sadrzati najvise 200 karaktera.'
+            ]
+        ]
+    ];
 }
