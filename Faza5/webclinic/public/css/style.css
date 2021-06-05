@@ -1800,3 +1800,13 @@ section {
 .invalid {
   border: 2px solid red !important;
 }
+
+#questlistnav{
+    padding: 10px;
+    position: center;
+    
+}
+
+#odgdugme{
+    padding:10px;
+}

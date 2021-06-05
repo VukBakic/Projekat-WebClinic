@@ -10,10 +10,8 @@
             <li>
               <?= anchor('/klijent/pregled', 'Zakažite pregled',['class'=>'nav-link '.(url_is('gost/pregled*')?'active':'')])?>    
             </li>
-
-            <li>
-              <?= anchor('/klijent/pitanja', 'Pitajte nas',['class'=>'nav-link '.(url_is('gost/pitanja*')?'active':'')])?>    
-            </li>
+           
+            
             <li>
               <?= anchor('/sluzbenik/control-panel', 'Kontrolni panel',['class'=>'getstarted'])?>          
             </li>

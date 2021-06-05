@@ -45,16 +45,36 @@ $routes->get('/sluzbenik/control-panel', 'Controlpanel::panel_sluzbenik');
 
 $routes->get('/dashboard', 'Dashboard::index');
 
-$routes->get('/klijent/pitaj', 'Question::clientQuestionPage');
-$routes->post('/klijent/pitaj', 'Question::clientSubmitQuestion');
+$routes->get('/pitanja/(:num)', 'Question::questionPage/$1');
 
-$routes->get('/gost/pitaj', 'Question::guestQuestionPage');
-$routes->post('/gost/pitaj', 'Question::guestSubmitQuestion');
+$routes->get('/pitanja/klijent/pitaj', 'Question::clientQuestionPage');
+$routes->post('/pitanja/klijent/pitaj', 'Question::clientSubmitQuestion');
+
+$routes->get('/pitanja/gost/pitaj', 'Question::guestQuestionPage');
+$routes->post('/pitanja/gost/pitaj', 'Question::guestSubmitQuestion');
+
+$routes->get('/pitanja/lekar/odgovaranje', 'Question::answerPage');
+$routes->post('/pitanja/lekar/odgovaranje', 'Question::submitAnswer');
+$routes->addRedirect('/pitanja', '/pitanja/1');
 
 
 
 
 
+
+
+
+$routes->get('/profile', 'Profile::profile_page');
+$routes->get('/profile/change', 'Profile::profile_change_page');
+$routes->post('/profile/change', 'Profile::change_profile');
+
+$routes->get('/resetpassword', 'Resetpassword::resetPassPage');
+$routes->post('/resetpassword', 'Resetpassword::resetPassword');
+
+
+
+$routes->get('/newpassword/(:hash)', 'Resetpassword::makeNewPasswordPage/$1');
+$routes->post('/newpassword/(:hash)', 'Resetpassword::makeNewPassword/$1');
 
 /*
  * --------------------------------------------------------------------

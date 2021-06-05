@@ -62,24 +62,5 @@ class Register extends BaseController
 		
 		
 	}
-	public function registerSluzbenik_backup()
-	{
 	
-		$repo = $this->doctrine->em->getRepository(Lekar::class);
-		$lekari = $repo->dohvatiLekareOpstePrakse();
-
-		
-		
-		helper('form');
-		if (! $this->validate("signup"))
-        {
-            echo view('register_page_sluzbenik', [
-				"lekari"=>$lekari,
-                'validation' => $this->validator,
-            ]);
-        }else{
-			echo "123";
-		}
-		
-	}
 }

@@ -14,7 +14,7 @@
 
         <div class="row lista pitanja">
             <div class="col-12 mt-5 mt-lg-0 d-flex align-items-stretch">
-                <?= form_open('klijent/pitaj', ['class' => 'php-email-form w-100']) ?>
+                <?= form_open('pitanja/klijent/pitaj', ['class' => 'php-email-form w-100']) ?>
                
                     <div class="row">
                         <div class="form-group col-md-6">

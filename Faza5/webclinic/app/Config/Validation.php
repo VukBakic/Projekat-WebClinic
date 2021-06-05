@@ -39,6 +39,32 @@ class Validation {
     //--------------------------------------------------------------------
     // Rules
     //--------------------------------------------------------------------
+
+    public $passowrd_request = [
+        'email' => [
+            'rules' => 'required|valid_email',
+            'errors' => [
+                'required' => 'Morate uneti email.',
+                'valid_email' => 'Uneti email nije validan.'
+            ]
+        ]
+    ];
+
+    public $profile_change = [
+        'tel' => [
+            'rules' => 'numeric|permit_empty',
+            'errors' => [          
+                'numeric' => "Polje telefon sme sadrzati samo cifre"
+            ]
+        ],
+        'email' => [
+            'rules' => 'valid_email|permit_empty',
+            'errors' => [
+                'valid_email' => 'Uneti email nije validan.'
+            ]
+        ],
+    ];
+
     public $signup = [
         'ime' => [
             'rules' => 'required|alpha_space',
@@ -164,4 +190,16 @@ class Validation {
         ]
     ];
 
+    
+    public $answer = [
+        
+        'message' => [
+            'rules' => 'required|max_length[200]',
+            'errors' => [
+                'required' => 'Morate uneti tekst odgovora.',
+                
+                'max_length' => 'Tekst odgovora moze sadrzati najvise 200 karaktera.'
+            ]
+        ]
+    ];
 }

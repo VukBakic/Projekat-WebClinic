@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 /**
  * KorisnikRepository
  *
@@ -10,4 +11,25 @@ namespace App\Repository;
  */
 class KorisnikRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getKorisnik($id){
+  
+        return $this->find($id);
+    }
+    public function izmeni($id, $postData){
+        $forChange = $this->find($id);
+       
+        if($postData["email"])
+            $forChange->setEmail($postData["email"]);
+        
+        if($postData["tel"])
+            $forChange->setBrtel($postData["tel"]);         
+   
+        try {
+          $this->_em->flush();
+        }
+        catch (UniqueConstraintViolationException $e) {
+           return ["success"=>false,"errors"=>['email'=>"Email je vec u upotrebi."]];
+        }
+        return ["success"=>true,"errors"=>[]];
+    }
 }
