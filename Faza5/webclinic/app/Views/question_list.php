@@ -9,8 +9,10 @@
         $authorization = service("authorization");
         if ($authorization->isKlijent() || $authorization->isGost())
             echo view('layouts/partials/gost_klijent_pitajtenas');
-        ?>
-
+        else if ($authorization->isLekar())
+            echo view('layouts/partials/lekar_odgovorite_klijentima')
+            ?>
+        <?= $this->include('layouts/partials/flash_msg') ?>
         <div class="row lista styledlist">
             <div class="container" data-aos="fade-up">
 
@@ -37,8 +39,10 @@
 
                                                     if (!$lekar->odgovoranZa($p))
                                                         echo '<a disabled="" class="cstm-form-btn disabled" href="#">Odgovori</a>';
-                                                    else
-                                                        echo '<a class="cstm-form-btn" href="#">Odgovori</a>';
+                                                    else {
+
+                                                        echo "<a class=\"cstm-form-btn\" href=\"lekar/odgovaranje?idpitanje=" . $p->getIdpitanje() . "\"   >Odgovori</a>";
+                                                    }
                                                 }
                                             }
                                             ?>

@@ -53,6 +53,10 @@ $routes->post('/pitanja/klijent/pitaj', 'Question::clientSubmitQuestion');
 $routes->get('/pitanja/gost/pitaj', 'Question::guestQuestionPage');
 $routes->post('/pitanja/gost/pitaj', 'Question::guestSubmitQuestion');
 
+$routes->get('/pitanja/lekar/odgovaranje', 'Question::answerPage');
+$routes->post('/pitanja/lekar/odgovaranje', 'Question::submitAnswer');
+$routes->addRedirect('/pitanja', '/pitanja/1');
+
 
 
 

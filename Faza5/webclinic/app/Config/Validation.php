@@ -164,4 +164,16 @@ class Validation {
         ]
     ];
 
+    
+    public $answer = [
+        
+        'message' => [
+            'rules' => 'required|max_length[200]',
+            'errors' => [
+                'required' => 'Morate uneti tekst odgovora.',
+                
+                'max_length' => 'Tekst odgovora moze sadrzati najvise 200 karaktera.'
+            ]
+        ]
+    ];
 }

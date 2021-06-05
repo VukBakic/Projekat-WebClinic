@@ -20,6 +20,12 @@ class PitanjeRepository extends \Doctrine\ORM\EntityRepository {
             ->getSingleScalarResult();
         return $brPitanja;
     }
+    
+    public function getPitanjeById($id){
+       
+       return  $this->findOneBy(array('idpitanje' => $id));
+       
+    }
 
     public function getAllQuestions($page) {
         if (!$page)
@@ -30,6 +36,29 @@ class PitanjeRepository extends \Doctrine\ORM\EntityRepository {
                         2,
                         ($page-1)*2
         );
+    }
+    
+    public function dodajOdgovor($postData, $data){ //,$userId;
+        
+        $pitanje = $this->getPitanjeById($data["idpitanje"]);
+        $pitanje->setOdgovor($postData["message"]);
+        $pitanje->setIdlekar($data["lekar"]);
+             
+        
+  
+
+        $this->_em->persist($pitanje);
+        
+        try {
+          $this->_em->flush();
+         
+         
+        }
+        catch (Exception $e) {
+           return ["success"=>false,"errors"=>['email'=>"Doslo je do greske prilikom pokusaja ubacivanja pitanja u bazu"]];
+        }
+        return ["success"=>true,"errors"=>[]];
+             
     }
 
 }
