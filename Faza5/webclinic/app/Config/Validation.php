@@ -40,6 +40,16 @@ class Validation {
     // Rules
     //--------------------------------------------------------------------
 
+    public $passowrd_request = [
+        'email' => [
+            'rules' => 'required|valid_email',
+            'errors' => [
+                'required' => 'Morate uneti email.',
+                'valid_email' => 'Uneti email nije validan.'
+            ]
+        ]
+    ];
+
     public $profile_change = [
         'tel' => [
             'rules' => 'numeric|permit_empty',

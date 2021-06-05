@@ -1,6 +1,3 @@
-
-
-
 <?php
 $session = \Config\Services::session();
 $errors = $session->getFlashdata('errors');

@@ -56,6 +56,11 @@ $routes->post('/profile/change', 'Profile::change_profile');
 $routes->get('/resetpassword', 'Resetpassword::resetPassPage');
 $routes->post('/resetpassword', 'Resetpassword::resetPassword');
 
+
+
+$routes->get('/newpassword/(:hash)', 'Resetpassword::makeNewPasswordPage/$1');
+$routes->post('/newpassword/(:hash)', 'Resetpassword::makeNewPassword/$1');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
