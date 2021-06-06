@@ -63,6 +63,14 @@ $routes->post('/pitanja/lekar/odgovaranje', 'Question::submitAnswer');
 $routes->addRedirect('/pitanja', '/pitanja/1');
 
 
+$routes->get('/korisnici/(:num)', 'Admin::usersPage/$1');
+$routes->addRedirect('/korisnici', '/korisnici/1');
+
+$routes->get('/korisnici/brisi', 'Admin::deleteUser');
+$routes->get('/korisnici/izmeni', 'Admin::profileChangePage');
+$routes->post('/korisnici/izmeni', 'Admin::submitChangeUser');
+
+$routes->get('/korisnici/filtriraj/(:num)', 'Admin::filterUsers/$1');
 
 $routes->get('/lekar/kartoni/(:num)', 'Kartoni::list/$1');
 $routes->get('/lekar/karton/(:num)/(:num)', 'Kartoni::karton/$1/$2');

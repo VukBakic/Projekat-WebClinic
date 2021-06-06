@@ -1,3 +1,4 @@
+<!-- author Igor 702/17-->
 <?= $this->extend('layouts/basic_layout') ?>
 
 <?= $this->section('content') ?>
@@ -11,7 +12,7 @@
                 pitanja se trudimo da odgovorimo u najkraćem roku.
             </p>
         </div>
-
+        <?= $this->include('layouts/partials/flash_msg') ?>
         <div class="row lista pitanja">
             <div class="col-12 mt-5 mt-lg-0 d-flex align-items-stretch">
                 <?= form_open('pitanja/klijent/pitaj', ['class' => 'php-email-form w-100']) ?>

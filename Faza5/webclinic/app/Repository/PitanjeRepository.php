@@ -2,8 +2,6 @@
 
 namespace App\Repository;
 
-
-
 /**
  * PitanjeRepository
  *
@@ -11,54 +9,45 @@ namespace App\Repository;
  * repository methods below.
  */
 class PitanjeRepository extends \Doctrine\ORM\EntityRepository {
-    
-    public function dohvBrPitanja(){
-        
+
+    public function dohvBrPitanja() {
+
         $brPitanja = $this->createQueryBuilder('a')
-            ->select('count(a.idpitanje)')
-            ->getQuery()
-            ->getSingleScalarResult();
+                ->select('count(a.idpitanje)')
+                ->getQuery()
+                ->getSingleScalarResult();
         return $brPitanja;
     }
-    
-    public function getPitanjeById($id){
-       
-       return  $this->findOneBy(array('idpitanje' => $id));
-       
+
+    public function getPitanjeById($id) {
+
+        return $this->findOneBy(array('idpitanje' => $id));
     }
 
     public function getAllQuestions($page) {
         if (!$page)
-        $page=1;
+            $page = 1;
         return $this->findBy(
                         array(),
                         array('datumvreme' => 'DESC'),
                         2,
-                        ($page-1)*2
+                        ($page - 1) * 2
         );
     }
-    
-    public function dodajOdgovor($postData, $data){ //,$userId;
-        
+
+    public function dodajOdgovor($postData, $data) { //,$userId;
         $pitanje = $this->getPitanjeById($data["idpitanje"]);
         $pitanje->setOdgovor($postData["message"]);
         $pitanje->setIdlekar($data["lekar"]);
-             
-        
-  
 
         $this->_em->persist($pitanje);
-        
+
         try {
-          $this->_em->flush();
-         
-         
+            $this->_em->flush();
+        } catch (Exception $e) {
+            return ["success" => false, "errors" => ['email' => "Doslo je do greske prilikom pokusaja ubacivanja pitanja u bazu"]];
         }
-        catch (Exception $e) {
-           return ["success"=>false,"errors"=>['email'=>"Doslo je do greske prilikom pokusaja ubacivanja pitanja u bazu"]];
-        }
-        return ["success"=>true,"errors"=>[]];
-             
+        return ["success" => true, "errors" => []];
     }
 
 }

@@ -50,6 +50,7 @@ class Validation {
         ]
     ];
 
+
     public $new_password = [
         'password' => [
             'rules' => 'required|min_length[8]|regex_match[/(?=.*?[A-Z])(?=.*?[#?!@$%^&*-])/]',
@@ -61,10 +62,11 @@ class Validation {
         ],
     ];
 
+
     public $profile_change = [
         'tel' => [
             'rules' => 'numeric|permit_empty',
-            'errors' => [          
+            'errors' => [
                 'numeric' => "Polje telefon sme sadrzati samo cifre"
             ]
         ],
@@ -75,7 +77,6 @@ class Validation {
             ]
         ],
     ];
-
     public $signup = [
         'ime' => [
             'rules' => 'required|alpha_space',
@@ -139,11 +140,11 @@ class Validation {
     ];
     public $clientquestion = [
         'subject' => [
-            'rules' => 'required|min_length[3]|max_length[30]',
+            'rules' => 'required|min_length[3]|max_length[20]',
             'errors' => [
                 'required' => 'Morate uneti naslov pitanja.',
                 'min_length' => 'Tekst naslova mora sadrzati najmanje 3 karaktera.',
-                'max_length' => 'Tekst naslova moze sadrzati najvise 30 karaktera.'
+                'max_length' => 'Tekst naslova moze sadrzati najvise 20 karaktera.'
             ]
         ],
         'message' => [
@@ -158,18 +159,16 @@ class Validation {
             'rules' => 'required',
             'errors' => [
                 'required' => 'Morate izabrati struku.'
-                
             ]
         ]
     ];
-    
     public $guestquestion = [
         'subject' => [
-            'rules' => 'required|min_length[3]|max_length[30]',
+            'rules' => 'required|min_length[3]|max_length[20]',
             'errors' => [
                 'required' => 'Morate uneti naslov pitanja.',
                 'min_length' => 'Tekst naslova mora sadrzati najmanje 3 karaktera.',
-                'max_length' => 'Tekst naslova moze sadrzati najvise 30 karaktera.'
+                'max_length' => 'Tekst naslova moze sadrzati najvise 20 karaktera.'
             ]
         ],
         'message' => [
@@ -200,17 +199,76 @@ class Validation {
             ]
         ]
     ];
-
-    
     public $answer = [
-        
         'message' => [
             'rules' => 'required|max_length[200]',
             'errors' => [
                 'required' => 'Morate uneti tekst odgovora.',
-                
                 'max_length' => 'Tekst odgovora moze sadrzati najvise 200 karaktera.'
             ]
         ]
     ];
+    public $brisanje = [
+        'message' => [
+            'rules' => 'required|max_length[200]',
+            'errors' => [
+                'required' => 'Morate uneti tekst odgovora.',
+                'max_length' => 'Tekst odgovora moze sadrzati najvise 200 karaktera.'
+            ]
+        ]
+    ];
+    public $admin_profile_change = [
+        'ime' => [
+            'rules' => 'alpha_space|permit_empty',
+            'errors' => [
+                
+                'alpha_space' => 'Polje ime moze sadrzati samo slova i razmak'
+            ]
+        ],
+        'prezime' => [
+            'rules' => 'alpha_space|permit_empty',
+            'errors' => [
+                
+                'alpha_space' => 'Polje prezime moze sadrzati samo slova i razmak'
+            ]
+        ],
+        'jmbg' => [
+            'rules' => 'numeric|exact_length[13]|permit_empty',
+            'errors' => [
+               
+                'numeric' => 'Uneti JMBG nije validan. JMBG sme sadrzati samo cifre.',
+                'exact_length' => "Polje JMBG Mora sadrzati tacno 13 cifara."
+            ]
+        ],
+        'brlk' => [
+            'rules' => 'numeric|exact_length[8,9]|permit_empty',
+            'errors' => [
+                
+                'numeric' => 'Uneti Broj licne karte nije validan. Broj licne karte sme sadrzati samo cifre.',
+                'exact_length' => "Polje Broj licne karte Mora sadrzati tacno 8 ili 9 cifara."
+            ]
+        ],
+        'pol' => [
+            'rules' => 'in_list[m,z]|permit_empty',
+            'errors' => [
+                
+                'in_list' => "Mozete izabrati samo zenski ili muski pol"
+            ]
+        ],
+        'tel' => [
+            'rules' => 'numeric|permit_empty',
+            'errors' => [
+                
+                'numeric' => "Polje telefon sme sadrzati samo cifre"
+            ]
+        ],
+        'email' => [
+            'rules' => 'valid_email|permit_empty',
+            'errors' => [
+                
+                'valid_email' => 'Uneti email nije validan.'
+            ]
+        ]
+    ];
+
 }
