@@ -1,3 +1,4 @@
+<!-- author Igor 702/17-->
 <?= $this->extend('layouts/basic_layout') ?>
 
 <?= $this->section('content') ?>

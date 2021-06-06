@@ -18,7 +18,7 @@ use App\Models\Entities\Korisnik;
 /**
  * Description of Questions
  *
- * @author Igor
+ * @author Igor 702/17
  */
 class Question extends BaseController {
 
