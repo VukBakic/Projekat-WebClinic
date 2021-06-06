@@ -26,6 +26,7 @@ use App\Models\Entities\UlogeRepository;
 class Admin extends BaseController {
 
     public function usersPage($num) {
+        helper('form');
         $repo = $this->doctrine->em->getRepository(Korisnik::class);
 
         $korisnici = $repo->getAllUsers($num);
@@ -48,7 +49,7 @@ class Admin extends BaseController {
                 'forbidden' => 'Nije dozvoljeno brisanje administratora.'
             ]);
 
-            return redirect()->route('izmeni?idk=' . $idpit);
+            return redirect()->route('izmeni?idk=' . $idk);
         } else {
             $repo->brisi($iduser);
             $this->session->setFlashdata("success", "Uspesno obrisan korisnik");
@@ -93,8 +94,8 @@ class Admin extends BaseController {
         }
     }
  
-    public function filterUsers() {
-        $num=1;
+    public function filterUsers($num=1) {
+        helper('form');
         $pager = \Config\Services::pager();
         $podaci=array();
         $ime=$this->request->getVar('name');
@@ -119,7 +120,12 @@ class Admin extends BaseController {
         }
         
         $korrep=$this->doctrine->em->getRepository(Korisnik::class);
-        $korisnici= $korrep->findBy($podaci);
+        $korisnici= $korrep->findBy(
+                        $podaci,
+                        array('jmbg' => 'DESC'),
+                        4,
+                        ($num - 1) * 4
+        );
         
         return view('user_list', ['korisnici' => $korisnici, 'pager' => $pager,
             'brkorisnika' => count($korisnici), 'num' => $num]);

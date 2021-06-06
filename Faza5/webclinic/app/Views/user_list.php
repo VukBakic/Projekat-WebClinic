@@ -13,7 +13,8 @@
         <?= $this->include('layouts/partials/flash_msg') ?>
         <div class="row styledlist">
             <div class="col-12 my-5 mt-lg-0 d-flex align-items-stretch">
-                <form action="filtriraj" method="get" role="form" class="php-email-form w-100">
+                <?= form_open('korisnici/filtriraj/1',['class' => 'php-email-form  w-100', 'method'=>'get'])?>
+               
                     <div class="row w-50 mx-auto">
                         <div class="form-group col-12">
                             <label for="vrsta">Vrsta korisnika</label>

@@ -65,7 +65,9 @@ $routes->get('/korisnici/brisi', 'Admin::deleteUser');
 $routes->get('/korisnici/izmeni', 'Admin::profileChangePage');
 $routes->post('/korisnici/izmeni', 'Admin::submitChangeUser');
 
-$routes->get('/korisnici/filtriraj', 'Admin::filterUsers');
+$routes->get('/korisnici/filtriraj/(:num)', 'Admin::filterUsers/$1');
+
+
 
 
 
