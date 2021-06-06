@@ -45,23 +45,20 @@ class Question extends BaseController {
     }
 
     public function guestSubmitQuestion() {
+        $this->session = \Config\Services::session();
 
-        $data = [
-            'success' => true,
-            'errors' => NULL,
-        ];
 
         if (!$this->validate("guestquestion")) {
 
-            $data['success'] = false;
-            $data['errors'] = $this->validator->getErrors();
-            return $this->response->setJSON($data);
+            $this->session->setFlashdata("errors", $this->validator->getErrors());
+            return redirect()->to('pitaj');
         } else {
 
             $repo = $this->doctrine->em->getRepository(Pitanjegost::class);
-            $created = $repo->kreirajPitanjegost($this->request->getPost());
+            $repo->kreirajPitanjegost($this->request->getPost());
 
-            return $this->response->setJSON($created);
+            $this->session->setFlashdata("success", "Uspesno ste postavili pitanje");
+            return redirect()->route('pitanja');
         }
     }
 
@@ -76,22 +73,18 @@ class Question extends BaseController {
 
     public function clientSubmitQuestion() {
         $this->session = \Config\Services::session();
-        $data = [
-            'success' => true,
-            'errors' => NULL,
-        ];
+        
 
         if (!$this->validate("clientquestion")) {
 
-            $data['success'] = false;
-            $data['errors'] = $this->validator->getErrors();
-            return $this->response->setJSON($data);
+            $this->session->setFlashdata("errors", $this->validator->getErrors());
+            return redirect()->to('pitaj');
         } else {
 
             $repo = $this->doctrine->em->getRepository(Pitanjeklijent::class);
-            $created = $repo->kreirajPitanjeklijent($this->request->getPost(), $this->session->get('user_id'));
-
-            return $this->response->setJSON($created);
+            $repo->kreirajPitanjeklijent($this->request->getPost(), $this->session->get('user_id'));
+            $this->session->setFlashdata("success", "Uspesno ste postavili pitanje");
+            return redirect()->route('pitanja');
         }
     }
 
@@ -127,13 +120,8 @@ class Question extends BaseController {
         if (!$this->validate("answer")) {
 
             $this->session->setFlashdata("errors", $this->validator->getErrors());
-            return redirect()->to('odgovaranje?idpitanje='.$idpit);
+            return redirect()->to('odgovaranje?idpitanje=' . $idpit);
         } else {
-
-
-
-            
-
             $lekarid = $this->session->get("user_id");
             $repolek = $this->doctrine->em->getRepository(Lekar::class);
             $lekar = $repolek->findOneBy(array('idlekar' => $lekarid));

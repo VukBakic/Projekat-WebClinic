@@ -13,6 +13,7 @@
             echo view('layouts/partials/lekar_odgovorite_klijentima')
             ?>
         <?= $this->include('layouts/partials/flash_msg') ?>
+        
         <div class="row lista styledlist">
             <div class="container" data-aos="fade-up">
 
@@ -42,6 +43,7 @@
                                                     else {
 
                                                         echo "<a class=\"cstm-form-btn\" href=\"lekar/odgovaranje?idpitanje=" . $p->getIdpitanje() . "\"   >Odgovori</a>";
+                                                        
                                                     }
                                                 }
                                             }

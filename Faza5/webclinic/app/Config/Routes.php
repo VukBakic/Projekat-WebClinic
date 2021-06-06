@@ -58,8 +58,12 @@ $routes->post('/pitanja/lekar/odgovaranje', 'Question::submitAnswer');
 $routes->addRedirect('/pitanja', '/pitanja/1');
 
 
+$routes->get('/korisnici/(:num)', 'Admin::usersPage/$1');
+$routes->addRedirect('/korisnici', '/korisnici/1');
 
-
+$routes->get('/korisnici/brisi', 'Admin::deleteUser');
+$routes->get('/korisnici/izmeni', 'Admin::profileChangePage');
+$routes->post('/korisnici/izmeni', 'Admin::submitChangeUser');
 
 
 
