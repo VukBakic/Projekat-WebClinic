@@ -5,7 +5,6 @@ namespace App\Libraries;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Setup;
 
-
 class Doctrine
 {
     public $em = null;
@@ -15,6 +14,10 @@ class Doctrine
     {
         $dbConfig = config('Config\Database');
         $db = $dbConfig->{$dbConfig->defaultGroup};
+        
+
+        $classLoader = new \Doctrine\Common\ClassLoader('DoctrineExtensions', __DIR__.'/../vendor/beberlei/lib/DoctrineExtensions');
+        $classLoader->register();
         
         $isDevMode = ENVIRONMENT !== 'production';
 
@@ -38,6 +41,8 @@ class Doctrine
         
         $config->setProxyNamespace('App\Models\Proxies');
 
+        $config->addCustomDatetimeFunction("DATE", "DoctrineExtensions\Query\Mysql\Date");
+        
 
         $connection = [
             'driver'   => $db['DBDriver'] === 'MySQLi' ? 'mysqli' : 'pdo_mysql',

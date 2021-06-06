@@ -5,6 +5,7 @@
 <?= $this->section('content') ?>
 <section id="services" class="services section-bg">
       <div class="container" data-aos="fade-up">
+      <?= $this->include('layouts/partials/flash_msg') ?>
         <div class="section-title">
           <h2>Kontrolni panel</h2>
         </div>

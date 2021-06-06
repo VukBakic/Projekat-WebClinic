@@ -1,6 +1,7 @@
 body {
   font-family: 'Open Sans', sans-serif;
   color: #444444;
+  background-color: #37517e;
 }
 
 a {
@@ -1538,6 +1539,12 @@ section {
 
 .cstm-form-btn:hover {
   background: #209dd8;
+  color: white;
+}
+.cstm-form-btn:focus {
+  background-color: #2e81a7;
+  color: white;
+  box-shadow: none;
 }
 .cstm-form-btn.disabled:hover {
   background: lightgray;
@@ -1785,7 +1792,12 @@ section {
     padding-top: 4px;
   }
 }
-
+.flash_holder {
+  background-color: #37517e;
+}
+.flash_holder .alert {
+  margin-bottom: 200px;
+}
 .w-40 {
   width: 40%;
 }
@@ -1801,12 +1813,11 @@ section {
   border: 2px solid red !important;
 }
 
-#questlistnav{
-    padding: 10px;
-    position: center;
-    
+#questlistnav {
+  padding: 10px;
+  position: center;
 }
 
-#odgdugme{
-    padding:10px;
+#odgdugme {
+  padding: 10px;
 }
