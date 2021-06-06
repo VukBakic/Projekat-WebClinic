@@ -26,8 +26,12 @@ class Resetpassword extends BaseController
             $this->doctrine->em->persist($link);
            
             $this->doctrine->em->flush();
+            $this->sendMail($korisnik, $token);
+          
         }
-        return 123;
+        $this->session = \Config\Services::session();
+        $this->session->setFlashdata("success","Ukoliko email adresa odgovara nalogu u WebClinici, dobicete email sa uputstvom za povratak lozinke.");
+        return redirect()->to('/resetpassword');
 	}
 
     public function makeNewPasswordPage($token)
@@ -38,27 +42,60 @@ class Resetpassword extends BaseController
     public function makeNewPassword($token)
 	{
         $this->session = \Config\Services::session();
-        if (! $this->validate("passowrd_request"))
+        if (! $this->validate("new_password"))
         {    
             $this->session->setFlashdata("errors",$this->validator->getErrors());
-            return redirect()->to('/newpassword');
+            return redirect()->to('/newpassword/'.$token);
             
         }
 		if($this->request->getPost("password")!=$this->request->getPost("password_confirm")){
             $this->session->setFlashdata("errors",["password"=>"Sifre se ne poklapaju"]);
-            return redirect()->to('/newpassword');
+            return redirect()->to('/newpassword/'.$token);
         }
         $repo = $this->doctrine->em->getRepository(Linkovi::class);
         $link = $repo->findOneBy(['token'=>$token]);
         if($link){
             $time = $link->getDateAdded();
-            $timeNow = date("Y-m-d H:i:s");
+            $timezone    = new \DateTimeZone('Europe/Rome');
+            $timeNow = new \DateTime("now", $timezone);
+            $diff = $timeNow->diff($time);
+            $mins = ($diff->d * 24 * 60) + ($diff->h * 60) + $diff->i;;
+            if($mins>15){
+                $this->session->setFlashdata("errors",["password"=>"Link za promenu lozinke je istekao"]);
+                return redirect()->to('/newpassword/'.$token);
+            }else{
+                $korisnik = $link->getIdKorisnik();
+                $korisnik->setSifra(password_hash($this->request->getPost("password"), PASSWORD_DEFAULT));
+                service("doctrine")->em->persist($korisnik);
+                service("doctrine")->em->flush();
+                $this->session->setFlashdata("success","Vasa lozinka je uspesno promenjena");
+                return redirect()->route('/');
+
+            }
         }
         else{
             $this->session->setFlashdata("errors",["password"=>"Nevazeci token za promenu lozinke"]);
-            return redirect()->to('/newpassword');
+            return redirect()->to('/newpassword/'.$token);
         }
 
         
+	}
+
+    private function sendMail($korisnik, $token){
+     
+		$email = \Config\Services::email();
+		
+		$email->setFrom('webclinic.dev@gmail.com', 'Web Clinic');
+		$email->setTo($korisnik->getEmail());
+		$email->setMailType("html");
+		$email->setSubject('Promena lozinke');
+	
+		
+		$email->setMessage(view("emails/resetlink",[
+			'url'=>site_url('newpassword/'.$token)
+		]));
+		
+	
+		$email->send();
 	}
 }

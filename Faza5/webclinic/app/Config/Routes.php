@@ -38,10 +38,15 @@ $routes->get('/', 'Home::index');
 $routes->get('/login', 'Login::loginPage', ['filter' => 'alreadylogged']);
 $routes->post('/login', 'Login::loginUser' , ['filter' => 'alreadylogged']);
 
-$routes->get('/sluzbenik/register', 'Register::registerSluzbenikPage');
-$routes->post('/sluzbenik/register', 'Register::registerSluzbenik');
+$routes->get('/sluzbenik/register', 'Register::registerKorisnikPage');
+$routes->post('/sluzbenik/register', 'Register::registerKorisnik');
+$routes->get('/admin/register_lekar', 'Register::registerLekarPage');
+$routes->post('/admin/register_lekar', 'Register::registerLekar');
+$routes->get('/admin/register_sluzbenik', 'Register::registerSluzbenikPage');
+$routes->post('/admin/register_sluzbenik', 'Register::registerSluzbenik');
 
-$routes->get('/sluzbenik/control-panel', 'Controlpanel::panel_sluzbenik');
+$routes->get('/controlpanel', 'Controlpanel::index');
+$routes->get('/sluzbenik/controlpanel', 'Controlpanel::panel_sluzbenik');
 
 $routes->get('/dashboard', 'Dashboard::index');
 
@@ -59,8 +64,8 @@ $routes->addRedirect('/pitanja', '/pitanja/1');
 
 
 
-
-
+$routes->get('/lekar/kartoni/(:num)', 'Kartoni::list/$1');
+$routes->get('/lekar/karton/(:num)/(:num)', 'Kartoni::karton/$1/$2');
 
 
 

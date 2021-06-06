@@ -15,9 +15,9 @@ class Usluga
     /**
      * @var string
      *
-     * @ORM\Column(name="imeUsluge", type="string", length=20, nullable=false)
+     * @ORM\Column(name="imeUsluge", type="string", length=200, nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $imeusluge;
 
@@ -31,9 +31,7 @@ class Usluga
     /**
      * @var \App\Models\Entities\Struka
      *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="App\Models\Entities\Struka")
+     * @ORM\ManyToOne(targetEntity="App\Models\Entities\Struka")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="nazivStruke", referencedColumnName="nazivStruke")
      * })
@@ -41,20 +39,6 @@ class Usluga
     private $nazivstruke;
 
 
-
-    /**
-     * Set imeusluge.
-     *
-     * @param string $imeusluge
-     *
-     * @return Usluga
-     */
-    public function setImeusluge($imeusluge)
-    {
-        $this->imeusluge = $imeusluge;
-
-        return $this;
-    }
 
     /**
      * Get imeusluge.
@@ -93,11 +77,11 @@ class Usluga
     /**
      * Set nazivstruke.
      *
-     * @param \App\Models\Entities\Struka $nazivstruke
+     * @param \App\Models\Entities\Struka|null $nazivstruke
      *
      * @return Usluga
      */
-    public function setNazivstruke(\App\Models\Entities\Struka $nazivstruke)
+    public function setNazivstruke(\App\Models\Entities\Struka $nazivstruke = null)
     {
         $this->nazivstruke = $nazivstruke;
 
@@ -107,7 +91,7 @@ class Usluga
     /**
      * Get nazivstruke.
      *
-     * @return \App\Models\Entities\Struka
+     * @return \App\Models\Entities\Struka|null
      */
     public function getNazivstruke()
     {

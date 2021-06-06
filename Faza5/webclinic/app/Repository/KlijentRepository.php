@@ -6,6 +6,7 @@ use App\Models\Entities\Korisnik;
 use App\Models\Entities\Uloge;
 use App\Models\Entities\Klijent;
 use App\Models\Entities\Lekar;
+use App\Models\Entities\Pregled;
 
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 
@@ -56,4 +57,73 @@ class KlijentRepository extends \Doctrine\ORM\EntityRepository
      
         
     }
+
+    public function dohvatiKlijenteLekara($idLekar, $limit, $offset, $filters){
+      $filters["izabranilekar"]=$idLekar;
+      $klijentRepo = service("doctrine")->em->getRepository(Klijent::class);
+      $klijenti = $this->findByKlijentByFilters($filters, $limit, $offset);
+      return $klijenti;
+    }
+
+    
+    public function countKlijenteLekara($idLekar, $filters){
+      $qb = $this->createQueryBuilder('k');
+      $qb
+        ->select('count(k.idklijent)')
+        ->join('k.idklijent', 'idklijent')
+        ->where('k.izabranilekar = :param1')
+        ->setParameter('param1', $idLekar);
+
+        if(isset($filters["ime"])){
+          $qb->andWhere("idklijent.ime LIKE :param2")
+          ->setParameter('param2', "%".$filters["ime"]."%");
+        }
+        if(isset($filters["prezime"])){
+          $qb->andWhere("idklijent.prezime LIKE :param3")
+          ->setParameter('param3', "%".$filters["prezime"]."%");
+        }
+        if(isset($filters["jmbg"])){
+          $qb->andWhere("idklijent.jmbg LIKE :param4")
+          ->setParameter('param4', "%".$filters["jmbg"]."%");
+        }
+        
+
+        return $qb->getQuery()->getSingleScalarResult();
+    }
+
+
+    public function findByKlijentByFilters($filters, $limit, $offset){
+
+        $qb = $this->createQueryBuilder('k');
+
+        $qb
+          ->join('k.idklijent', 'idklijent')
+          ->where('k.izabranilekar = :param1')
+          ->setParameter('param1', $filters["izabranilekar"])
+          ->setFirstResult( $offset )
+          ->setMaxResults( $limit );
+
+        if(isset($filters["ime"])){
+          $qb->andWhere("idklijent.ime LIKE :param2")
+          ->setParameter('param2', "%".$filters["ime"]."%");
+        }
+        if(isset($filters["prezime"])){
+          $qb->andWhere("idklijent.prezime LIKE :param3")
+          ->setParameter('param3', "%".$filters["prezime"]."%");
+        }
+        if(isset($filters["jmbg"])){
+          $qb->andWhere("idklijent.jmbg LIKE :param4")
+          ->setParameter('param4', "%".$filters["jmbg"]."%");
+        }
+        if(isset($filters["danas"])){
+          $qb->join(Pregled::class, 'pr', 'WITH', 'k.izabranilekar = pr.idlekar AND k.idklijent = pr.idklijent')
+          ->andWhere("DATE(pr.vreme) = CURRENT_DATE()");
+        }
+
+        return $qb->getQuery()->getResult();
+    }
+
+    
 }
+
+

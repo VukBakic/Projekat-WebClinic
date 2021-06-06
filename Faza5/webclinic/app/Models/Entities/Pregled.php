@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Pregled
  *
- * @ORM\Table(name="pregled", indexes={@ORM\Index(name="R_21", columns={"idLekar"}), @ORM\Index(name="R_23", columns={"idKlijent"}), @ORM\Index(name="R_24", columns={"idTermin", "idLekar"})})
+ * @ORM\Table(name="pregled", indexes={@ORM\Index(name="R_24", columns={"idLekar"}), @ORM\Index(name="R_23", columns={"idKlijent"})})
  * @ORM\Entity
  */
 class Pregled
@@ -27,6 +27,13 @@ class Pregled
      * @ORM\Column(name="jeOnline", type="boolean", nullable=false)
      */
     private $jeonline;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="vreme", type="datetime", nullable=false)
+     */
+    private $vreme;
 
     /**
      * @var \App\Models\Entities\Lekar
@@ -51,17 +58,6 @@ class Pregled
      * })
      */
     private $idklijent;
-
-    /**
-     * @var \App\Models\Entities\Termin
-     *
-     * @ORM\ManyToOne(targetEntity="App\Models\Entities\Termin")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idTermin", referencedColumnName="idTermin"),
-     *   @ORM\JoinColumn(name="idLekar", referencedColumnName="idLekar")
-     * })
-     */
-    private $idtermin;
 
 
 
@@ -114,6 +110,30 @@ class Pregled
     }
 
     /**
+     * Set vreme.
+     *
+     * @param \DateTime $vreme
+     *
+     * @return Pregled
+     */
+    public function setVreme($vreme)
+    {
+        $this->vreme = $vreme;
+
+        return $this;
+    }
+
+    /**
+     * Get vreme.
+     *
+     * @return \DateTime
+     */
+    public function getVreme()
+    {
+        return $this->vreme;
+    }
+
+    /**
      * Set idlekar.
      *
      * @param \App\Models\Entities\Lekar $idlekar
@@ -159,29 +179,5 @@ class Pregled
     public function getIdklijent()
     {
         return $this->idklijent;
-    }
-
-    /**
-     * Set idtermin.
-     *
-     * @param \App\Models\Entities\Termin|null $idtermin
-     *
-     * @return Pregled
-     */
-    public function setIdtermin(\App\Models\Entities\Termin $idtermin = null)
-    {
-        $this->idtermin = $idtermin;
-
-        return $this;
-    }
-
-    /**
-     * Get idtermin.
-     *
-     * @return \App\Models\Entities\Termin|null
-     */
-    public function getIdtermin()
-    {
-        return $this->idtermin;
     }
 }

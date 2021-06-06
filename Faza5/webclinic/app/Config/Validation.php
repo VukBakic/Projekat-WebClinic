@@ -50,6 +50,17 @@ class Validation {
         ]
     ];
 
+    public $new_password = [
+        'password' => [
+            'rules' => 'required|min_length[8]|regex_match[/(?=.*?[A-Z])(?=.*?[#?!@$%^&*-])/]',
+            'errors' => [
+                'required' => 'Morate uneti lozinku.',
+                'min_length' => "Polje sifra mora sadrzati minimum 8 karaktera od cega minimum 1 karakter mora biti veliko slovo i mora sadrzati minimum jedan specijalan karakter.",
+                'regex_match' => "Polje sifra mora sadrzati minimum 8 karaktera od cega minimum 1 karakter mora biti veliko slovo i mora sadrzati minimum jedan specijalan karakter."
+            ]
+        ],
+    ];
+
     public $profile_change = [
         'tel' => [
             'rules' => 'numeric|permit_empty',

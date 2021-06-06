@@ -10,7 +10,7 @@
             neovlašćenog korišćenja vašeg naloga.
           </p>
         </div>
-
+        <?= $this->include('layouts/partials/flash_msg') ?>
         <div class="row">
           <div class="col-12 mt-5 mt-lg-0 d-flex align-items-stretch">
             <form action="forms/contact.php" method="post" role="form" class="php-email-form w-100">

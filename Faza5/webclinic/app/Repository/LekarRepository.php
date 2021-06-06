@@ -2,6 +2,12 @@
 
 namespace App\Repository;
 
+use App\Models\Entities\Korisnik;
+use App\Models\Entities\Uloge;
+use App\Models\Entities\Struka;
+use App\Models\Entities\Lekar;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
+
 /**
  * LekarRepository
  *
@@ -27,4 +33,43 @@ class LekarRepository extends \Doctrine\ORM\EntityRepository
         return  $array;
     }
 
+    public function kreirajLekara($postData){
+        $korisnik = new Korisnik;
+        $korisnik->setSifra(password_hash($postData["sifra"], PASSWORD_DEFAULT));
+        $korisnik->setIme($postData["ime"]);
+        $korisnik->setPrezime($postData["prezime"]);
+        $korisnik->setJmbg($postData["jmbg"]);
+        $korisnik->setBrlk($postData["lk"]);
+        $korisnik->setPol($postData["pol"]);
+        $korisnik->setBrtel($postData["tel"]);
+        $korisnik->setEmail($postData["email"]);
+        $klijentRepo = service("doctrine")->em->getRepository(Uloge::class);
+        $uloga = $klijentRepo->findOneby(['nazivuloge'=>'Lekar']);
+        $korisnik->setIduloge($uloga);
+
+        $strukaRepo = service("doctrine")->em->getRepository(Struka::class);
+        $struka = $strukaRepo->findOneby(['nazivstruke'=> $postData["struka"]]);
+
+        if(!$struka){
+          return ["success"=>false,"errors"=>['struka'=>"Izabrana struka ne postoji."]];
+        }
+
+        $lekar = new Lekar;
+        $lekar->setIdlekar($korisnik);
+        $lekar->setNazivStruke($struka);
+
+
+        $this->_em->persist($lekar);
+        try {
+          $this->_em->flush();
+        }
+        catch (UniqueConstraintViolationException $e) {
+           return ["success"=>false,"errors"=>['email'=>"Email je vec u upotrebi."]];
+        }
+        return ["success"=>true,"errors"=>[],'klijent'=>$lekar];
+        
+   
+     
+        
+    }
 }
