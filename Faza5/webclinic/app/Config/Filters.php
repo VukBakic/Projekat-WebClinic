@@ -19,8 +19,12 @@ class Filters extends BaseConfig
 		'csrf'     => CSRF::class,
 		'toolbar'  => DebugToolbar::class,
 		'honeypot' => Honeypot::class,
-		'authorization'     => \App\Filters\Authorization::class,
 		'alreadylogged' => \App\Filters\AlreadyLogged::class,
+		'notloggedin' => \App\Filters\NotLoggedIn::class,
+		'klijent' => \App\Filters\Klijent::class,
+		'admin' => \App\Filters\Admin::class,
+		'sluzbenik' => \App\Filters\Sluzbenik::class,
+		'lekar' => \App\Filters\Lekar::class,
 	];
 
 	/**
@@ -60,5 +64,12 @@ class Filters extends BaseConfig
 	 *
 	 * @var array
 	 */
-	public $filters = [];
+	public $filters = [
+		'admin' => ['before' => ['admin/*']],
+		'lekar' => ['before' => ['lekar/*']],
+		'sluzbenik' => ['before' => ['sluzbenik/*']],
+		'klijent' => ['before' => ['klijent/*']],
+		'alreadylogged' => ['before' => ['login/*']],
+		'notloggedin' => ['before' => ['profile/*']],
+	];
 }
