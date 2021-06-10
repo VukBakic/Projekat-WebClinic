@@ -10,22 +10,23 @@
 
         <div class="row styledlist">
           <div class="col-12 my-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form w-100">
+
+          <?= form_open('lekar/kartoni/1',['class' => 'php-email-form  w-100' ,'method'=>"get"])?>
               <div class="row w-50 mx-auto">
                 <div class="form-group col-12">
                   <label for="name">Ime</label>
-                  <input type="text" name="name" class="form-control" id="name" required="">
+                  <input type="text" name="ime" class="form-control">
                 </div>
                 <div class="form-group col-12">
                   <label for="name">Prezime</label>
-                  <input type="text" name="name" class="form-control" id="name" required="">
+                  <input type="text" name="prezime" class="form-control">
                 </div>
                 <div class="form-group col-12">
                   <label for="name">JMBG</label>
-                  <input type="text" name="name" class="form-control" id="name" required="">
+                  <input type="text" name="jmbg" class="form-control">
                 </div>
                 <div class="form-check p-0 ms-5">
-                  <input class="form-check-input h1em" type="checkbox" value="" id="flexCheckDefault">
+                  <input class="form-check-input h1em" type="checkbox" value="" id="flexCheckDefault" name="danas">
                   <label class="form-check-label" for="flexCheckDefault">
                     Zakazani danas
                   </label>
@@ -33,7 +34,7 @@
               </div>
 
               <div class="text-center">
-                <a class="cstm-form-btn" href="#">Filtriraj</a>
+                <button class="cstm-form-btn" type="submit">Filtriraj</a>
               </div>
             </form>
           </div>
@@ -45,7 +46,8 @@
                 <span>JMBG: <?= $klijent->getIdklijent()->getJmbg() ?></span>
               </div>
               <div class="d-flex justify-content-end">
-                <a class="cstm-form-btn ms-1" href="karton_lekar.html">Pogledaj</a>
+                <?= anchor("lekar/karton/".$klijent->getIdklijent()->getIdk()."/1","Pogledaj",["class"=>"cstm-form-btn ms-1"]) ?>
+              
               </div>
             </div>
           </div>

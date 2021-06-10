@@ -100,11 +100,29 @@ class Stavkakartona
     /**
      * Constructor
      */
+
+    /**
+     * @ORM\Column(type="datetime", nullable=false)
+     * @ORM\Version
+    */
+    private $datumvreme;
+
+
     public function __construct()
     {
         $this->idfajl = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    /**
+     * Get datumvreme.
+     *
+     * @return int
+     */
+    public function getDatumvreme()
+    {
+        return $this->datumvreme;
+    }
+    
 
     /**
      * Get idstavka.

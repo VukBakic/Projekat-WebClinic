@@ -8,6 +8,7 @@ class kartoni extends BaseController
 {
     public function list($pageNum=1)
     {
+        helper('form');
         $this->session = \Config\Services::session();
         $lekar_id = $this->session->get("user_id");
         $klijentRepo = service("doctrine")->em->getRepository(Klijent::class);
@@ -29,22 +30,33 @@ class kartoni extends BaseController
         );
     }
 
-    public function karton($idKlijent,$page = 1){
+    public function karton($idKlijent,$pageNum = 1){
         $this->session = \Config\Services::session();
         $lekar_id = $this->session->get("user_id");
         $klijentRepo = service("doctrine")->em->getRepository(Klijent::class);
         $klijent = $klijentRepo->findOneBy(["idklijent"=>$idKlijent]);
+        $pager = \Config\Services::pager();
+
         if(!$klijent){
             return redirect()->to(site_url()."lekar/kartoni/1");
         }
         if($klijent->getIzabranilekar()->getIdlekar()->getIdk()==$lekar_id){
 
             $kartonRepo = service("doctrine")->em->getRepository(Stavkakartona::class);
-            $stavke = $kartonRepo->findBy(["idklijent" => $idKlijent]);
+            $stavke = $kartonRepo->findBy(
+                ["idklijent" => $idKlijent],
+                array('datumvreme' => 'DESC'),
+                2,
+                ($pageNum - 1) * 2
+
+            );
             
             return view("lekar\karton",[
                 "klijent"=>$klijent->getIdKlijent(),
-                "stavke"=>$stavke
+                "stavke"=>$stavke,
+                "pager"=>$pager,
+                "count" => $kartonRepo->countStavkeById($idKlijent),
+                "currentPage"=>$pageNum,
             ]);
         }
         else{

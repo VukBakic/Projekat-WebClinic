@@ -2,6 +2,8 @@
 
 namespace App\Repository;
 
+use App\Models\Entities\Stavkakartona;
+
 /**
  * StavkakartonaRepository
  *
@@ -10,4 +12,14 @@ namespace App\Repository;
  */
 class StavkakartonaRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function countStavkeById($id){
+        $qb = $this->_em->createQueryBuilder();
+        $qb
+        ->from(Stavkakartona::class,"s")
+        ->select('count(s.idstavka)')
+        ->where('s.idklijent = :param1')
+        ->setParameter('param1', $id);
+
+       return $qb->getQuery()->getSingleScalarResult();
+    }
 }

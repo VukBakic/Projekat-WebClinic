@@ -86,7 +86,10 @@ class KlijentRepository extends \Doctrine\ORM\EntityRepository
           $qb->andWhere("idklijent.jmbg LIKE :param4")
           ->setParameter('param4', "%".$filters["jmbg"]."%");
         }
-        
+        if(isset($filters["danas"])){
+          $qb->join(Pregled::class, 'pr', 'WITH', 'k.izabranilekar = pr.idlekar AND k.idklijent = pr.idklijent')
+          ->andWhere("DATE(pr.vreme) = CURRENT_DATE()");
+        }
 
         return $qb->getQuery()->getSingleScalarResult();
     }

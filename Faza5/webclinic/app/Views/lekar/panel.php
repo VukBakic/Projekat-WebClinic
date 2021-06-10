@@ -16,7 +16,8 @@
                 <div class="icon-box">
                     <div class="icon"><i class="bx bxl-dribbble"></i></div>
                     <h4>
-                        <a href="">Pogledaj karton</a>
+                        <?= anchor("lekar/kartoni/1","Pogledaj karton") ?>
+                        
                     </h4>
                     <p>Pogledaj karton klijenta</p>
                 </div>

@@ -9,12 +9,19 @@
           <a class="cstm-form-btn mt-5" href="novi_pregled_lekar.html">Unesi novu stavku</a>
         </div>
 
+        <?php if (!$stavke):?>
+          <p class="mb-5 text-center">Karton klijenta je prazan.</p>
+            
+        <?php endif;?>
+
         <div class="row styledlist">
+        
+
         <?php foreach ($stavke as $stavka):?>
             <div class="col-12 mb-3">
             <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
               <div class="member-info">
-                <div class="datum-pregled">01.02.2021</div>
+                <div class="datum-pregled"><?= $stavka->getDatumvreme()->format('Y-m-d')?></div>
                 <h4><?= $stavka->getImeusluge()->getImeusluge()?></h4>
                 <span>Pregled obavio/la: Dr. <?= $stavka->getPregledobavio()->getIdlekar()->getIme()?> <?= $stavka->getPregledobavio()->getIdlekar()->getPrezime()?></span>
 
@@ -24,14 +31,13 @@
                 </p>
                 <h3 class="mt-2">Preporucena terapija:</h3>
                 <p><?= $stavka->getPreporucenaterapija()?></p>
-                <h3 class="mt-2">Interna napomena:</h3>
+                <h3 class="mt-2 interna-napomena">Interna napomena:</h3>
                 <p>
-                <p><?= $stavka->getInternanapomena()?></p>
+                <p class="interna-napomena-text"><?= $stavka->getInternanapomena()?></p>
                 </p>
-                <h3 class="mt-2">Prilozeni fajlovi:</h3>
-                <a href="#">Dioptrijski_izvestaj.pdf</a>
+              
                 <div class="d-flex justify-content-end">
-                  <a class="cstm-form-btn ms-1" href="karton_lekar.html">Odstampaj dijagnozu</a>
+                  <a class="cstm-form-btn ms-1 print-btn" href="#">Odstampaj dijagnozu</a>
                 </div>
               </div>
             </div>
@@ -40,11 +46,8 @@
           <?php endforeach;?>
          
         </div>
-        <div class="d-flex justify-content-end">
-          <a class="cstm-form-btn ms-1" href="#">1</a>
-          <a class="cstm-form-btn ms-1" href="#">2</a>
-          <a class="cstm-form-btn ms-1" href="#">3</a>
-        </div>
+        <?= $pager->makeLinks($currentPage, 2, $count, "pagination_link", 4) ?>
+       
       </div>
     </section>
 <?= $this->endSection() ?>
