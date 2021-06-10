@@ -3,7 +3,9 @@
 <?= $this->section('content') ?>
 <section id="hero" class="kontrola-forme">
       <div class="container" data-aos="fade-up">
+     
         <div class="row">
+        <?= $this->include('layouts/partials/flash_msg') ?>
           <div class="col-12 mt-5 mt-lg-0 d-flex align-items-stretch">
 
           <?= form_open('resetpassword',['class' => 'php-email-form'])?>

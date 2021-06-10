@@ -32,7 +32,7 @@ document
           htmlDiv.appendChild(ul);
           document.querySelector('.section-title').append(htmlDiv);
         } else {
-          //  document.location.replace(document.location.origin + '/controlpanel');
+          document.location.replace(document.location.origin + '/controlpanel');
         }
       },
       (error) => {

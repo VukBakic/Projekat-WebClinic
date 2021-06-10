@@ -1,4 +1,3 @@
-
 <?= $this->extend('layouts/basic_layout') ?>
 
 <?= $this->section('content') ?>
@@ -6,7 +5,7 @@
       <div class="container" data-aos="fade-up">
         <div class="section-title">
           <h2>Kreiranje novog naloga</h2>
-          <p>Popunjavanjem ove forme otvarate nalog sluzbeniku u klinici.</p>
+          <p>Popunjavanjem ove forme otvarate nalog lekaru u klinici.</p>
         </div>
 
 
@@ -15,7 +14,7 @@
         
           <div class="col-12 mt-5 mt-lg-0 d-flex align-items-stretch">
          
-          <?= form_open('admin/register_sluzbenik',['class' => 'php-email-form','id'=>'register'])?>
+          <?= form_open('admin/register_lekar',['class' => 'php-email-form','id'=>'register'])?>
           
            
               <div class="row w-50 mx-auto">
@@ -26,7 +25,18 @@
                 <div class="form-group col-12">
                   <label for="name">Prezime</label>
                   <input type="text" name="prezime" class="form-control" required="">
-                </div>              
+                </div>
+                <div class="form-group col-12">
+                  <label for="struka">Odaberite struku lekara</label>
+                  <select class="form-select" name="struka" id="struka">
+                  <?php foreach ($struke as $struka):?>
+
+                  
+                  <option value="<?= $struka->getNazivStruke() ?>"><?= $struka->getNazivStruke() ?></option>
+                  <?php endforeach;?>
+                  
+                  </select>
+                </div>
                 <div class="form-group col-12">
                   <label for="name">JMBG</label>
                   <input type="text" name="jmbg" class="form-control"  required="">

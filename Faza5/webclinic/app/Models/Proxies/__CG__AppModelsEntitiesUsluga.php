@@ -179,17 +179,6 @@ class Usluga extends \App\Models\Entities\Usluga implements \Doctrine\ORM\Proxy\
     /**
      * {@inheritDoc}
      */
-    public function setImeusluge($imeusluge)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setImeusluge', [$imeusluge]);
-
-        return parent::setImeusluge($imeusluge);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function getImeusluge()
     {
         if ($this->__isInitialized__ === false) {
@@ -227,7 +216,7 @@ class Usluga extends \App\Models\Entities\Usluga implements \Doctrine\ORM\Proxy\
     /**
      * {@inheritDoc}
      */
-    public function setNazivstruke(\App\Models\Entities\Struka $nazivstruke)
+    public function setNazivstruke(\App\Models\Entities\Struka $nazivstruke = NULL)
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNazivstruke', [$nazivstruke]);

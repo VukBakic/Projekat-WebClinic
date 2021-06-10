@@ -7,8 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Stavkakartona
  *
- * @ORM\Table(name="stavkakartona", indexes={@ORM\Index(name="R_41", columns={"imeUsluge", "nazivStruke"}), @ORM\Index(name="R_16", columns={"idKlijent"}), @ORM\Index(name="R_17", columns={"pregledObavio"})})
- * @ORM\Entity
+ * @ORM\Table(name="stavkakartona", indexes={@ORM\Index(name="R_16", columns={"idKlijent"}), @ORM\Index(name="R_17", columns={"pregledObavio"}), @ORM\Index(name="R_42", columns={"nazivStruke"}), @ORM\Index(name="R_41", columns={"imeUsluge", "nazivStruke"}), @ORM\Index(name="IDX_286A344652367C95", columns={"imeUsluge"})})
+ * @ORM\Entity(repositoryClass="App\Repository\StavkakartonaRepository")
  */
 class Stavkakartona
 {
@@ -67,11 +67,20 @@ class Stavkakartona
      *
      * @ORM\ManyToOne(targetEntity="App\Models\Entities\Usluga")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="imeUsluge", referencedColumnName="imeUsluge"),
-     *   @ORM\JoinColumn(name="nazivStruke", referencedColumnName="nazivStruke")
+     *   @ORM\JoinColumn(name="imeUsluge", referencedColumnName="imeUsluge")
      * })
      */
     private $imeusluge;
+
+    /**
+     * @var \App\Models\Entities\Struka
+     *
+     * @ORM\ManyToOne(targetEntity="App\Models\Entities\Struka")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="nazivStruke", referencedColumnName="nazivStruke")
+     * })
+     */
+    private $nazivstruke;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -249,6 +258,30 @@ class Stavkakartona
     public function getImeusluge()
     {
         return $this->imeusluge;
+    }
+
+    /**
+     * Set nazivstruke.
+     *
+     * @param \App\Models\Entities\Struka|null $nazivstruke
+     *
+     * @return Stavkakartona
+     */
+    public function setNazivstruke(\App\Models\Entities\Struka $nazivstruke = null)
+    {
+        $this->nazivstruke = $nazivstruke;
+
+        return $this;
+    }
+
+    /**
+     * Get nazivstruke.
+     *
+     * @return \App\Models\Entities\Struka|null
+     */
+    public function getNazivstruke()
+    {
+        return $this->nazivstruke;
     }
 
     /**

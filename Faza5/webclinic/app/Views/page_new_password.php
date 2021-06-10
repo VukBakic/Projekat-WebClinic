@@ -10,7 +10,7 @@
             neovlašćenog korišćenja vašeg naloga.
           </p>
         </div>
-
+        <?= $this->include('layouts/partials/flash_msg') ?>
         <div class="row">
           <div class="col-12 mt-5 mt-lg-0 d-flex align-items-stretch">
           <?= form_open('newpassword/'.$token,['class' => 'php-email-form w-100'])?>
@@ -20,7 +20,7 @@
                
                 <div class="form-group col-12">
                   <label for="name">Nova lozinka</label>
-                  <input type="password" name="passowrd" class="form-control" required="">
+                  <input type="password" name="password" class="form-control" required="">
                 </div>
                 <div class="form-group col-12">
                   <label for="name">Unesite ponovo novu lozinku</label>
