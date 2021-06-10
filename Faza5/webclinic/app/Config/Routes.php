@@ -1,5 +1,4 @@
 <?php
-
 namespace Config;
 
 // Create a new instance of our RouteCollection class.
@@ -38,10 +37,21 @@ $routes->get('/', 'Home::index');
 $routes->get('/login', 'Login::loginPage', ['filter' => 'alreadylogged']);
 $routes->post('/login', 'Login::loginUser' , ['filter' => 'alreadylogged']);
 
-$routes->get('/sluzbenik/register', 'Register::registerSluzbenikPage');
-$routes->post('/sluzbenik/register', 'Register::registerSluzbenik');
+$routes->get('/logout', 'Logout::logout', ['filter' => 'notloggedin']);
 
-$routes->get('/sluzbenik/control-panel', 'Controlpanel::panel_sluzbenik');
+
+$routes->get('/sluzbenik/register', 'Register::registerKorisnikPage');
+$routes->post('/sluzbenik/register', 'Register::registerKorisnik');
+$routes->get('/admin/register_lekar', 'Register::registerLekarPage');
+$routes->post('/admin/register_lekar', 'Register::registerLekar');
+$routes->get('/admin/register_sluzbenik', 'Register::registerSluzbenikPage');
+$routes->post('/admin/register_sluzbenik', 'Register::registerSluzbenik');
+
+$routes->get('/controlpanel', 'Controlpanel::index');
+$routes->get('/sluzbenik/controlpanel', 'Controlpanel::panel_sluzbenik');
+
+$routes->get('/admin/controlpanel', 'Controlpanel::panel_admin');
+$routes->get('/lekar/controlpanel', 'Controlpanel::panel_lekar');
 
 $routes->get('/dashboard', 'Dashboard::index');
 
@@ -61,14 +71,14 @@ $routes->addRedirect('/pitanja', '/pitanja/1');
 $routes->get('/korisnici/(:num)', 'Admin::usersPage/$1');
 $routes->addRedirect('/korisnici', '/korisnici/1');
 
-$routes->get('/korisnici/brisi', 'Admin::deleteUser');
-$routes->get('/korisnici/izmeni', 'Admin::profileChangePage');
-$routes->post('/korisnici/izmeni', 'Admin::submitChangeUser');
+$routes->get('/korisnici/brisi', 'Admin::deleteUser',['filter' => 'adminsluzbenik'] );
+$routes->get('/korisnici/izmeni', 'Admin::profileChangePage', ['filter' => 'adminsluzbenik']);
+$routes->post('/korisnici/izmeni', 'Admin::submitChangeUser', ['filter' => 'adminsluzbenik']);
 
 $routes->get('/korisnici/filtriraj/(:num)', 'Admin::filterUsers/$1');
 
-
-
+$routes->get('/lekar/kartoni/(:num)', 'Kartoni::list/$1');
+$routes->get('/lekar/karton/(:num)/(:num)', 'Kartoni::karton/$1/$2');
 
 
 
@@ -83,6 +93,12 @@ $routes->post('/resetpassword', 'Resetpassword::resetPassword');
 
 $routes->get('/newpassword/(:hash)', 'Resetpassword::makeNewPasswordPage/$1');
 $routes->post('/newpassword/(:hash)', 'Resetpassword::makeNewPassword/$1');
+
+
+
+
+
+
 
 /*
  * --------------------------------------------------------------------

@@ -32,7 +32,7 @@ class Login extends BaseController
 
         if($authenticate){
             $session->setFlashdata('msg', 'Uspesno ste se ulogovali.');
-            return redirect()->to('/dashboard');
+            return redirect()->to('/home');
         }else{
             $session->setFlashdata('msg', 'Pogresan email ili lozinka.');
             return redirect()->to('/login');

@@ -22,9 +22,9 @@
             <div class="mt-3 d-flex justify-content-end">
 
               <?= anchor('/profile/change', 'Izmeni profil',['class'=>'cstm-form-btn'])?> 
-              <?= anchor('/profile/changepassword', 'Promeni lozinku',['class'=>'cstm-form-btn ms-2'])?>     
+              <?= anchor('resetpassword', 'Promeni lozinku',['class'=>'cstm-form-btn ms-2'])?>     
              
-              <?php if (service("authorization")->isKorisnik()) : ?>
+              <?php if (service("authorization")->isKlijent()) : ?>
                   <?= anchor('/klijent/promena', 'Promeni lekara',['class'=>'cstm-form-btn ms-2'])?>   
               <?php endif; ?>
               </a>
@@ -37,6 +37,3 @@
 
 <?= $this->section('javascript') ?>
 <?= $this->endSection() ?>
-
-
-

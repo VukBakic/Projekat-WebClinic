@@ -64,7 +64,7 @@ class KorisnikRepository extends \Doctrine\ORM\EntityRepository {
         try {
             $this->_em->flush();
         } catch (UniqueConstraintViolationException $e) {
-            return ["success" => false, "errors" => ['email' => "Email je vec u upotrebi."]];
+            return ["success" => false, "errors" => ['email' => ""]];
         }
         return ["success" => true, "errors" => []];
     }

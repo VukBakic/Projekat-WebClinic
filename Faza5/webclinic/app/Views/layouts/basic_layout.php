@@ -25,6 +25,10 @@
       echo view('layouts/partials/user_navbar'); 
     else if(  $authorization->isSluzbenik())
       echo view('layouts/partials/sluzbenik_navbar'); 
+    else if(  $authorization->isAdmin())
+      echo view('layouts/partials/admin_navbar');
+     else if(  $authorization->isLekar())
+      echo view('layouts/partials/lekar_navbar');
     else
       echo view('layouts/partials/guest_navbar'); 
     ?>

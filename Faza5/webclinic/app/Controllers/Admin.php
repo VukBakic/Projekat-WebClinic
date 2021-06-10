@@ -25,18 +25,18 @@ use App\Models\Entities\UlogeRepository;
  */
 class Admin extends BaseController {
 
-    public function usersPage($num) {
+    public function usersPage($num, $korisnici = null) {
         helper('form');
         $repo = $this->doctrine->em->getRepository(Korisnik::class);
 
-        $korisnici = $repo->getAllUsers($num);
+        if ($korisnici == null) {
+            $korisnici = $repo->getAllUsers($num);
+        }
         $pager = \Config\Services::pager();
 
         return view('user_list', ['korisnici' => $korisnici, 'pager' => $pager,
             'brkorisnika' => $repo->dohvBrKorisnika(), 'num' => $num]);
     }
-
-   
 
     public function deleteUser() {
         $this->session = \Config\Services::session();
@@ -93,44 +93,42 @@ class Admin extends BaseController {
             }
         }
     }
- 
-    public function filterUsers($num=1) {
+
+    public function filterUsers($num = 1) {
         helper('form');
         $pager = \Config\Services::pager();
-        $podaci=array();
-        $ime=$this->request->getVar('name');
-        $prezime=$this->request->getVar('surname');
-        $jmbg=$this->request->getVar('idn');
-        
-        $iduloga=(int)($this->request->getVar('vrsta'));
-        
-        if($ime!="")
-            $podaci["ime"]=$ime;
-            
-        if($prezime!="")
-            $podaci["prezime"]=$prezime;
-        
-       if($jmbg!="")
-            $podaci["jmbg"]=$jmbg;
-        
-        if($iduloga!=-1){
+        $podaci = array();
+        $ime = $this->request->getVar('name');
+        $prezime = $this->request->getVar('surname');
+        $jmbg = $this->request->getVar('idn');
+
+        $iduloga = (int) ($this->request->getVar('vrsta'));
+
+        if ($ime != "")
+            $podaci["ime"] = $ime;
+
+        if ($prezime != "")
+            $podaci["prezime"] = $prezime;
+
+        if ($jmbg != "")
+            $podaci["jmbg"] = $jmbg;
+
+        if ($iduloga != -1) {
             $repo = $this->doctrine->em->getRepository(Uloge::class);
             $uloga = $repo->find($iduloga);
-            $podaci["iduloge"]= $uloga;
+            $podaci["iduloge"] = $uloga;
         }
-        
-        $korrep=$this->doctrine->em->getRepository(Korisnik::class);
-        $korisnici= $korrep->findBy(
-                        $podaci,
-                        array('jmbg' => 'DESC'),
-                        4,
-                        ($num - 1) * 4
+
+        $korrep = $this->doctrine->em->getRepository(Korisnik::class);
+        $korisnici = $korrep->findBy(
+                $podaci,
+                array('jmbg' => 'DESC'),
+                4,
+                ($num - 1) * 4
         );
-        
+
         return view('user_list', ['korisnici' => $korisnici, 'pager' => $pager,
             'brkorisnika' => count($korisnici), 'num' => $num]);
-        
-        
     }
 
 }

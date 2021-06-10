@@ -17,6 +17,9 @@
             <li>
               <?= anchor('/profile', 'Moj profil',['class'=>'getstarted'])?>          
             </li>
+            <li>
+              <?= anchor('/logout', 'Logout',['class'=>'getstarted'])?>          
+            </li>
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>

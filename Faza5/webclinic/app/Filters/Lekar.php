@@ -1,24 +1,19 @@
-<?php namespace App\Filters;
- 
+<?php
+namespace App\Filters;
+
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\Filters\FilterInterface;
- 
-class AlreadyLogged implements FilterInterface
+
+class Lekar implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
-        
-        $path =  $request->uri->getPath();
-       
-        
-        if( session()->get('logged_in')){
-            if($path == "login")
-            return redirect()->to('/home'); //ovde bio dashboard
+        if(!service('authorization')->isLekar()){
+            return redirect()->to(site_url('login'));
         }
     }
- 
- 
+
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
         

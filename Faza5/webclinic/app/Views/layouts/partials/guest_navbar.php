@@ -8,7 +8,7 @@
               <?= anchor('', 'Početna',['class'=>'nav-link '.(url_is('')?'active':'')])?>
             </li>
             <li>
-              <?= anchor('/gost/pregled', 'Zakažite pregled',['class'=>'nav-link '.(url_is('gost/pregled*')?'active':'')])?>    
+              <?= anchor('#', 'Zakažite pregled',['class'=>'nav-link '.(url_is('gost/pregled*')?'active':'')])?>    
             </li>
 
             <li>

@@ -8,13 +8,16 @@
               <?= anchor('', 'Početna',['class'=>'nav-link '.(url_is('')?'active':'')])?>
             </li>
             <li>
-              <?= anchor('#', 'Zakažite pregled',['class'=>'nav-link '.(url_is('gost/pregled*')?'active':'')])?>    
+              <?= anchor('/klijent/pregled', 'Zakažite pregled',['class'=>'nav-link '.(url_is('gost/pregled*')?'active':'')])?>    
             </li>
            
-            
             <li>
-              <?= anchor('/sluzbenik/controlpanel', 'Kontrolni panel',['class'=>'getstarted'])?>          
+              <?= anchor('pitanja/1', 'Pitajte nas',['class'=>'nav-link '.(url_is('pitanja*')?'active':'')])?>    
             </li>
+            <li>
+              <?= anchor('/lekar/controlpanel', 'Kontrolni panel',['class'=>'getstarted'])?>          
+            </li>
+            
             <li>
               <?= anchor('/profile', 'Moj profil',['class'=>'getstarted'])?>          
             </li>

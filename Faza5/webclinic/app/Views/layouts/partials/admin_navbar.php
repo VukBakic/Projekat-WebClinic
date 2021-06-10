@@ -7,13 +7,11 @@
             <li>
               <?= anchor('', 'Početna',['class'=>'nav-link '.(url_is('')?'active':'')])?>
             </li>
-            <li>
-              <?= anchor('#', 'Zakažite pregled',['class'=>'nav-link '.(url_is('gost/pregled*')?'active':'')])?>    
-            </li>
+            
            
             
             <li>
-              <?= anchor('/sluzbenik/controlpanel', 'Kontrolni panel',['class'=>'getstarted'])?>          
+              <?= anchor('/admin/controlpanel', 'Kontrolni panel',['class'=>'getstarted'])?>          
             </li>
             <li>
               <?= anchor('/profile', 'Moj profil',['class'=>'getstarted'])?>          

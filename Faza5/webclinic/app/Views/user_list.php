@@ -62,7 +62,7 @@
                                 echo "<a class=\"cstm-form-btn ms-1 disabled\">Obriši</a>";
                             } 
                             else {
-                                echo "<a class=\"cstm-form-btn ms-1\" href=izmeni?idk=" . $k->getIdk()."\">Izmeni</a>";
+                                echo "<a class=\"cstm-form-btn ms-1\" href=". base_url("korisnici/izmeni?idk=".$k->getIdk())."\">Izmeni</a>";
                                 echo "<a class=\"cstm-form-btn ms-1\" href=brisi?idk=" . $k->getIdk()."\">Obriši</a>";
                             }
                             ?>
