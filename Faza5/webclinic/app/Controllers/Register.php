@@ -7,6 +7,7 @@ use App\Models\Entities\Klijent;
 use App\Models\Entities\Struka;
 use App\Models\Entities\Sluzbenik;
 
+
 class Register extends BaseController
 {
 	private function sendMail($korisnik, $unhashedPassword){
