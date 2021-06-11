@@ -1,6 +1,5 @@
 # Faza 7 - Testiranje
 
-Foobar is a Python library for dealing with word pluralization.
 
 ## Neophodno za testiranje
 
