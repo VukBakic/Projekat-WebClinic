@@ -3,6 +3,11 @@ body {
   color: #444444;
   background-color: #37517e;
 }
+body#print {
+  font-family: 'Open Sans', sans-serif;
+  color: #444444;
+  background-color: white;
+}
 
 a {
   color: #47b2e4;
@@ -1042,6 +1047,12 @@ section {
 .styledlist .member .member-info {
   width: 100%;
   padding-left: 30px;
+}
+.member-info {
+  position: relative;
+}
+.potpis-line {
+  width: 200px;
 }
 .emloyee-avatar {
   overflow: hidden;

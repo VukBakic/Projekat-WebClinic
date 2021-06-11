@@ -53,6 +53,7 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('javascript') ?>
+<script src="<?php echo site_url("js/print.js");?>"></script>
 <?= $this->endSection() ?>
 
 

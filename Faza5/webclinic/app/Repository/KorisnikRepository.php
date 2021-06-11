@@ -83,7 +83,7 @@ class KorisnikRepository extends \Doctrine\ORM\EntityRepository {
             $page = 1;
         return $this->findBy(
                         array(),
-                        array('jmbg' => 'DESC'),
+                        array('idk' => 'DESC'),
                         4,
                         ($page - 1) * 4
         );
