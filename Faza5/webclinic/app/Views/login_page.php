@@ -25,7 +25,7 @@
                 <div class="form-group">
                   <label for="name">Šifra</label>
                   <input type="password" class="form-control" name="password" id="password" required="">
-                  <a class="float-end" href="povratak_lozinke.html">Zaboravili ste lozinku?</a>
+                  <a class="float-end" href="/resetpassword">Zaboravili ste lozinku?</a>
                 </div>
               </div>
 

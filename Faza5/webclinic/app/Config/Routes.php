@@ -57,14 +57,14 @@ $routes->get('/dashboard', 'Dashboard::index');
 
 $routes->get('/pitanja/(:num)', 'Question::questionPage/$1');
 
-$routes->get('/pitanja/klijent/pitaj', 'Question::clientQuestionPage');
-$routes->post('/pitanja/klijent/pitaj', 'Question::clientSubmitQuestion');
+$routes->get('/pitanja/klijent/pitaj', 'Question::clientQuestionPage', ['filter' => 'klijent']);
+$routes->post('/pitanja/klijent/pitaj', 'Question::clientSubmitQuestion', ['filter' => 'klijent']);
 
 $routes->get('/pitanja/gost/pitaj', 'Question::guestQuestionPage');
 $routes->post('/pitanja/gost/pitaj', 'Question::guestSubmitQuestion');
 
-$routes->get('/pitanja/lekar/odgovaranje', 'Question::answerPage');
-$routes->post('/pitanja/lekar/odgovaranje', 'Question::submitAnswer');
+$routes->get('/pitanja/lekar/odgovaranje', 'Question::answerPage', ['filter' => 'lekar']);
+$routes->post('/pitanja/lekar/odgovaranje', 'Question::submitAnswer', ['filter' => 'lekar']);
 $routes->addRedirect('/pitanja', '/pitanja/1');
 
 

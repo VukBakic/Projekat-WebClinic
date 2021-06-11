@@ -1,0 +1,1077 @@
+Running 'LoginSuccessfulKlijent'
+00:52:48
+1.
+open on http://localhost:8080/ OK
+00:52:48
+2.
+setWindowSize on 1376x744 OK
+00:52:48
+3.
+click on linkText=Ulogujte se OK
+00:52:48
+4.
+click on id=email OK
+00:52:48
+5.
+type on id=email with value klijent1@test.com OK
+00:52:49
+6.
+click on id=password OK
+00:52:49
+7.
+type on id=password with value Test123! OK
+00:52:49
+8.
+click on css=.text-center > button OK
+00:52:49
+9.
+click on linkText=Moj profil OK
+00:52:49
+10.
+click on css=p:nth-child(6) OK
+00:52:50
+11.
+click on css=p:nth-child(6) OK
+00:52:51
+12.
+verifyElementPresent on css=p:nth-child(6) with value Email: klijent1@test.com OK
+00:52:51
+13.
+click on linkText=Logout OK
+00:52:51
+14.
+close OK
+00:52:51
+'LoginSuccessfulKlijent' completed successfully
+
+
+Running 'LoginSuccessfulSluzbenik'
+00:56:22
+1.
+open on http://localhost:8080/ OK
+00:56:22
+2.
+setWindowSize on 1360x768 OK
+00:56:22
+3.
+click on linkText=Ulogujte se OK
+00:56:22
+4.
+click on id=email OK
+00:56:22
+5.
+type on id=email with value sluzbenik1 OK
+00:56:22
+6.
+click on id=email OK
+00:56:22
+7.
+type on id=email with value sluzbenik1@test.com OK
+00:56:23
+8.
+click on id=password OK
+00:56:23
+9.
+type on id=password with value Test123! OK
+00:56:23
+10.
+click on css=.text-center > button OK
+00:56:23
+11.
+click on linkText=Kontrolni panel OK
+00:56:23
+12.
+assertText on css=.col-xl-3:nth-child(1) p with value Kreiranje novog naloga za klijenta klinike OK
+00:56:24
+13.
+click on linkText=Logout OK
+00:56:24
+14.
+close OK
+00:56:24
+'LoginSuccessfulSluzbenik' completed successfully
+00:56:24
+
+Running 'LoginUnsuccessful'
+00:56:43
+1.
+open on http://localhost:8080/ OK
+00:56:43
+2.
+setWindowSize on 1376x744 OK
+00:56:43
+3.
+click on linkText=Ulogujte se OK
+00:56:43
+4.
+click on id=email OK
+00:56:43
+5.
+type on id=email with value eerere OK
+00:56:44
+6.
+click on id=password OK
+00:56:44
+7.
+type on id=password with value testtest OK
+00:56:44
+8.
+click on css=.text-center > button OK
+00:56:44
+9.
+click on id=email OK
+00:56:44
+10.
+click on id=email OK
+00:56:44
+11.
+doubleClick on id=email OK
+00:56:45
+12.
+click on id=email OK
+00:56:45
+13.
+click on id=email OK
+00:56:45
+14.
+doubleClick on id=email OK
+00:56:45
+15.
+click on id=email OK
+00:56:45
+16.
+type on id=email OK
+00:56:45
+17.
+click on id=email OK
+00:56:45
+18.
+type on id=email with value sluzbenik1@test.com OK
+00:56:45
+19.
+click on id=password OK
+00:56:46
+20.
+click on id=password OK
+00:56:46
+21.
+doubleClick on id=password OK
+00:56:46
+22.
+click on id=password OK
+00:56:46
+23.
+type on id=password with value ERERERERE OK
+00:56:46
+24.
+click on css=.text-center > button OK
+00:56:46
+25.
+click on css=.php-email-form OK
+00:56:46
+26.
+assertText on linkText=Zaboravili ste lozinku? with value Zaboravili ste lozinku? OK
+00:56:47
+27.
+close OK
+00:56:47
+'LoginUnsuccessful' completed successfully
+00:56:47
+
+
+Running 'AdminRegisterSluzbenik'
+00:48:14
+1.
+open on http://localhost:8080/ OK
+00:48:14
+2.
+setWindowSize on 1376x744 OK
+00:48:14
+3.
+click on linkText=Ulogujte se OK
+00:48:14
+4.
+click on id=email OK
+00:48:15
+5.
+type on id=email with value admin1@test.com OK
+00:48:15
+6.
+click on id=password OK
+00:48:15
+7.
+type on id=password with value tEST123! OK
+00:48:15
+8.
+click on css=.text-center > button OK
+00:48:16
+9.
+click on id=email OK
+00:48:16
+10.
+type on id=email with value admin1@test.com OK
+00:48:16
+11.
+click on id=password OK
+00:48:17
+12.
+type on id=password with value Test123! OK
+00:48:17
+13.
+sendKeys on id=password with value ${KEY_ENTER} OK
+00:48:17
+14.
+click on linkText=Kontrolni panel OK
+00:48:18
+15.
+click on linkText=Kreiraj službenika OK
+00:48:18
+16.
+click on name=ime OK
+00:48:18
+17.
+type on name=ime with value Pera OK
+00:48:18
+18.
+click on name=prezime OK
+00:48:19
+19.
+type on name=prezime with value Peric OK
+00:48:19
+20.
+click on name=jmbg OK
+00:48:19
+21.
+type on name=jmbg with value 1234567890101 OK
+00:48:19
+22.
+click on name=lk OK
+00:48:19
+23.
+type on name=lk with value 12345678 OK
+00:48:19
+24.
+click on id=pol OK
+00:48:20
+25.
+select on id=pol with value label=Ženski OK
+00:48:20
+26.
+click on id=pol OK
+00:48:20
+27.
+click on name=tel OK
+00:48:20
+28.
+type on name=tel with value 0638925102 OK
+00:48:20
+29.
+click on name=email OK
+00:48:20
+30.
+click on name=email OK
+00:48:21
+31.
+click on name=email OK
+00:48:21
+32.
+doubleClick on name=email OK
+00:48:21
+33.
+type on name=email with value sluzbenik100@test.com OK
+00:48:21
+34.
+click on name=sifra OK
+00:48:21
+35.
+type on name=sifra with value Test123! OK
+00:48:21
+36.
+click on id=register-btn OK
+00:48:22
+37.
+click on css=.alert OK
+00:48:22
+38.
+click on linkText=Logout OK
+00:48:24
+39.
+click on linkText=Ulogujte se OK
+00:48:24
+40.
+click on id=email OK
+00:48:25
+41.
+type on id=email with value sluzbenik100@test.com OK
+00:48:25
+42.
+click on id=password OK
+00:48:25
+43.
+type on id=password with value Test123! OK
+00:48:26
+44.
+click on css=.text-center > button OK
+00:48:26
+45.
+click on linkText=Kontrolni panel OK
+00:48:26
+46.
+click on linkText=Logout OK
+00:48:26
+47.
+click on linkText=Ulogujte se OK
+00:48:27
+48.
+click on id=email OK
+00:48:27
+49.
+type on id=email with value sluzbenik100@test.com OK
+00:48:27
+50.
+click on id=password OK
+00:48:28
+51.
+type on id=password with value Test123! OK
+00:48:28
+52.
+click on css=.text-center > button OK
+00:48:28
+53.
+assertElementPresent on linkText=Kontrolni panel OK
+00:48:28
+54.
+click on linkText=Logout OK
+00:48:29
+55.
+close OK
+00:48:29
+'AdminRegisterSluzbenik' completed successfully
+
+
+
+Running 'AdminRegisterLekar'
+01:00:50
+1.
+open on http://localhost:8080/ OK
+01:00:51
+2.
+setWindowSize on 1360x768 OK
+01:00:51
+3.
+click on linkText=Ulogujte se OK
+01:00:51
+4.
+click on id=email OK
+01:00:51
+5.
+type on id=email with value admin1@test.com OK
+01:00:52
+6.
+click on id=password OK
+01:00:52
+7.
+type on id=password with value Test123! OK
+01:00:52
+8.
+click on css=.text-center > button OK
+01:00:52
+9.
+click on linkText=Kontrolni panel OK
+01:00:52
+10.
+click on linkText=Kreiraj lekara OK
+01:00:53
+11.
+click on name=ime OK
+01:00:53
+12.
+type on name=ime with value Pera OK
+01:00:53
+13.
+click on name=prezime OK
+01:00:54
+14.
+type on name=prezime with value Jovic OK
+01:00:54
+15.
+click on id=struka OK
+01:00:54
+16.
+select on id=struka with value label=Endokrinologija OK
+01:00:54
+17.
+click on id=struka OK
+01:00:54
+18.
+click on name=jmbg OK
+01:00:54
+19.
+type on name=jmbg with value 1234567890101 OK
+01:00:54
+20.
+click on name=lk OK
+01:00:54
+21.
+type on name=lk with value 12345678 OK
+01:00:55
+22.
+click on id=pol OK
+01:00:55
+23.
+click on name=jmbg OK
+01:00:55
+24.
+type on name=jmbg with value 1234567890103 OK
+01:00:55
+25.
+click on id=pol OK
+01:00:55
+26.
+select on id=pol with value label=Muški OK
+01:00:55
+27.
+click on id=pol OK
+01:00:55
+28.
+click on css=.form-group:nth-child(7) > label OK
+01:00:55
+29.
+click on name=tel OK
+01:00:56
+30.
+type on name=tel with value 0638925102 OK
+01:00:56
+31.
+click on name=email OK
+01:00:56
+32.
+type on name=email with value sluzbenik100@test.com OK
+01:00:56
+33.
+mouseDownAt on id=register with value 184.5,806 OK
+01:00:56
+34.
+mouseMoveAt on id=register with value 184.5,806 OK
+01:00:56
+35.
+mouseUpAt on id=register with value 184.5,806 OK
+01:00:56
+36.
+click on id=register OK
+01:00:57
+37.
+type on name=email with value lekar100@test.com OK
+01:00:57
+38.
+click on name=sifra OK
+01:00:57
+39.
+type on name=sifra with value Test123! OK
+01:00:57
+40.
+click on id=register-btn OK
+01:00:57
+41.
+click on linkText=Logout OK
+01:00:57
+42.
+click on linkText=Ulogujte se OK
+01:00:57
+43.
+click on id=email OK
+01:01:00
+44.
+type on id=email with value lekar100@test.com OK
+01:01:00
+45.
+click on id=password OK
+01:01:00
+46.
+click on css=.php-email-form OK
+01:01:00
+47.
+type on id=password with value Test123! OK
+01:01:00
+48.
+click on css=.text-center > button OK
+01:01:01
+49.
+assertElementPresent on linkText=Logout OK
+01:01:01
+'AdminRegisterLekar' completed successfully
+
+
+
+Running 'SluzbenikRegisterClient'
+01:40:35
+1.
+open on http://localhost:8080/home OK
+01:40:35
+2.
+setWindowSize on 1376x744 OK
+01:40:35
+3.
+click on linkText=Ulogujte se OK
+01:40:35
+4.
+click on id=email OK
+01:40:35
+5.
+type on id=email with value sluzbenik1@test.com OK
+01:40:36
+6.
+click on id=password OK
+01:40:36
+7.
+type on id=password with value Test123! OK
+01:40:36
+8.
+sendKeys on id=password with value ${KEY_ENTER} OK
+01:40:36
+9.
+click on linkText=Kontrolni panel OK
+01:40:37
+10.
+click on linkText=Kreiraj novi nalog OK
+01:40:37
+11.
+click on name=ime OK
+01:40:37
+12.
+type on name=ime with value Igor OK
+01:40:38
+13.
+click on name=prezime OK
+01:40:38
+14.
+type on name=prezime with value Peric OK
+01:40:38
+15.
+click on name=jmbg OK
+01:40:38
+16.
+type on name=jmbg with value 1234123412341 OK
+01:40:38
+17.
+click on name=lk OK
+01:40:38
+18.
+type on name=lk with value 12345678 OK
+01:40:38
+19.
+click on id=pol OK
+01:40:39
+20.
+select on id=pol with value label=Muški OK
+01:40:39
+21.
+click on id=pol OK
+01:40:39
+22.
+click on id=lekar OK
+01:40:39
+23.
+select on id=lekar with value label=Aleksandra Aleksandrovic OK
+01:40:39
+24.
+click on id=lekar OK
+01:40:39
+25.
+click on name=tel OK
+01:40:39
+26.
+click on name=tel OK
+01:40:39
+27.
+type on name=tel with value 0638925102 OK
+01:40:40
+28.
+click on name=email OK
+01:40:40
+29.
+type on name=email with value klijent100@testocom OK
+01:40:40
+30.
+click on name=sifra OK
+01:40:40
+31.
+type on name=sifra with value Testtest123 OK
+01:40:40
+32.
+click on id=register-btn OK
+01:40:40
+33.
+mouseOver on id=register-btn OK
+01:40:40
+34.
+mouseOut on id=register-btn OK
+01:40:41
+35.
+click on name=email OK
+01:40:41
+36.
+type on name=email with value klijent100@testo.com OK
+01:40:41
+37.
+click on id=register-btn OK
+01:40:41
+38.
+click on name=sifra OK
+01:40:41
+39.
+click on name=sifra OK
+01:40:41
+40.
+doubleClick on name=sifra OK
+01:40:41
+41.
+click on id=register OK
+01:40:42
+42.
+type on name=sifra with value Test123! OK
+01:40:42
+43.
+click on id=register-btn OK
+01:40:42
+44.
+click on linkText=Logout OK
+01:40:42
+45.
+click on linkText=Ulogujte se OK
+01:40:42
+46.
+click on id=email OK
+01:40:44
+47.
+type on id=email with value klijent100@testo.com OK
+01:40:45
+48.
+click on id=password OK
+01:40:45
+49.
+type on id=password with value Test123! OK
+01:40:45
+50.
+click on css=.text-center > button OK
+01:40:45
+51.
+assertElementPresent on linkText=Logout OK
+01:40:45
+52.
+click on linkText=Logout OK
+01:40:46
+'SluzbenikRegisterClient' completed successfully
+01:40:46
+
+
+01:45:02
+Running 'PregledKartona'
+01:45:26
+1.
+open on http://localhost:8080/ OK
+01:45:26
+2.
+setWindowSize on 1360x728 OK
+01:45:26
+3.
+click on linkText=Ulogujte se OK
+01:45:26
+4.
+click on id=email OK
+01:45:26
+5.
+type on id=email with value lekar1@test.com OK
+01:45:26
+6.
+click on id=password OK
+01:45:26
+7.
+type on id=password with value Test123! OK
+01:45:27
+8.
+sendKeys on id=password with value ${KEY_ENTER} OK
+01:45:27
+9.
+click on linkText=Kontrolni panel OK
+01:45:27
+10.
+click on linkText=Pogledaj karton OK
+01:45:28
+11.
+click on linkText=Pogledaj OK
+01:45:28
+12.
+click on css=.member-info OK
+01:45:28
+13.
+click on css=p:nth-child(7) OK
+01:45:29
+14.
+click on css=.member-info OK
+01:45:29
+15.
+assertText on css=p:nth-child(5) with value Fusce ultrices purus ut venenatis tincidunt. Nulla id dictum mauris. Nulla massa leo, consequat ut enim et, blandit posuere diam. Aliquam nec lacus ipsum. Aenean sapien sem, elementum a blandit quis, laoreet et orci. Vestibulum tincidunt neque massa, sed tincidunt ipsum eleifend euismod. Etiam eget tortor et mi venenatis consectetur in vitae eros. Sed interdum vestibulum commodo. Nam cursus fermentum orci, at rhoncus arcu auctor non. Etiam bibendum tincidunt tortor, vel maximus augue. Sed mollis at orci non egestas. Ut tempus, lorem vitae mollis placerat, ante nibh ultricies enim, nec commodo nisi diam sit amet massa. Morbi a ornare mauris, in suscipit felis. OK
+01:45:30
+16.
+close OK
+01:45:30
+'PregledKartona' completed successfully
+
+
+FAIL
+Running 'ForgotPasswordMail'
+02:19:54
+1.
+open on http://localhost:8080/ OK
+02:19:54
+2.
+Trying to find linkText=Ulogujte se... OK
+02:19:54
+3.
+click on linkText=Zaboravili ste lozinku? OK
+02:19:56
+4.
+click on id=email OK
+02:19:56
+5.
+type on id=email with value webclinic.dev@gmail.com OK
+02:19:57
+6.
+click on css=.text-center > button OK
+02:19:58
+7.
+assertText with value Ukoliko Failed:
+02:19:59
+Locator cannot be empty
+'ForgotPasswordMail' ended with 1 error(s)
+02:20:00
+Running 'ForgotPasswordMail'
+02:20:47
+1.
+open on http://localhost:8080/ OK
+02:20:47
+2.
+Trying to find linkText=Ulogujte se... OK
+02:20:47
+3.
+click on linkText=Zaboravili ste lozinku? OK
+02:20:51
+4.
+click on id=email OK
+02:20:52
+5.
+type on id=email with value webclinic.dev@gmail.com OK
+02:20:53
+6.
+click on css=.text-center > button OK
+02:20:54
+7.
+assertText on id=hero with value Ukoliko Undetermined
+02:20:55
+Aborting...
+'ForgotPasswordMail' was aborted
+02:22:31
+
+FAILED
+Running 'RegistrationMail'
+02:33:41
+1.
+open on http://localhost:8080/ OK
+02:33:42
+2.
+setWindowSize on 1376x744 OK
+02:33:42
+3.
+click on linkText=Ulogujte se OK
+02:33:42
+4.
+click on id=email OK
+02:33:45
+5.
+type on id=email with value sluzbenik1@test.com OK
+02:33:45
+6.
+click on id=password OK
+02:33:45
+7.
+type on id=password with value Test123! OK
+02:33:45
+8.
+sendKeys on id=password with value ${KEY_ENTER} OK
+02:33:45
+9.
+click on linkText=Kontrolni panel OK
+02:33:46
+10.
+click on linkText=Kreiraj novi nalog OK
+02:33:46
+11.
+click on name=ime OK
+02:33:46
+12.
+type on name=ime with value Igor OK
+02:33:47
+13.
+click on name=prezime OK
+02:33:47
+14.
+type on name=prezime with value Vujic OK
+02:33:47
+15.
+click on name=jmbg OK
+02:33:47
+16.
+type on name=jmbg with value 1234567890101 OK
+02:33:47
+17.
+click on name=jmbg OK
+02:33:47
+18.
+type on name=jmbg with value 1234567890166 OK
+02:33:48
+19.
+click on name=lk OK
+02:33:48
+20.
+type on name=lk with value 12345678 OK
+02:33:48
+21.
+click on id=pol OK
+02:33:48
+22.
+select on id=pol with value label=Muški OK
+02:33:48
+23.
+click on id=pol OK
+02:33:48
+24.
+click on id=lekar OK
+02:33:48
+25.
+select on id=lekar with value label=Aleksandra Aleksandrovic OK
+02:33:49
+26.
+click on id=lekar OK
+02:33:49
+27.
+click on name=tel OK
+02:33:49
+28.
+type on name=tel with value 0638925102 OK
+02:33:49
+29.
+click on name=tel OK
+02:33:49
+30.
+type on name=tel with value 0638925101 OK
+02:33:49
+31.
+click on name=email OK
+02:33:49
+32.
+type on name=email with value sluzbenik1@test.com OK
+02:33:50
+33.
+click on id=register OK
+02:33:50
+34.
+click on name=email OK
+02:33:50
+35.
+click on name=email OK
+02:33:50
+36.
+doubleClick on name=email OK
+02:33:50
+37.
+click on name=email OK
+02:33:50
+38.
+type on name=email with value webclinic.dev@gmail.com OK
+02:33:50
+39.
+click on name=sifra OK
+02:33:51
+40.
+type on name=sifra with value Test123! OK
+02:33:51
+41.
+click on id=register-btn OK
+02:33:51
+42.
+assertElementPresent on css=.alert with value Uspesno ste kreirali nalog klijentu. Failed:
+02:33:51
+Element with locator css=.alert could not be found
+'RegistrationMail' ended with 1 error(s)
+02:33:51
+
+Running 'AdminMenjaProfil'
+02:44:44
+1.
+open on http://localhost:8080/home OK
+02:44:44
+2.
+setWindowSize on 1376x744 OK
+02:44:44
+3.
+click on linkText=Ulogujte se OK
+02:44:44
+4.
+click on id=email OK
+02:44:45
+5.
+type on id=email with value admin1@test.com OK
+02:44:46
+6.
+click on id=password OK
+02:44:47
+7.
+type on id=password with value Test123! OK
+02:44:48
+8.
+click on css=.text-center > button OK
+02:44:49
+9.
+click on linkText=Kontrolni panel OK
+02:44:50
+10.
+click on linkText=Korisnici OK
+02:44:51
+11.
+click on id=vrsta OK
+02:44:52
+12.
+click on css=.php-email-form OK
+02:44:53
+13.
+click on css=.col-12:nth-child(3) .cstm-form-btn:nth-child(1) OK
+02:44:54
+14.
+click on name=brlk OK
+02:44:55
+15.
+click on name=ime OK
+02:44:56
+16.
+type on name=ime with value Marijana OK
+02:44:57
+17.
+click on name=brlk OK
+02:44:58
+18.
+click on name=brlk OK
+02:44:59
+19.
+type on name=brlk with value 00000000 OK
+02:45:00
+20.
+click on css=.text-center > button OK
+02:45:01
+21.
+click on css=.col-12:nth-child(3) .cstm-form-btn:nth-child(1) OK
+02:45:02
+22.
+click on name=brlk OK
+02:45:03
+23.
+click on id=register OK
+02:45:04
+24.
+click on name=ime OK
+02:45:05
+25.
+click on id=register OK
+02:45:06
+26.
+click on linkText=Moj profil OK
+02:45:07
+27.
+click on linkText=Kontrolni panel OK
+02:45:08
+28.
+click on linkText=Korisnici OK
+02:45:08
+29.
+click on css=.col-12:nth-child(3) .member-info OK
+02:45:09
+30.
+assertText on css=.col-12:nth-child(3) h4 with value Marijana Maric OK
+02:45:10
+31.
+click on linkText=Logout OK
+02:45:10
+'AdminMenjaProfil' completed successfully
+02:45:10
+
+02:45:10
+Running 'KlijentMenjaProfilUsp'
+02:49:12
+1.
+open on http://localhost:8080/ OK
+02:49:13
+2.
+setWindowSize on 1376x744 OK
+02:49:13
+3.
+click on linkText=Ulogujte se OK
+02:49:13
+4.
+click on id=email OK
+02:49:14
+5.
+type on id=email with value klijent1@test.com OK
+02:49:15
+6.
+click on id=password OK
+02:49:16
+7.
+type on id=password with value Test123! OK
+02:49:17
+8.
+click on css=.text-center > button OK
+02:49:18
+9.
+click on linkText=Moj profil OK
+02:49:19
+10.
+click on linkText=Izmeni profil OK
+02:49:20
+11.
+mouseDownAt on name=tel with value 11.5,31 OK
+02:49:21
+12.
+mouseMoveAt on name=tel with value 11.5,31 OK
+02:49:22
+13.
+mouseUpAt on name=tel with value 11.5,31 OK
+02:49:23
+14.
+click on name=tel OK
+02:49:24
+15.
+click on id=register OK
+02:49:25
+16.
+click on name=prezime OK
+02:49:26
+17.
+click on name=prezime OK
+02:49:27
+18.
+click on name=email OK
+02:49:28
+19.
+type on name=email with value klijent60@test.com OK
+02:49:29
+20.
+click on css=.text-center > button OK
+02:49:30
+21.
+click on css=p:nth-child(6) OK
+02:49:31
+22.
+assertText on css=p:nth-child(6) with value Email: klijent60@test.com OK
+02:49:32
+'KlijentMenjaProfilUsp' completed successfully
+02:49:33
