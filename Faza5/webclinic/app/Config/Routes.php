@@ -80,6 +80,8 @@ $routes->get('/korisnici/filtriraj/(:num)', 'Admin::filterUsers/$1');
 $routes->get('/lekar/kartoni/(:num)', 'Kartoni::list/$1');
 $routes->get('/lekar/karton/(:num)/(:num)', 'Kartoni::karton/$1/$2');
 
+$routes->get('/lekar/karton/dodaj/(:num)', 'Kartoni::dodajPage/$1');
+$routes->post('/lekar/karton/dodaj', 'Kartoni::dodaj');
 
 
 $routes->get('/profile', 'Profile::profile_page');

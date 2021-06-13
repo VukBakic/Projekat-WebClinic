@@ -271,4 +271,36 @@ class Validation {
         ]
     ];
 
+
+    public $stavka_kartona = [
+        'dijagnoza' => [
+            'rules' => 'required|min_length[20]|max_length[2000]',
+            'errors' => [
+                'required' => 'Morate uneti naslov pitanja.',
+                'min_length' => 'Dijagnoza mora sadrzati najmanje 20 karaktera.',
+                'max_length' => 'Dijagnoza moze sadrzati najvise 2000 karaktera.'
+            ]
+        ],
+        'terapija' => [
+            'rules' => 'required|min_length[10]|max_length[800]',
+            'errors' => [
+                'required' => 'Morate uneti tekst pitanja.',
+                'min_length' => 'Terapija mora sadrzati najmanje 10 karaktera.',
+                'max_length' => 'Terapija moze sadrzati najvise 800 karaktera.'
+            ]
+        ],
+        'napomena' => [
+            'rules' => 'max_length[800]',
+            'errors' => [
+                'max_length' => 'Interna napomena moze sadrzati najvise 800 karaktera.'
+            ]
+        ],
+        'id' => [
+            'rules' => 'required',
+            'errors' => [
+                'required' => 'Doslo je do greske izabranog klijenta. Probajte da osvezite stranicu..'
+            ]
+        ]
+    ];
+
 }

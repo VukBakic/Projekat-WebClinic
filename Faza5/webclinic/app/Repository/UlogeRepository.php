@@ -10,4 +10,5 @@ namespace App\Repository;
  */
 class UlogeRepository extends \Doctrine\ORM\EntityRepository
 {
+   
 }

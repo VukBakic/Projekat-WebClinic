@@ -3,7 +3,9 @@
 namespace App\Repository;
 
 use App\Models\Entities\Stavkakartona;
-
+use App\Models\Entities\Klijent;
+use App\Models\Entities\Lekar;
+use App\Models\Entities\Usluga;
 /**
  * StavkakartonaRepository
  *
@@ -21,5 +23,28 @@ class StavkakartonaRepository extends \Doctrine\ORM\EntityRepository
         ->setParameter('param1', $id);
 
        return $qb->getQuery()->getSingleScalarResult();
+    }
+    public function dodajStavku($postData, $idLekar){
+        $id = intval($postData["id"]);
+        $stavka = new Stavkakartona;
+
+        $klijentRepo = service("doctrine")->em->getRepository(Klijent::class);
+        $lekarRepo = service("doctrine")->em->getRepository(Lekar::class);
+        $uslugaRepo = service("doctrine")->em->getRepository(Usluga ::class);
+
+        $stavka->setIdKlijent($klijentRepo->findOneBy(["idklijent"=>$id]));
+        $stavka->setPregledobavio($lekarRepo->findOneBy(["idlekar"=>$idLekar]));
+        $usluga = $uslugaRepo->findOneBy(["imeusluge"=>$postData["usluga"]]);
+
+        $stavka->setImeusluge($usluga);
+        $stavka->setNazivstruke($usluga->getNazivstruke());
+        $stavka->setDijagnostika($postData["dijagnoza"]);
+        $stavka->setPreporucenaterapija($postData["terapija"]);
+        $stavka->setInternanapomena($postData["napomena"]);
+        
+        $this->_em->persist($stavka);
+        $this->_em->flush();
+
+
     }
 }

@@ -6,14 +6,15 @@
         <div class="section-title">
           <h2><?= $klijent->getIme() ?> <?= $klijent->getPrezime() ?></h2>
           <p class="mb-5">JMBG: <?= $klijent->getJmbg() ?></p>
-          <a class="cstm-form-btn mt-5" href="novi_pregled_lekar.html">Unesi novu stavku</a>
+          <?= anchor("lekar/karton/dodaj/".$klijent->getIdk(),"Unesi novu stavku",["class"=>"cstm-form-btn mt-5"]) ?>
+          
         </div>
 
         <?php if (!$stavke):?>
           <p class="mb-5 text-center">Karton klijenta je prazan.</p>
             
         <?php endif;?>
-
+        <?= $this->include('layouts/partials/flash_msg') ?>   
         <div class="row styledlist">
         
 
