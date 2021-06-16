@@ -69,7 +69,7 @@ class Filters extends BaseConfig
 		'lekar' => ['before' => ['lekar/*']],
 		'sluzbenik' => ['before' => ['sluzbenik/*']],
 		'klijent' => ['before' => ['klijent/*']],
-		'alreadylogged' => ['before' => ['login/*']],
-		'notloggedin' => ['before' => ['profile/*']],
+		'alreadylogged' => ['before' => ['login*']],
+		'notloggedin' => ['before' => ['profile*']],
 	];
 }
