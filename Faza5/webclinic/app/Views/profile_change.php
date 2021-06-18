@@ -15,8 +15,10 @@
         <div class="row">
           <div class="col-12 mt-5 mt-lg-0 d-flex align-items-stretch">
           <?= form_open('profile/change',['class' => 'php-email-form  w-100' ,'id'=>'register'])?>
-           
+            
               <div class="row w-50 mx-auto">
+                
+              
                 <div class="form-group col-12">
                   <label for="name">Ime</label>
                   <input type="text" name="ime" class="form-control" disabled="" placeholder="<?=$korisnik->getIme()?>">

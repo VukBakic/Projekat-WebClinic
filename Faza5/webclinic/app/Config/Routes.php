@@ -24,6 +24,7 @@ $routes->set404Override();
 $routes->setAutoRoute(true);
 
 
+
 /*
  * --------------------------------------------------------------------
  * Route Definitions
@@ -87,6 +88,8 @@ $routes->post('/lekar/karton/dodaj', 'Kartoni::dodaj');
 $routes->get('/profile', 'Profile::profile_page');
 $routes->get('/profile/change', 'Profile::profile_change_page');
 $routes->post('/profile/change', 'Profile::change_profile');
+$routes->get('/profile/changepassword', 'Profile::profile_change_password_page');
+$routes->post('/profile/changepassword', 'Profile::profile_change_password');
 
 $routes->get('/resetpassword', 'Resetpassword::resetPassPage');
 $routes->post('/resetpassword', 'Resetpassword::resetPassword');

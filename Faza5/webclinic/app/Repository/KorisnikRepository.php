@@ -23,7 +23,20 @@ class KorisnikRepository extends \Doctrine\ORM\EntityRepository {
          $this->_em->flush();
         
     }
-
+    public function izmeniSifru($id, $postData){
+        $forChange = $this->find($id);
+        $verify_pass = password_verify($postData['password_old'], $forChange->getSifra());
+        if(!$verify_pass) 
+            return ["success" => false, "errors" => ["password"=>"Pogresna sifra."]];
+        if($postData["password"]!=$postData["password_confirm"])
+            return ["success" => false, "errors" => ["password"=>"Sifre se ne poklapaju."]];
+        
+        if ($postData["password"])
+            $forChange->setSifra(password_hash($postData["password"], PASSWORD_DEFAULT));
+        $this->_em->flush();
+        return ["success" => true, "errors" => []];
+    }
+    
     public function izmeni($id, $postData) {
         $forChange = $this->find($id);
 
